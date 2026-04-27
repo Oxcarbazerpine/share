@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>上海旅行プラン · 5月2日 - 5月5日</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Noto+Serif+JP:wght@300;400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* 粉色点缀 */
+    --primary: #e89bb0;
+    --primary-deep: #c97894;
+    --accent: #f5c6d3;
+    --pink-soft: #fde5ed;
+
+    /* 淡蓝基底（梦幻系） */
+    --bg-cream: #eef4fb;        /* 全体背景：淡蓝 */
+    --bg-paper: #f7faff;        /* 紙面：ほぼ白の淡蓝 */
+    --bg-mist: #e3edf8;         /* もう少し濃い蓝 */
+    --blue-soft: #d9e6f4;
+    --blue-deep: #7fa3c7;
+
+    /* テキスト */
+    --secondary: #6b7d96;       /* 蓝灰 */
+    --text: #3a4a5e;            /* 深蓝灰 */
+    --text-soft: #8294ad;
+    --gold: #b89460;            /* 金色アクセント */
+    --line: #d8e3f0;            /* 淡蓝の罫線 */
+
+    /* 各日の色（淡蓝系で統一） */
+    --day1: #fde5ed;            /* 桜ピンク */
+    --day2: #d9e6f4;            /* 淡水色 */
+    --day3: #e0ecf5;            /* 空色 */
+    --day4: #ebd9eb;            /* ライラック */
+
+    --serif: 'Shippori Mincho', 'Noto Serif JP', serif;
+    --en-serif: 'Cormorant Garamond', serif;
+    --mono: 'DM Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--serif);
+    background: var(--bg-cream);
+    color: var(--text);
+    line-height: 1.8;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* === 装飾的な背景：淡蓝の夢幻感 === */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      radial-gradient(ellipse at 20% 15%, rgba(245, 198, 211, 0.35), transparent 50%),
+      radial-gradient(ellipse at 80% 75%, rgba(217, 230, 244, 0.55), transparent 55%),
+      radial-gradient(ellipse at 50% 50%, rgba(232, 155, 176, 0.08), transparent 60%),
+      linear-gradient(135deg, #e8f0fa 0%, #f5e8ee 50%, #e3edf8 100%);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  /* 紙面に微かなパステル質感 */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.4) 0%, transparent 40%),
+      radial-gradient(circle at 70% 80%, rgba(253, 229, 237, 0.3) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+    mix-blend-mode: soft-light;
+  }
+
+  /* === レイアウト === */
+  .container {
+    max-width: 880px;
+    margin: 0 auto;
+    background: rgba(247, 250, 255, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 0 80px rgba(127, 163, 199, 0.15);
+    min-height: 100vh;
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+  }
+
+  /* === カバー === */
+  .cover {
+    padding: 100px 60px 80px;
+    text-align: center;
+    border-bottom: 1px solid var(--line);
+    background:
+      linear-gradient(180deg, rgba(217, 230, 244, 0.3) 0%, rgba(253, 229, 237, 0.4) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* カバーに浮かぶ淡い円 */
+  .cover-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(40px);
+    opacity: 0.5;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .cover-orb.o1 {
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, var(--accent), transparent 70%);
+    top: -50px; left: -50px;
+  }
+  .cover-orb.o2 {
+    width: 250px; height: 250px;
+    background: radial-gradient(circle, var(--blue-soft), transparent 70%);
+    bottom: -80px; right: -60px;
+  }
+  .cover > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover::before, .cover::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    width: 120px;
+    height: 1px;
+    background: var(--primary);
+    transform: translateX(-50%);
+  }
+  .cover::before { top: 60px; }
+  .cover::after { bottom: 50px; }
+
+  .cover-mark {
+    display: inline-block;
+    color: var(--primary);
+    font-size: 14px;
+    letter-spacing: 0.5em;
+    margin-bottom: 30px;
+    font-family: var(--en-serif);
+    font-style: italic;
+  }
+
+  .cover h1 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 52px;
+    color: var(--primary-deep);
+    letter-spacing: 0.15em;
+    margin-bottom: 30px;
+    line-height: 1.4;
+  }
+
+  .cover .en-title {
+    font-family: var(--en-serif);
+    font-style: italic;
+    font-size: 22px;
+    color: var(--secondary);
+    letter-spacing: 0.05em;
+    margin-bottom: 60px;
+  }
+
+  .cover .meta {
+    font-family: var(--en-serif);
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    font-size: 14px;
+    line-height: 2;
+  }
+
+  .cover .meta span {
+    display: block;
+  }
+
+  .cover-divider {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin: 30px 0;
+    color: var(--primary);
+  }
+
+  .cover-divider .line {
+    width: 50px;
+    height: 1px;
+    background: var(--primary);
+  }
+
+  .cover-divider .dot {
+    width: 5px;
+    height: 5px;
+    background: var(--primary);
+    border-radius: 50%;
+  }
+
+  /* === ナビ === */
+  .nav {
+    position: sticky;
+    top: 0;
+    background: var(--bg-paper);
+    border-bottom: 1px solid var(--line);
+    padding: 16px 60px;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    font-size: 13px;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 253, 250, 0.95);
+  }
+
+  .nav a {
+    color: var(--secondary);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    transition: color 0.2s;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+  }
+
+  .nav a:hover {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+  }
+
+  /* === 章セクション === */
+  section {
+    padding: 80px 60px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  section:last-of-type { border-bottom: none; }
+
+  /* === 章タイトル === */
+  .section-header {
+    margin-bottom: 50px;
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .section-header h2 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 32px;
+    color: var(--primary-deep);
+    letter-spacing: 0.1em;
+  }
+
+  .section-header .en-sub {
+    font-family: var(--en-serif);
+    font-style: italic;
+    font-size: 16px;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+  }
+
+  .section-header::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--primary), transparent);
+    align-self: center;
+    min-width: 100px;
+  }
+
+  /* === 概要テーブル === */
+  .overview {
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .overview-row {
+    display: grid;
+    grid-template-columns: 90px 130px 1fr 220px;
+    gap: 0;
+    border-bottom: 1px solid var(--line);
+    align-items: center;
+  }
+
+  .overview-row:last-child { border-bottom: none; }
+
+  .overview-row.head {
+    background: var(--primary);
+    color: white;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+  }
+
+  .overview-row > div {
+    padding: 18px 20px;
+    font-size: 14px;
+  }
+
+  .overview-row.head > div {
+    text-align: center;
+  }
+
+  .day-tag {
+    text-align: center;
+    font-family: var(--en-serif);
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+
+  .overview-row .d1 { background: var(--day1); color: var(--primary-deep); }
+  .overview-row .d2 { background: var(--day2); color: #5b7794; }
+  .overview-row .d3 { background: var(--day3); color: #5d8055; }
+  .overview-row .d4 { background: var(--day4); color: #8c5a8c; }
+
+  /* === 一日のセクション === */
+  .day-block {
+    margin-bottom: 60px;
+  }
+
+  .day-banner {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 28px 32px;
+    margin-bottom: 35px;
+    border-left: 3px solid var(--primary);
+    border-radius: 0 4px 4px 0;
+    position: relative;
+  }
+
+  .day-banner.bg1 { background: var(--day1); }
+  .day-banner.bg2 { background: var(--day2); }
+  .day-banner.bg3 { background: var(--day3); }
+  .day-banner.bg4 { background: var(--day4); }
+
+  .day-banner .day-num {
+    font-family: var(--en-serif);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .day-banner h3 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 26px;
+    color: var(--text);
+    letter-spacing: 0.05em;
+    flex: 1;
+  }
+
+  .day-banner .date {
+    font-size: 13px;
+    color: var(--secondary);
+    letter-spacing: 0.1em;
+  }
+
+  /* === タイムライン === */
+  .timeline {
+    position: relative;
+    padding-left: 0;
+  }
+
+  .schedule-item {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 24px;
+    padding: 16px 0 16px 8px;
+    border-bottom: 1px dashed var(--line);
+    align-items: start;
+  }
+
+  .schedule-item:last-child {
+    border-bottom: none;
+  }
+
+  .schedule-item .time {
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--primary);
+    font-weight: 500;
+    padding-top: 2px;
+  }
+
+  .schedule-item .content .activity {
+    font-family: var(--serif);
+    font-size: 16px;
+    color: var(--text);
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+
+  .schedule-item .content .place {
+    font-size: 12px;
+    color: var(--secondary);
+    margin-bottom: 4px;
+    letter-spacing: 0.05em;
+  }
+
+  .schedule-item .content .place::before {
+    content: '◇ ';
+    color: var(--gold);
+  }
+
+  .schedule-item .content .memo {
+    font-size: 12px;
+    color: var(--text-soft);
+    font-style: italic;
+    line-height: 1.6;
+  }
+
+  /* === 注意ボックス === */
+  .note-box {
+    margin: 30px 0;
+    padding: 24px 28px;
+    background: var(--bg-cream);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 4px 4px 0;
+    font-size: 13px;
+    line-height: 1.9;
+  }
+
+  .note-box .label {
+    display: inline-block;
+    font-family: var(--en-serif);
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .note-box strong {
+    color: var(--primary-deep);
+    font-weight: 500;
+  }
+
+  /* === 二人の予定 === */
+  .two-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin: 30px 0;
+  }
+
+  .col-card {
+    padding: 28px;
+    border-radius: 4px;
+    font-size: 13px;
+    line-height: 1.9;
+  }
+
+  .col-card.her { background: #fce4ec; }
+  .col-card.you { background: #e8eaf6; }
+
+  .col-card h4 {
+    font-family: var(--en-serif);
+    font-style: italic;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+
+  .col-card.her h4 { color: var(--primary-deep); }
+  .col-card.you h4 { color: var(--secondary); }
+
+  /* === ホテル情報 === */
+  .hotel-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .hotel-card {
+    display: grid;
+    grid-template-columns: 110px 1fr 200px;
+    gap: 20px;
+    padding: 20px 24px;
+    background: var(--bg-cream);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 4px 4px 0;
+    align-items: center;
+  }
+
+  .hotel-card .period {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--primary);
+  }
+
+  .hotel-card .hotel-info .name {
+    font-family: var(--serif);
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .hotel-card .hotel-info .addr {
+    font-size: 12px;
+    color: var(--secondary);
+  }
+
+  .hotel-card .access {
+    font-size: 12px;
+    color: var(--text-soft);
+    text-align: right;
+    line-height: 1.7;
+  }
+
+  /* === 食事候補 === */
+  .dinner-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin: 30px 0;
+  }
+
+  .dinner-card {
+    padding: 22px 24px;
+    background: var(--bg-cream);
+    border-radius: 4px;
+    border: 1px solid var(--line);
+  }
+
+  .dinner-card .name {
+    font-family: var(--serif);
+    font-size: 15px;
+    color: var(--primary-deep);
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+
+  .dinner-card .desc {
+    font-size: 12px;
+    color: var(--text-soft);
+    line-height: 1.7;
+    margin-bottom: 8px;
+  }
+
+  .dinner-card .price {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--gold);
+  }
+
+  /* === 住所表 === */
+  .addr-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  .addr-table th, .addr-table td {
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+    font-size: 13px;
+  }
+
+  .addr-table th {
+    background: var(--bg-cream);
+    color: var(--primary-deep);
+    font-weight: 500;
+    letter-spacing: 0.1em;
+  }
+
+  .addr-table td.zh {
+    font-family: var(--mono);
+    color: var(--secondary);
+    font-size: 12px;
+  }
+
+  /* === 予算表 === */
+  .budget-grid {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 0;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .budget-grid > div {
+    padding: 14px 20px;
+    font-size: 13px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .budget-grid .header {
+    background: var(--primary);
+    color: white;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+  }
+
+  .budget-grid .total {
+    background: var(--bg-cream);
+    font-weight: 500;
+    color: var(--primary-deep);
+    border-bottom: none;
+  }
+
+  .budget-grid .num {
+    text-align: right;
+    font-family: var(--mono);
+  }
+
+  .budget-grid > div:nth-last-child(-n+3) {
+    border-bottom: none;
+  }
+
+  /* === 連絡先 === */
+  .contact-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .contact-item {
+    padding: 14px 18px;
+    background: var(--bg-cream);
+    border-radius: 3px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+  }
+
+  .contact-item .name {
+    color: var(--text);
+  }
+
+  .contact-item .tel {
+    font-family: var(--mono);
+    color: var(--primary);
+    font-size: 12px;
+  }
+
+  /* === 章末装飾 === */
+  .ornament {
+    text-align: center;
+    margin: 40px 0;
+    color: var(--accent);
+    letter-spacing: 1em;
+    font-size: 14px;
+  }
+
+  /* === フッター === */
+  footer {
+    padding: 60px 60px;
+    text-align: center;
+    background: var(--bg-cream);
+    border-top: 1px solid var(--line);
+  }
+
+  footer .en {
+    font-family: var(--en-serif);
+    font-style: italic;
+    font-size: 28px;
+    color: var(--primary-deep);
+    margin-bottom: 12px;
+    letter-spacing: 0.1em;
+  }
+
+  footer .ja {
+    font-family: var(--serif);
+    font-size: 16px;
+    color: var(--secondary);
+    letter-spacing: 0.3em;
+    margin-bottom: 30px;
+  }
+
+  footer .meta {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-soft);
+    letter-spacing: 0.1em;
+  }
+
+  /* === レスポンシブ === */
+  @media (max-width: 768px) {
+    .nav { padding: 12px 20px; gap: 16px; flex-wrap: wrap; font-size: 12px; }
+    .cover { padding: 60px 30px 50px; }
+    .cover h1 { font-size: 36px; }
+    .cover .en-title { font-size: 18px; }
+    section { padding: 50px 30px; }
+    .section-header h2 { font-size: 24px; }
+    .overview-row { grid-template-columns: 70px 110px 1fr; }
+    .overview-row > div:nth-child(4) { display: none; }
+    .day-banner { flex-direction: column; align-items: flex-start; gap: 8px; padding: 20px 24px; }
+    .day-banner h3 { font-size: 22px; }
+    .schedule-item { grid-template-columns: 60px 1fr; gap: 14px; }
+    .two-cols { grid-template-columns: 1fr; }
+    .hotel-card { grid-template-columns: 1fr; gap: 8px; }
+    .hotel-card .access { text-align: left; }
+    .dinner-options { grid-template-columns: 1fr; }
+    .contact-list { grid-template-columns: 1fr; }
+    .budget-grid { grid-template-columns: 1fr auto; }
+    .budget-grid > div:nth-child(3n) { display: none; }
+  }
+
+  /* === 印刷用 === */
+  @media print {
+    body { background: white; }
+    .nav { display: none; }
+    .container { box-shadow: none; }
+    section { page-break-inside: avoid; }
+    .day-block { page-break-before: auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- ===== カバー ===== -->
+  <header class="cover">
+    <div class="cover-orb o1"></div>
+    <div class="cover-orb o2"></div>
+    <div class="cover-mark">— Itinerary —</div>
+    <h1>上海旅行プラン</h1>
+    <div class="en-title">Our Trip to Shanghai</div>
+    <div class="cover-divider">
+      <span class="line"></span>
+      <span class="dot"></span>
+      <span class="line"></span>
+    </div>
+    <div class="meta">
+      <span>5月2日 — 5月5日 · 2026</span>
+      <span>4 DAYS / 3 NIGHTS</span>
+      <span>東京 ⇄ 上海</span>
+    </div>
+  </header>
+
+  <!-- ===== ナビ ===== -->
+  <nav class="nav">
+    <a href="#overview">概要</a>
+    <a href="#day1">5/2</a>
+    <a href="#day2">5/3</a>
+    <a href="#day3">5/4</a>
+    <a href="#day4">5/5</a>
+    <a href="#hotels">ホテル</a>
+    <a href="#address">住所</a>
+    <a href="#budget">予算</a>
+  </nav>
+
+  <!-- ===== 概要 ===== -->
+  <section id="overview">
+    <div class="section-header">
+      <h2>行程概要</h2>
+      <span class="en-sub">at a glance</span>
+    </div>
+
+    <div class="overview">
+      <div class="overview-row head">
+        <div>Day</div>
+        <div>日付</div>
+        <div>テーマ</div>
+        <div>宿泊</div>
+      </div>
+      <div class="overview-row">
+        <div class="day-tag d1">Day 1</div>
+        <div>5月2日 土</div>
+        <div>上海到着 · 外灘の夜景</div>
+        <div>子鱼居（人民広場）</div>
+      </div>
+      <div class="overview-row">
+        <div class="day-tag d2">Day 2</div>
+        <div>5月3日 日</div>
+        <div>武康路 · 漢服 · ミュージカル</div>
+        <div>全季酒店（陸家嘴）</div>
+      </div>
+      <div class="overview-row">
+        <div class="day-tag d3">Day 3</div>
+        <div>5月4日 月</div>
+        <div>上海中心 · 二次元 · 4人ディナー</div>
+        <div>CJIA城家公寓（中興路）</div>
+      </div>
+      <div class="overview-row">
+        <div class="day-tag d4">Day 4</div>
+        <div>5月5日 火</div>
+        <div>帰国</div>
+        <div>—</div>
+      </div>
+    </div>
+
+    <div class="note-box" style="margin-top: 30px;">
+      <span class="label">Quick Facts</span>
+      <strong>到着</strong>：5月2日 16:20 浦東国際機場 ／ <strong>出発</strong>：5月5日 15:00 浦東国際機場<br>
+      <strong>移動</strong>：地下鉄＋タクシーで十分。空港往復は地下鉄2号線が安くて確実（約75分・¥8）。<br>
+      <strong>支払い</strong>：支付宝（Alipay）に海外クレカ登録すればほぼ全店OK。現金は¥1000程度の保険のみ。
+    </div>
+  </section>
+
+  <!-- ===== Day 1 ===== -->
+  <section id="day1">
+    <div class="day-block">
+      <div class="day-banner bg1">
+        <span class="day-num">Day One</span>
+        <h3>上海到着 · 外灘の夜景</h3>
+        <span class="date">5月2日（土）</span>
+      </div>
+
+      <div class="timeline">
+        <div class="schedule-item">
+          <div class="time">16:20</div>
+          <div class="content">
+            <div class="activity">浦東国際機場 着</div>
+            <div class="place">PVG · T1/T2</div>
+            <div class="memo">入国審査・荷物受取で約1時間</div>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="time">17:30</div>
+          <div class="content">
+            <div class="activity">地下鉄2号線で人民広場へ</div>
+            <div class="place">浦东机场駅 → 人民广场駅</div>
+            <div class="memo">約70分、¥8/人。タクシーなら約1時間・¥200前後</div>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="time">19:00</div>
+          <div class="content">
+            <div class="activity">チェックイン：子鱼居 人民广场延安店</div>
+            <div class="place">黄浦区 江阴路135号 · 人民広場の西側</div>
+            <div class="memo">荷物を置いてひと休み</div>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="time">19:30</div>
+          <div class="content">
+            <div class="activity">晩ごはん：例の冷ぴた串焼き屋</div>
+            <div class="place">Google Mapsの保存場所</div>
+            <div class="memo">旅行最初の夜ごはん</div>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="time">21:00</div>
+          <div class="content">
+            <div class="activity">外灘で夜景散歩</div>
+            <div class="place">中山东一路 · 外灘</div>
+            <div class="memo">ホテルから徒歩約15分。万国建築群＋陸家嘴のスカイライン</div>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="time">22:30</div>
+          <div class="content">
+            <div class="activity">ホテルへ戻る</div>
+            <div class="place">江阴路</div>
+            <div class="memo">初日は無理せず</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="note-box">
+        <span class="label">Memo</span>
+        到着が16:20なので、市内に着くのは19:00頃。<strong>初日は外灘の夜景だけで十分</strong>、無理に他を入れない。<br>
+        外灘のライトアップは22:00頃まで。串焼き屋が混んでたら、ホテル周りの食堂も多いので柔軟に。
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Day 2 ===== -->
+  <section id="day2">
+    <div class="day-block">
+      <div class="day-banner bg2">
+        <span class="day-num">Day Two</span>
+        <h3>武康路 · 漢服 · ミュージカル</h3>
+        <span class="date">5月3日（日）</span>
+      </div>
+
+      <div class="note-box" style="border-left-color: var(--primary);">
+        <span class="label">Time Constraint</span>
+        《时光代理人》ミュージカル<strong> 19:30 開演（大世界・时光剧场）</strong>。<br>
+        18:00には食事＆会場へ向かえるよう、午後の動きは逆算で組んでいる。
+      </div>
+
+      <h4 style="font-family: var(--serif); font-weight: 500; font-size: 18px; color: var(--primary-deep); margin: 30px 0 16px; letter-spacing: 0.1em;">日中 — 一緒の時間</h4>
+
+      <div class="timeline">
+        <div class="schedule-item">
+          <div class="time">09:00</div>
+          <div class="content">
+            <div class="activity">チェックアウト・荷物預け</div>
+            <div class="place">子鱼居 フロント</div>
+            <div class="memo">夕方戻ってくる</div>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="time">09:30</div>
+          <div class="content">
+            <div class="activity">地下鉄で武康路へ</div>
+            <div class="place">10号线 常熟路駅</div>
+            <div class="memo">約25分</div>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="time">10:00</div>
+          <div class="content">
+            <div class="activity">13DE MARZO CAFE</div>
+            <div class="place">徐汇区 安福路322号</div>
+            <div class="memo">クマのぬいぐるみ付きドリンクの店</div>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="time">11:30</div>
+          <div class="content">
+            <div class="activity">武康路・安福路を散策</div>
+            <div class="place">徐汇区（旧フランス租界）</div>
+            <div class="memo">街並みが綺麗、写真スポット多数</div>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="time">12:00</div>
+          <div class="content">
+            <div class="activity">武康大楼で写真</div>
+            <div class="place">淮海中路1850号</div>
+            <div class="memo">上海で一番有名な街角・赤レンガのフラットアイアン風建築</div>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="time">12:30</div>
+          <div class="content">
+            <div class="activity">安福路でランチ</div>
+            <div class="place">西洋料理 / カフェ</div>
+            <div class="memo">大众点评で評価高い店から選ぶ</div>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="time">14:00</div>
+          <div class="content">
+            <div class="activity">地下鉄で豫园へ</div>
+            <div class="place">14号线 豫园駅</div>
+            <div class="memo">約25分</div>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="time">14:30</div>
+          <div class="content">
+            <div class="activity">漢服レンタル＋撮影</div>
+            <div class="place">豫园周辺の漢服店</div>
+            <div class="memo">※事前予約必須（小红书 / 大众点评で）。撮影プラン込みのコースを選ぶ</div>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="time">17:00</div>
+          <div class="content">
+            <div class="activity">荷物ピックアップ → 陸家嘴</div>
+            <div class="place">子鱼居 → 全季酒店</div>
+            <div class="memo">タクシー推奨、約30分・¥80前後</div>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="time">17:30</div>
+          <div class="content">
+            <div class="activity">チェックイン：全季酒店 陆家嘴</div>
+            <div class="place">浦东 北洋泾路（地下鉄6号线 北洋泾路駅）</div>
+            <div class="memo">2軒目</div>
+          </div>
+        </div>
+      </div>
+
+      <h4 style="font-family: var(--serif); font-weight: 500; font-size: 18px; color: var(--primary-deep); margin: 40px 0 16px; letter-spacing: 0.1em;">夕方以降 — 別行動</h4>
+
+      <div class="two-cols">
+        <div class="col-card her">
+          <h4>Her</h4>
+          <strong style="color: var(--primary-deep);">18:00</strong> 大世界へ移動、近くで軽く晩ごはん<br><br>
+          <strong style="color: var(--primary-deep);">19:30</strong> 《时光代理人》ミュージカル 開演<br><br>
+          <strong style="color: var(--primary-deep);">21:30</strong> 終演 → ホテル中国語住所をスクショして、タクシーで陸家嘴へ<br><br>
+          <em>劇場は人民広場のすぐ近く、迷わない</em>
+        </div>
+        <div class="col-card you">
+          <h4>You</h4>
+          <strong style="color: var(--secondary);">18:00</strong> 彼女を会場まで送る<br><br>
+          <strong style="color: var(--secondary);">それ以降</strong> 自由時間<br>
+          ホテルで休む / 近所を散歩 / 何でも<br><br>
+          <strong style="color: var(--secondary);">21:30頃</strong> 必要なら劇場前に迎えに行く<br><br>
+          <em>その日の体力次第で柔軟に</em>
+        </div>
+      </div>
+
+      <div class="note-box">
+        <span class="label">Memo</span>
+        朝9時には出発しないと漢服撮影が間に合わない。<br>
+        豫园は<strong>月曜定休</strong>だが5/3は日曜なのでOK。<br>
+        漢服当日飛び込みは選択肢が少ない、必ず<strong>事前予約</strong>。
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Day 3 ===== -->
+  <section id="day3">
+    <div class="day-block">
+      <div class="day-banner bg3">
+        <span class="day-num">Day Three</span>
+        <h3>上海中心 · 二次元 · 4人ディナー</h3>
+        <span class="date">5月4日（月）</span>
+      </div>
+
+      <div class="timeline">
+        <div class="schedule-item">
+          <div class="time">09:30</div>
+          <div class="content">
+            <div class="activity">起床・ホテル朝食</div>
+            <div class="place">全季酒店 陆家嘴</div>
+            <div class="memo">ゆっくり</div>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="time">10:30</div>
+          <div class="content">
+            <div class="activity">地下鉄で陸家嘴へ</div>
+            <div class="place">6号 → 2号线</div>
+            <div class="memo">約30分</div>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="time">11:00</div>
+          <div class="content">
+            <div class="activity">上海中心 119F 観光台</div>
+            <div class="place">浦东 银城中路501号</div>
+            <div class="memo">※事前予約で待ち時間短縮</div>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="time">12:30</div>
+          <div class="content">
+            <div class="activity">IFC でランチ</div>
+            <div class="place">浦东 世纪大道8号</div>
+            <div class="memo">上海中心から徒歩5分・選択肢豊富</div>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="time">14:00</div>
+          <div class="content">
+            <div class="activity">全季酒店チェックアウト・荷物移動</div>
+            <div class="place">→ 中興路のCJIA城家公寓へ</div>
+            <div class="memo">タクシーで荷物運ぶ</div>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="time">14:30</div>
+          <div class="content">
+            <div class="activity">CJIA城家公寓チェックイン or 荷物預け</div>
+            <div class="place">虹口区 中兴路駅周辺</div>
+            <div class="memo">trip.com 7300072</div>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="time">15:30</div>
+          <div class="content">
+            <div class="activity">上海百联ZX 創趣場</div>
+            <div class="place">黄浦区 南京东路340号 · 华联商厦</div>
+            <div class="memo">中国最大級のオタク商業施設、6階建て</div>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="time">17:00</div>
+          <div class="content">
+            <div class="activity">上海世茂广场</div>
+            <div class="place">黄浦区 南京东路819号</div>
+            <div class="memo">时光代理人がポップアップした場所、徒歩5分</div>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="time">18:00</div>
+          <div class="content">
+            <div class="activity">友達と合流（ディナー）</div>
+            <div class="place">場所は下から選択</div>
+            <div class="memo">事前予約推奨</div>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="time">20:30</div>
+          <div class="content">
+            <div class="activity">外滩散歩 or バーで二次会</div>
+            <div class="place">外滩</div>
+            <div class="memo">雰囲気で決定</div>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="time">22:30</div>
+          <div class="content">
+            <div class="activity">ホテルへ戻る</div>
+            <div class="place">中兴路</div>
+            <div class="memo">翌日早起き</div>
+          </div>
+        </div>
+      </div>
+
+      <h4 style="font-family: var(--serif); font-weight: 500; font-size: 18px; color: var(--primary-deep); margin: 40px 0 16px; letter-spacing: 0.1em;">友達とディナーの候補</h4>
+
+      <div class="dinner-options">
+        <div class="dinner-card">
+          <div class="name">新天地（石库门エリア）</div>
+          <div class="desc">上海らしい雰囲気、店多い、4人で話しやすい。観光客慣れしてるので英語メニューも多い</div>
+          <div class="price">¥150-300 / 人</div>
+        </div>
+        <div class="dinner-card">
+          <div class="name">外滩源（北外滩）</div>
+          <div class="desc">老建築のリノベレストラン、夜景も楽しめる。少し値段は高めだが特別感あり</div>
+          <div class="price">¥200-400 / 人</div>
+        </div>
+        <div class="dinner-card">
+          <div class="name">田子坊</div>
+          <div class="desc">路地裏のおしゃれ系、カジュアルで気取らない。バーも多い</div>
+          <div class="price">¥100-200 / 人</div>
+        </div>
+        <div class="dinner-card">
+          <div class="name">陸家嘴 IFC / 正大広場</div>
+          <div class="desc">アクセス良い、選択肢豊富。ホテル方面に近いので終わったら帰りやすい</div>
+          <div class="price">¥150-300 / 人</div>
+        </div>
+      </div>
+
+      <div class="note-box">
+        <span class="label">Tips for the Dinner</span>
+        4人なら<strong>円卓 or 大きめの四角テーブル</strong>がある店を。バー席は会話が分断される。<br>
+        中華なら大皿シェアで自然と会話が生まれる。紹興酒や青島ビールで現地感を出すのも◎。<br>
+        終わる時間は<strong>2時間目安</strong>、長くても20:30までには切り上げて外灘へ。
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Day 4 ===== -->
+  <section id="day4">
+    <div class="day-block">
+      <div class="day-banner bg4">
+        <span class="day-num">Day Four</span>
+        <h3>帰国</h3>
+        <span class="date">5月5日（火）</span>
+      </div>
+
+      <div class="note-box" style="border-left-color: var(--primary);">
+        <span class="label">Time Constraint</span>
+        浦東 <strong>15:00 発</strong>。逆算で <strong>11:00 にはホテルを出発</strong>、12:30 までに空港着が安全。<br>
+        5/5は労働節連休最終日で帰省ラッシュの可能性あり、<strong>30分の余裕</strong>を見ておく。
+      </div>
+
+      <div class="timeline">
+        <div class="schedule-item">
+          <div class="time">09:00</div>
+          <div class="content">
+            <div class="activity">起床</div>
+            <div class="place">CJIA城家公寓ホテル</div>
+            <div class="memo">前夜に荷物まとめておく</div>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="time">09:30</div>
+          <div class="content">
+            <div class="activity">最後の朝ごはん</div>
+            <div class="place">ホテル朝食 or 近所で生煎・小笼包</div>
+            <div class="memo">上海らしい朝ごはんで締めくくり</div>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="time">10:30</div>
+          <div class="content">
+            <div class="activity">チェックアウト</div>
+            <div class="place">CJIA城家公寓ホテル</div>
+            <div class="memo"></div>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="time">11:00</div>
+          <div class="content">
+            <div class="activity">浦東機場へ出発</div>
+            <div class="place">中兴路 → PVG</div>
+            <div class="memo">地下鉄なら10号→2号线で約75分（人民广场駅で乗換）／タクシーで45分・¥150-200</div>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="time">12:30</div>
+          <div class="content">
+            <div class="activity">空港到着</div>
+            <div class="place">PVG</div>
+            <div class="memo">出発2.5時間前、余裕あり</div>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="time">13:00</div>
+          <div class="content">
+            <div class="activity">チェックイン・出国審査</div>
+            <div class="place">PVG</div>
+            <div class="memo"></div>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="time">15:00</div>
+          <div class="content">
+            <div class="activity">離陸</div>
+            <div class="place">上海 → 東京</div>
+            <div class="memo">お疲れ様</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ホテル ===== -->
+  <section id="hotels">
+    <div class="section-header">
+      <h2>ホテル情報</h2>
+      <span class="en-sub">accommodations</span>
+    </div>
+
+    <div class="hotel-list">
+      <div class="hotel-card">
+        <div class="period">5/2 — 5/3</div>
+        <div class="hotel-info">
+          <div class="name">子鱼居 人民广场延安店（Fish Inn）</div>
+          <div class="addr">黄浦区 江阴路135号 · 人民広場西側</div>
+        </div>
+        <div class="access">地下鉄 1/2/8号线<br>人民广场駅</div>
+      </div>
+      <div class="hotel-card">
+        <div class="period">5/3 — 5/4</div>
+        <div class="hotel-info">
+          <div class="name">全季酒店 陆家嘴北洋泾路地铁站店</div>
+          <div class="addr">浦东新区 北洋泾路 · 浦東東部</div>
+        </div>
+        <div class="access">地下鉄 6号线<br>北洋泾路駅</div>
+      </div>
+      <div class="hotel-card">
+        <div class="period">5/4 — 5/5</div>
+        <div class="hotel-info">
+          <div class="name">CJIA城家公寓ホテル（trip.com 7300072）</div>
+          <div class="addr">虹口区 中兴路駅周辺 · 南京东路まで2-3駅</div>
+        </div>
+        <div class="access">地下鉄 8/10号线<br>中兴路駅</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 住所一覧 ===== -->
+  <section id="address">
+    <div class="section-header">
+      <h2>主要スポット住所</h2>
+      <span class="en-sub">addresses for taxi</span>
+    </div>
+
+    <p style="font-size: 13px; color: var(--text-soft); margin-bottom: 20px;">
+      タクシー運転手に見せる用。中国語住所をそのまま見せれば確実です。
+    </p>
+
+    <table class="addr-table">
+      <thead>
+        <tr><th>スポット</th><th>住所</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>浦东国际机场 (PVG)</td><td class="zh">上海市浦东新区迎宾大道</td></tr>
+        <tr><td>子鱼居（1軒目）</td><td class="zh">上海市黄浦区江阴路135号</td></tr>
+        <tr><td>全季酒店 陆家嘴（2軒目）</td><td class="zh">上海市浦东新区北洋泾路</td></tr>
+        <tr><td>CJIA城家公寓ホテル</td><td class="zh">上海市静安区中华新路469号华天大厦F1层</td></tr>
+        <tr><td>13DE MARZO CAFE</td><td class="zh">上海市徐汇区安福路322号</td></tr>
+        <tr><td>武康大楼</td><td class="zh">上海市徐汇区淮海中路1850号</td></tr>
+        <tr><td>豫园</td><td class="zh">上海市黄浦区福佑路</td></tr>
+        <tr><td>上海大世界（时光剧场）</td><td class="zh">上海市黄浦区延安东路1号</td></tr>
+        <tr><td>上海中心大厦</td><td class="zh">上海市浦东新区银城中路501号</td></tr>
+        <tr><td>上海百联ZX (创趣场)</td><td class="zh">上海市黄浦区南京东路340号</td></tr>
+        <tr><td>上海世茂广场</td><td class="zh">上海市黄浦区南京东路819号</td></tr>
+        <tr><td>外滩</td><td class="zh">上海市黄浦区中山东一路</td></tr>
+        <tr><td>新天地</td><td class="zh">上海市黄浦区太仓路181弄</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ===== 予算 ===== -->
+  <section id="budget">
+    <div class="section-header">
+      <h2>予算目安</h2>
+      <span class="en-sub">estimate</span>
+    </div>
+
+    <div class="budget-grid">
+      <div class="header">項目</div>
+      <div class="header num">金額（人民元）</div>
+      <div class="header">メモ</div>
+
+      <div>ホテル3泊</div>
+      <div class="num">¥1,500 - 2,500</div>
+      <div>部屋タイプ次第</div>
+
+      <div>食事 4日分</div>
+      <div class="num">¥1,500 - 2,500</div>
+      <div>4人ディナー含む</div>
+
+      <div>交通（地下鉄＋タクシー）</div>
+      <div class="num">¥400 - 600</div>
+      <div>空港往復含む</div>
+
+      <div>観光チケット</div>
+      <div class="num">¥600 - 900</div>
+      <div>上海中心＋ミュージカル＋漢服</div>
+
+      <div>お土産・買い物</div>
+      <div class="num">¥500 - 1,500</div>
+      <div>二次元グッズなど</div>
+
+      <div class="total">合計（二人合計・機票別）</div>
+      <div class="total num">¥4,500 - 8,000</div>
+      <div class="total">≒ ¥9万 - 16万 程度</div>
+    </div>
+  </section>
+
+  <!-- ===== 連絡先 ===== -->
+  <section id="contact">
+    <div class="section-header">
+      <h2>緊急連絡先</h2>
+      <span class="en-sub">in case of emergency</span>
+    </div>
+
+    <div class="contact-list">
+      <div class="contact-item">
+        <span class="name">在上海日本国総領事館</span>
+        <span class="tel">+86-21-5257-4766</span>
+      </div>
+      <div class="contact-item">
+        <span class="name">警察</span>
+        <span class="tel">110</span>
+      </div>
+      <div class="contact-item">
+        <span class="name">救急</span>
+        <span class="tel">120</span>
+      </div>
+      <div class="contact-item">
+        <span class="name">浦東国際機場</span>
+        <span class="tel">+86-21-96990</span>
+      </div>
+      <div class="contact-item">
+        <span class="name">子鱼居 人民广场店</span>
+        <span class="tel">+86 181 1725 7740</span>
+      </div>
+      <div class="contact-item">
+        <span class="name">全季酒店 陆家嘴</span>
+        <span class="tel">+86 21 5882 8820</span>
+      </div>
+      <div class="contact-item">
+        <span class="name">上海中心 観光台</span>
+        <span class="tel">+86 21 6199 9766</span>
+      </div>
+      <div class="contact-item">
+        <span class="name">CJIA城家公寓ホテル</span>
+        <span class="tel">trip.com予約参照</span>
+      </div>
+    </div>
+
+    <div class="ornament">· · ·</div>
+  </section>
+
+  <!-- ===== フッター ===== -->
+  <footer>
+    <div class="en">See you in Shanghai</div>
+    <div class="ja">上 海 で 会 い ま し ょ う</div>
+    <div class="meta">2026 · 5月2日 — 5月5日</div>
+  </footer>
+
+</div>
+
+</body>
+</html>
