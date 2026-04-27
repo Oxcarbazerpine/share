@@ -1,6 +1,6 @@
 # share
 
-用 GitHub Pages 托管 HTML 文件，方便分享链接给他人。
+用 GitHub Pages 托管 HTML 文件, 方便分享链接给他人。
 
 ## 使用方法
 
