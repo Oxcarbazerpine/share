@@ -1,0 +1,1547 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Postcards from Shanghai · 上海からの手紙</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Noto+Serif+JP:wght@300;400;500&family=Noto+Serif+SC:wght@300;400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Italianno&family=Pinyon+Script&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* === 春末初夏 + 梦幻蓝 + 樱花粉 === */
+    --bg-base: #f5f1e8;          /* 更米白 */
+    --bg-paper: #faf6ed;
+    --bg-mist: #eef1f6;          /* 薄雾蓝白 */
+
+    /* 樱花粉系 */
+    --primary: #d68aa0;
+    --primary-deep: #b56a82;
+    --primary-soft: #f5d8e0;
+    --pink-mist: #faedf1;
+
+    /* 梦幻蓝系 */
+    --blue: #8aa8c7;             /* 主蓝（梦幻） */
+    --blue-deep: #6589a8;
+    --blue-soft: #c8d8e8;
+    --blue-mist: #e6eef5;
+
+    /* 春日新绿（点缀生机） */
+    --leaf: #a8b89c;             /* 嫩青 */
+    --leaf-soft: #d4dcc8;
+
+    --text: #4a4640;             /* 暖灰黑（不纯黑） */
+    --text-soft: #756f66;
+    --text-faint: #a8a298;
+
+    --gold: #b89460;
+    --line: #e6dccf;
+    --line-soft: #f0e6d8;
+
+    --serif-jp: 'Shippori Mincho', 'Noto Serif JP', serif;
+    --serif-cn: 'Noto Serif SC', 'Shippori Mincho', serif;
+    --en-serif: 'Cormorant Garamond', serif;
+    --script: 'Italianno', 'Pinyon Script', cursive;
+    --mono: 'DM Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--serif-jp);
+    background: var(--bg-base);
+    color: var(--text);
+    line-height: 1.75;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* === 春日感の背景（米白基調、控えめなピンク） === */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(ellipse at 12% 18%, rgba(245, 216, 224, 0.25), transparent 45%),
+      radial-gradient(ellipse at 88% 35%, rgba(200, 216, 232, 0.3), transparent 50%),
+      radial-gradient(ellipse at 50% 80%, rgba(212, 220, 200, 0.2), transparent 55%),
+      linear-gradient(180deg, #f5f1e8 0%, #f7f3ea 100%);
+    pointer-events: none;
+    z-index: -2;
+  }
+
+  /* もう一層、夢幻感を出すフィルター */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 30% 50%, rgba(255, 255, 255, 0.4), transparent 40%);
+    pointer-events: none;
+    z-index: -1;
+    mix-blend-mode: soft-light;
+  }
+
+  .container {
+    max-width: 920px;
+    margin: 0 auto;
+    background: rgba(252, 249, 244, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 0 80px rgba(150, 130, 110, 0.1);
+    min-height: 100vh;
+  }
+
+  /* ======================================== */
+  /* ============== カバー ================== */
+  /* ======================================== */
+  .cover {
+    padding: 110px 60px 90px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--line-soft);
+    background:
+      radial-gradient(ellipse at 50% 30%, rgba(200, 216, 232, 0.18), transparent 60%),
+      radial-gradient(ellipse at 50% 80%, rgba(245, 216, 224, 0.15), transparent 60%);
+  }
+
+  /* 左右の細い装飾枠 */
+  .cover-frame-side {
+    position: absolute;
+    top: 30px;
+    bottom: 30px;
+    width: 1px;
+    background: linear-gradient(180deg,
+      transparent, var(--primary) 20%, var(--blue) 50%,
+      var(--primary) 80%, transparent);
+    opacity: 0.4;
+  }
+  .cover-frame-side.left { left: 30px; }
+  .cover-frame-side.right { right: 30px; }
+
+  /* 上の装飾 */
+  .cover-ornament-top {
+    margin-bottom: 14px;
+    color: var(--gold);
+    letter-spacing: 0.5em;
+    font-size: 10px;
+    font-family: var(--en-serif);
+    font-style: italic;
+    padding-left: 0.5em;
+  }
+
+  /* 花体メインタイトル */
+  .cover-title-script {
+    font-family: var(--script);
+    font-size: 72px;
+    color: var(--primary-deep);
+    line-height: 1;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 8px rgba(180, 130, 150, 0.15);
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+
+  /* 花体下の細い線 */
+  .cover-line-decor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 26px;
+  }
+  .cover-line-decor .line {
+    width: 50px; height: 1px;
+    background: var(--blue);
+    opacity: 0.5;
+  }
+  .cover-line-decor .ornament-mark {
+    color: var(--blue);
+    font-size: 8px;
+    letter-spacing: 0.3em;
+    font-family: var(--mono);
+  }
+
+  /* 日中の副題 */
+  .cover-title-jp {
+    font-family: var(--serif-jp);
+    font-weight: 500;
+    font-size: 28px;
+    color: var(--text);
+    letter-spacing: 0.4em;
+    margin-bottom: 10px;
+    padding-left: 0.4em;
+  }
+
+  .cover-title-cn {
+    font-family: var(--serif-cn);
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--text-soft);
+    letter-spacing: 0.5em;
+    margin-bottom: 50px;
+    padding-left: 0.5em;
+  }
+
+  /* 名前のエリア */
+  .cover-names {
+    display: inline-flex;
+    align-items: center;
+    gap: 24px;
+    font-family: var(--en-serif);
+    font-style: italic;
+    font-size: 24px;
+    letter-spacing: 0.18em;
+    margin-bottom: 32px;
+  }
+  .cover-names .name-her { color: var(--primary-deep); }
+  .cover-names .name-him { color: var(--blue-deep); }
+  .cover-names .amp-to {
+    font-family: var(--serif-jp);
+    font-style: normal;
+    font-size: 18px;
+    color: var(--gold);
+    letter-spacing: 0;
+    opacity: 0.75;
+    margin-top: 4px;
+  }
+  .cover-names .sep {
+    width: 1px;
+    height: 22px;
+    background: var(--gold);
+    opacity: 0.6;
+  }
+
+  .cover-meta {
+    font-family: var(--en-serif);
+    color: var(--gold);
+    letter-spacing: 0.3em;
+    font-size: 11px;
+    line-height: 2.2;
+  }
+  .cover-meta span { display: block; }
+
+  /* ======================================== */
+  /* ============== 序文 ===================== */
+  /* ======================================== */
+  .preface {
+    padding: 90px 60px 80px;
+    text-align: center;
+    position: relative;
+  }
+
+  .preface::before, .preface::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 30px;
+    background: var(--blue);
+    opacity: 0.3;
+  }
+  .preface::before { top: 30px; }
+  .preface::after { bottom: 30px; }
+
+  .preface-jp {
+    font-family: var(--serif-jp);
+    font-size: 17px;
+    color: var(--text-soft);
+    line-height: 2.4;
+    letter-spacing: 0.1em;
+    margin-bottom: 28px;
+    font-weight: 300;
+  }
+
+  .preface-cn {
+    font-family: var(--serif-cn);
+    font-size: 14px;
+    color: var(--text-faint);
+    line-height: 2.2;
+    letter-spacing: 0.12em;
+    font-weight: 300;
+  }
+
+  /* ======================================== */
+  /* ============== 一日のヘッダー ============ */
+  /* ======================================== */
+  .day-header {
+    padding: 80px 60px 40px;
+  }
+
+  .day-label {
+    font-family: var(--en-serif);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--blue-deep);
+    letter-spacing: 0.35em;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+  }
+
+  .day-title-script {
+    font-family: var(--script);
+    font-size: 42px;
+    color: var(--primary-deep);
+    line-height: 1;
+    margin-bottom: 14px;
+    letter-spacing: 0.02em;
+  }
+
+  .day-title-jp {
+    font-family: var(--serif-jp);
+    font-size: 22px;
+    color: var(--text);
+    letter-spacing: 0.15em;
+    margin-bottom: 6px;
+  }
+
+  .day-title-cn {
+    font-family: var(--serif-cn);
+    font-size: 14px;
+    color: var(--text-soft);
+    letter-spacing: 0.2em;
+    margin-bottom: 20px;
+  }
+
+  .day-date {
+    font-family: var(--en-serif);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+  }
+
+  .day-divider {
+    width: 60px;
+    height: 1px;
+    background: var(--primary);
+    opacity: 0.6;
+    margin-top: 22px;
+  }
+
+  /* ======================================== */
+  /* ============== 幕分隔 =================== */
+  /* ======================================== */
+  .act-divider {
+    margin: 50px 60px 30px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  .act-divider .act-num {
+    font-family: var(--en-serif);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--blue-deep);
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .act-divider .act-title {
+    font-family: var(--serif-jp);
+    font-size: 14px;
+    color: var(--text-soft);
+    letter-spacing: 0.18em;
+    white-space: nowrap;
+  }
+  .act-divider .act-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--blue) 0%, transparent 100%);
+    opacity: 0.4;
+  }
+
+  /* === 夜晚主题（Act III 专用） === */
+  .act-divider.act-night .act-num,
+  .act-divider.act-night .act-title {
+    color: #6b7da6;  /* 深邃夜蓝 */
+  }
+  .act-divider.act-night .act-line {
+    background: linear-gradient(90deg, #6b7da6 0%, #8a9bc4 30%, transparent 100%);
+    opacity: 0.5;
+  }
+  .act-divider.act-night .act-night-mark {
+    font-size: 14px;
+    color: #8a9bc4;
+    opacity: 0.7;
+    margin-left: 4px;
+    text-shadow: 0 0 8px rgba(138, 155, 196, 0.4);
+  }
+
+  /* Act III 内的 scene 加微妙的夜色感 */
+  .scene.scene-night {
+    position: relative;
+  }
+  .scene.scene-night::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(107, 125, 166, 0.08) 30%,
+      rgba(107, 125, 166, 0.18) 50%,
+      rgba(107, 125, 166, 0.08) 70%,
+      transparent 100%);
+    pointer-events: none;
+  }
+  /* 夜晚 scene 的标题加点深邃蓝 */
+  .scene.scene-night .scene-title {
+    color: #8a4a6a;  /* 比 primary-deep 略偏紫 */
+  }
+  .scene.scene-night .scene-title-mini {
+    color: #6b7da6;  /* 夜蓝 */
+  }
+
+  /* ======================================== */
+  /* ============== 場面（剧场感图文混排）====== */
+  /* ======================================== */
+
+  /* 共通：每个 scene 区块 */
+  .scene {
+    padding: 40px 60px;
+    position: relative;
+  }
+
+  .scene-meta {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+  .scene-time {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-faint);
+    letter-spacing: 0.25em;
+  }
+  .scene-time-line {
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+    max-width: 80px;
+  }
+  .scene-title-mini {
+    font-family: var(--en-serif);
+    font-style: italic;
+    font-size: 12px;
+    color: var(--blue-deep);
+    letter-spacing: 0.15em;
+  }
+
+  .scene-title {
+    font-family: var(--serif-jp);
+    font-weight: 500;
+    font-size: 22px;
+    color: var(--primary-deep);
+    letter-spacing: 0.08em;
+    margin-bottom: 28px;
+    line-height: 1.5;
+  }
+
+  /* === 剧场感图文混排：左右版式 === */
+  .scene-grid {
+    display: grid;
+    gap: 36px;
+    align-items: center;
+  }
+
+  /* 左图右文 */
+  .scene-grid.layout-photo-left {
+    grid-template-columns: 1.1fr 1fr;
+  }
+
+  /* 左文右图 */
+  .scene-grid.layout-photo-right {
+    grid-template-columns: 1fr 1.1fr;
+  }
+  .scene-grid.layout-photo-right .scene-photo { order: 2; }
+  .scene-grid.layout-photo-right .scene-text { order: 1; }
+
+  /* === 照片装饰系统 === */
+
+  /* 写真ブロック */
+  .scene-photo {
+    position: relative;
+  }
+
+  /* 衬纸（mat board，画框衬纸） */
+  .photo-mat {
+    background: rgba(255, 252, 248, 0.85);
+    padding: 12px 12px 38px 12px;  /* 下方留白多，写邮戳/标签 */
+    border-radius: 2px;
+    box-shadow:
+      0 14px 40px rgba(150, 110, 130, 0.13),
+      0 4px 12px rgba(150, 110, 130, 0.06),
+      inset 0 0 0 1px rgba(180, 148, 96, 0.1);
+    transform: rotate(-0.8deg);
+    transition: transform 0.5s ease;
+    position: relative;
+  }
+  .photo-mat:hover {
+    transform: rotate(0deg) scale(1.015);
+  }
+
+  /* 右倾版式 */
+  .scene-grid.layout-photo-right .photo-mat { transform: rotate(0.8deg); }
+
+  /* 写真本体 */
+  .photo-wrap {
+    position: relative;
+    overflow: hidden;
+    background: #f5ebe0;
+    min-height: 200px;  /* 加载中防塌缩 */
+  }
+
+  .photo-wrap img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* 占位图 */
+  .photo-placeholder {
+    background:
+      linear-gradient(135deg,
+        rgba(245, 216, 224, 0.9) 0%,
+        rgba(200, 216, 232, 0.8) 50%,
+        rgba(212, 220, 200, 0.7) 100%);
+    aspect-ratio: 3 / 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 24px;
+    color: rgba(100, 80, 90, 0.55);
+  }
+  .photo-placeholder.landscape { aspect-ratio: 4 / 3; }
+  .photo-placeholder.square { aspect-ratio: 1 / 1; }
+  .photo-placeholder.tall { aspect-ratio: 3 / 5; }
+  .photo-placeholder.hero-ratio { aspect-ratio: 16 / 10; }
+
+  .ph-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: rgba(100, 80, 90, 0.5);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+  .ph-name {
+    font-family: var(--en-serif);
+    font-style: italic;
+    font-size: 16px;
+    color: rgba(100, 60, 75, 0.65);
+    letter-spacing: 0.05em;
+    line-height: 1.4;
+  }
+
+  /* === 邮戳/印章（衬纸下方）=== */
+  .photo-stamp {
+    position: absolute;
+    bottom: 8px;
+    left: 14px;
+    right: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--en-serif);
+    font-style: italic;
+    font-size: 10px;
+    color: var(--text-faint);
+    letter-spacing: 0.18em;
+  }
+  .photo-stamp .stamp-num {
+    font-family: var(--mono);
+    font-style: normal;
+    color: var(--blue-deep);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+  }
+  .photo-stamp .stamp-mid {
+    flex: 1;
+    text-align: center;
+    color: var(--text-faint);
+  }
+  .photo-stamp .stamp-date {
+    font-family: var(--mono);
+    font-style: normal;
+    color: var(--gold);
+    font-size: 9px;
+    letter-spacing: 0.15em;
+  }
+
+  /* === 角の丸印（postmark feeling）=== */
+  .photo-postmark {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    width: 56px;
+    height: 56px;
+    border: 1px solid var(--blue);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(252, 249, 244, 0.92);
+    transform: rotate(-12deg);
+    color: var(--blue-deep);
+    opacity: 0.75;
+    font-family: var(--en-serif);
+    font-style: italic;
+    line-height: 1.1;
+    z-index: 2;
+    box-shadow: 0 2px 8px rgba(100, 130, 160, 0.1);
+  }
+  .photo-postmark .pm-top {
+    font-size: 8px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  .photo-postmark .pm-mid {
+    font-family: var(--script);
+    font-size: 16px;
+    letter-spacing: 0.02em;
+    margin-bottom: 1px;
+  }
+  .photo-postmark .pm-bot {
+    font-size: 7px;
+    letter-spacing: 0.15em;
+    color: var(--text-faint);
+    font-family: var(--mono);
+    font-style: normal;
+  }
+
+  /* テキスト */
+  .scene-text .text-jp {
+    font-family: var(--serif-jp);
+    font-size: 16px;
+    color: var(--text);
+    line-height: 1.95;
+    letter-spacing: 0.04em;
+    margin-bottom: 18px;
+    font-weight: 400;
+  }
+
+  .scene-text .text-divider {
+    display: flex;
+    margin: 18px 0;
+  }
+  .scene-text .text-divider::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--accent, var(--primary-soft));
+    background: var(--primary);
+    opacity: 0.5;
+  }
+
+  .scene-text .text-cn {
+    font-family: var(--serif-cn);
+    font-size: 13.5px;
+    color: var(--text-soft);
+    line-height: 1.95;
+    letter-spacing: 0.06em;
+    font-weight: 300;
+  }
+
+  /* === HERO 場面（特殊待遇） === */
+  .scene.hero {
+    padding: 60px 0 50px;
+    background: linear-gradient(180deg,
+      transparent 0%,
+      rgba(245, 216, 224, 0.15) 50%,
+      transparent 100%);
+  }
+
+  .scene.hero .scene-meta-wrap,
+  .scene.hero .scene-title {
+    padding: 0 60px;
+  }
+
+  /* HERO 写真は装裱を簡素に、より大きく */
+  .scene.hero .photo-mat {
+    transform: rotate(0deg);
+    margin: 0 30px;
+    padding: 16px 16px 44px 16px;
+    box-shadow:
+      0 24px 70px rgba(120, 90, 110, 0.18),
+      0 6px 18px rgba(120, 90, 110, 0.08),
+      inset 0 0 0 1px rgba(180, 148, 96, 0.12);
+  }
+
+  .scene.hero .photo-mat:hover {
+    transform: scale(1.005);
+  }
+
+  .scene.hero .photo-postmark {
+    top: -16px;
+    right: -16px;
+    width: 70px;
+    height: 70px;
+  }
+
+  .scene.hero .photo-placeholder {
+    aspect-ratio: 16 / 10;
+  }
+
+  .scene.hero .scene-text {
+    padding: 36px 60px 0;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  /* HERO 開場の小演出 */
+  .hero-overture {
+    text-align: center;
+    padding: 0 60px 30px;
+    font-family: var(--script);
+    color: var(--blue-deep);
+    font-size: 28px;
+    opacity: 0.7;
+    line-height: 1;
+  }
+
+  /* ======================================== */
+  /* ============== 後記 ===================== */
+  /* ======================================== */
+  .epilogue-placeholder {
+    margin: 80px 60px;
+    padding: 50px 40px;
+    border: 1px dashed var(--blue);
+    border-radius: 4px;
+    text-align: center;
+    background: rgba(230, 238, 245, 0.3);
+  }
+  .epilogue-placeholder .ep-label {
+    font-family: var(--en-serif);
+    font-style: italic;
+    color: var(--gold);
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    margin-bottom: 12px;
+  }
+  .epilogue-placeholder .ep-title {
+    font-family: var(--script);
+    font-size: 36px;
+    color: var(--primary-deep);
+    margin-bottom: 8px;
+    line-height: 1;
+  }
+  .epilogue-placeholder .ep-title-jp {
+    font-family: var(--serif-jp);
+    font-size: 16px;
+    color: var(--text);
+    letter-spacing: 0.2em;
+    margin-bottom: 14px;
+  }
+  .epilogue-placeholder .ep-desc {
+    font-family: var(--serif-jp);
+    color: var(--text-soft);
+    font-size: 12px;
+    line-height: 1.8;
+  }
+
+  /* ======================================== */
+  /* ============== フッター ================= */
+  /* ======================================== */
+  footer {
+    padding: 70px 60px 60px;
+    text-align: center;
+    border-top: 1px solid var(--line-soft);
+    background: linear-gradient(180deg, transparent, rgba(230, 238, 245, 0.2));
+  }
+
+  footer .footer-script {
+    font-family: var(--script);
+    font-size: 38px;
+    color: var(--blue-deep);
+    margin-bottom: 6px;
+    line-height: 1;
+    opacity: 0.85;
+  }
+
+  footer .footer-jp {
+    font-family: var(--serif-jp);
+    font-size: 13px;
+    color: var(--text-soft);
+    letter-spacing: 0.4em;
+    margin-bottom: 18px;
+    padding-left: 0.4em;
+  }
+
+  footer .footer-meta {
+    font-family: var(--en-serif);
+    font-style: italic;
+    color: var(--gold);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+  }
+
+  /* ======================================== */
+  /* ============== レスポンシブ ============= */
+  /* ======================================== */
+  @media (max-width: 768px) {
+    body { font-size: 14px; }
+
+    .cover { padding: 70px 30px 60px; }
+    .cover-frame-side { display: none; }
+    /* 移动端：Postcards from Shanghai 强制三行展示 */
+    .cover-title-script {
+      font-size: 56px;
+      line-height: 1.05;
+      white-space: normal;
+      word-spacing: 100vw;  /* 让每个词独占一行 */
+    }
+    .cover-title-jp { font-size: 22px; letter-spacing: 0.3em; }
+    .cover-title-cn { font-size: 13px; }
+    .cover-names { font-size: 18px; gap: 16px; }
+
+    .preface { padding: 60px 30px; }
+    .preface-jp { font-size: 15px; }
+
+    .day-header { padding: 60px 30px 30px; }
+    .day-title-script { font-size: 42px; }
+    .day-title-jp { font-size: 19px; }
+
+    .act-divider { margin: 40px 30px 20px; }
+
+    .scene { padding: 30px 30px; }
+    .scene-grid { grid-template-columns: 1fr !important; gap: 24px; }
+    .scene-grid.layout-photo-right .scene-photo { order: 1; }
+    .scene-grid.layout-photo-right .scene-text { order: 2; }
+    .scene-title { font-size: 19px; }
+
+    .scene.hero { padding: 40px 0; }
+    .scene.hero .scene-meta-wrap,
+    .scene.hero .scene-title,
+    .scene.hero .scene-text,
+    .hero-overture { padding-left: 30px; padding-right: 30px; }
+
+    .epilogue-placeholder { margin: 50px 30px; padding: 35px 25px; }
+    .epilogue-placeholder .ep-title { font-size: 30px; }
+
+    footer { padding: 50px 30px 40px; }
+    footer .footer-script { font-size: 30px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ============================================ -->
+  <!-- ================ カバー =================== -->
+  <!-- ============================================ -->
+  <header class="cover">
+    <span class="cover-frame-side left"></span>
+    <span class="cover-frame-side right"></span>
+
+    <div class="cover-ornament-top">— FROM SHANGHAI, WITH LOVE —</div>
+
+    <div class="cover-title-script">Postcards from Shanghai</div>
+
+    <div class="cover-line-decor">
+      <span class="line"></span>
+      <span class="ornament-mark">◊</span>
+      <span class="line"></span>
+    </div>
+
+    <div class="cover-title-jp">上 海 か ら の 手 紙</div>
+    <div class="cover-title-cn">来 自 上 海 的 明 信 片</div>
+
+    <div class="cover-names">
+      <span class="name-her">りか</span>
+      <span class="amp-to">と</span>
+      <span class="name-him">たいらん</span>
+    </div>
+
+    <div class="cover-meta">
+      <span>5 月 2 日 — 5 月 5 日</span>
+      <span>Spring · 2026</span>
+    </div>
+  </header>
+
+  <!-- ============================================ -->
+  <!-- ================ 序文 ===================== -->
+  <!-- ============================================ -->
+  <!--
+    【序文 备选版 · 涵盖四天】
+    日文：
+      春の終わり、初夏のはじまり。
+      街灯と、ネオンと、突然の雨と、
+      漢服の袖、外灘の散歩、
+      友と笑った夜と、別れの朝と。
+      ——四日間、二人きりの上海。
+    中文：
+      春末，初夏。
+      街灯，霓虹，骤雨，
+      汉服的衣袖，外滩的散步，
+      与朋友欢笑的夜，告别的清晨。
+      ——四天，只属于我们的上海。
+
+    等四天文案都写完后切换到这版。
+  -->
+  <section class="preface">
+    <div class="preface-jp">
+      春の終わり、初夏のはじまり。<br>
+      街灯と、ネオンと、突然の雨と、<br>
+      手のひらに咲いた一輪のバラと。<br>
+      ——四日間、二人きりの上海。
+    </div>
+    <div class="preface-cn">
+      春末，初夏。<br>
+      街灯，霓虹，骤雨，<br>
+      还有掌心里那一支盛开的玫瑰。<br>
+      ——四天，只属于我们的上海。
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- ============== Day 1 ヘッダー ============== -->
+  <!-- ============================================ -->
+  <section class="day-header">
+    <div class="day-label">— Day One —</div>
+    <h2 class="day-title-script">The First Evening</h2>
+    <div class="day-title-jp">夕暮れから夜へ</div>
+    <div class="day-title-cn">从黄昏到深夜</div>
+    <div class="day-date">May 2nd · Saturday</div>
+    <div class="day-divider"></div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- ============== Act I ====================== -->
+  <!-- ============================================ -->
+  <div class="act-divider">
+    <span class="act-num">— Act I —</span>
+    <span class="act-title">日本、出発まで</span>
+    <span class="act-line"></span>
+  </div>
+
+  <!-- ─────── Scene 01 · 日暮里 ─────── -->
+  <section class="scene">
+    <div class="scene-meta">
+      <span class="scene-time">11:00</span>
+      <span class="scene-time-line"></span>
+      <span class="scene-title-mini">日暮里駅 · Nippori Sta.</span>
+    </div>
+    <h3 class="scene-title">日暮里でりかを待つ</h3>
+
+    <div class="scene-grid layout-photo-left">
+      <div class="scene-photo">
+        <div class="photo-mat">
+          <div class="photo-postmark">
+            <div class="pm-top">TOKYO</div>
+            <div class="pm-mid">May 2</div>
+            <div class="pm-bot">2026</div>
+          </div>
+          <div class="photo-wrap">
+            <img src="photos/day1/01_coming_her.jpg" alt="りか, at Nippori Sta." loading="lazy">
+          </div>
+          <div class="photo-stamp">
+            <span class="stamp-num">№ 01</span>
+            <span class="stamp-mid">— The arrival —</span>
+            <span class="stamp-date">11:00 AM</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="scene-text">
+        <div class="text-jp">
+          11時、日暮里駅。<br>
+          スカイライナーの改札の前で、彼女を待つ。<br>
+          改札を抜けて出てきた時の、あの笑顔。<br>
+          旅は、ここから始まった。
+        </div>
+        <div class="text-divider"></div>
+        <div class="text-cn">
+          11点，日暮里站。<br>
+          在天空特快的检票口前等她。<br>
+          看她推着行李笑着出现的那一刻——<br>
+          我才意识到，旅行真的开始了。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────── Scene 02 · 比心 ─────── -->
+  <section class="scene">
+    <div class="scene-meta">
+      <span class="scene-time">12:30</span>
+      <span class="scene-time-line"></span>
+      <span class="scene-title-mini">成田空港 · Narita Airport</span>
+    </div>
+    <h3 class="scene-title">比心がズレていた</h3>
+
+    <div class="scene-grid layout-photo-right">
+      <div class="scene-photo">
+        <div class="photo-mat">
+          <div class="photo-postmark">
+            <div class="pm-top">NARITA</div>
+            <div class="pm-mid">May 2</div>
+            <div class="pm-bot">2026</div>
+          </div>
+          <div class="photo-wrap">
+            <img src="photos/day1/02_airport_lunch_unmatched_heart.jpg" alt="Lunch before flight" loading="lazy">
+          </div>
+          <div class="photo-stamp">
+            <span class="stamp-num">№ 02</span>
+            <span class="stamp-mid">— Almost a heart —</span>
+            <span class="stamp-date">12:30 PM</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="scene-text">
+        <div class="text-jp">
+          撮ろうとしたら、なんとなく比心したくなって、<br>
+          そのまま指を合わせた。<br>
+          後で写真を見たら、ちゃんと合ってなかった。<br>
+          でも、それも可愛かった。
+        </div>
+        <div class="text-divider"></div>
+        <div class="text-cn">
+          拍照拍着拍着，突然想比个心。<br>
+          当下也没看，就这么比了。<br>
+          后来翻照片才发现，两个人手势根本对不上。<br>
+          但那张歪歪的心，反而最像我们。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- ============== Act II ===================== -->
+  <!-- ============================================ -->
+  <div class="act-divider">
+    <span class="act-num">— Act II —</span>
+    <span class="act-title">上海、街へ</span>
+    <span class="act-line"></span>
+  </div>
+
+  <!-- ─────── Scene 03 · 包子 ─────── -->
+  <section class="scene">
+    <div class="scene-meta">
+      <span class="scene-time">17:20</span>
+      <span class="scene-time-line"></span>
+      <span class="scene-title-mini">浦东国际机场 · Pudong Intl.</span>
+    </div>
+    <h3 class="scene-title">包子で小腹つなぎ</h3>
+
+    <div class="scene-grid layout-photo-left">
+      <div class="scene-photo">
+        <div class="photo-mat">
+          <div class="photo-postmark">
+            <div class="pm-top">PVG</div>
+            <div class="pm-mid">May 2</div>
+            <div class="pm-bot">2026</div>
+          </div>
+          <div class="photo-wrap">
+            <img src="photos/day1/03_shanghai_airport_snack.jpg" alt="First bite in Shanghai" loading="lazy">
+          </div>
+          <div class="photo-stamp">
+            <span class="stamp-num">№ 03</span>
+            <span class="stamp-mid">— First bite —</span>
+            <span class="stamp-date">5:20 PM</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="scene-text">
+        <div class="text-jp">
+          浦東に着いて、まずお腹が空いた。<br>
+          空港の煎饼。<br>
+          「中国に来たね」って、ようやく実感した。
+        </div>
+        <div class="text-divider"></div>
+        <div class="text-cn">
+          一落地，先饿了。<br>
+          机场里随便买的煎饼。<br>
+          她低头吃东西的样子，让我突然反应过来——<br>
+          我们真的到上海了。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────── Scene 04 · 地下鉄 ─────── -->
+  <section class="scene">
+    <div class="scene-meta">
+      <span class="scene-time">18:00</span>
+      <span class="scene-time-line"></span>
+      <span class="scene-title-mini">地下鉄2号線 · Metro Line 2</span>
+    </div>
+    <h3 class="scene-title">地下鉄で、路線図を読みながら</h3>
+
+    <div class="scene-grid layout-photo-right">
+      <div class="scene-photo">
+        <div class="photo-mat">
+          <div class="photo-postmark">
+            <div class="pm-top">LINE 2</div>
+            <div class="pm-mid">May 2</div>
+            <div class="pm-bot">2026</div>
+          </div>
+          <div class="photo-wrap">
+            <img src="photos/day1/04_taking_metro.jpg" alt="On the Metro" loading="lazy">
+          </div>
+          <div class="photo-stamp">
+            <span class="stamp-num">№ 04</span>
+            <span class="stamp-mid">— わかりやすい —</span>
+            <span class="stamp-date">6:00 PM</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="scene-text">
+        <div class="text-jp">
+          浦東から人民広場まで、地下鉄で70分。<br>
+          路線図を見ながら、駅名の読み方を教えていた。<br>
+          「2号線は、東京の総武線みたいなもの」って言ったら、<br>
+          「わかりやすい」って彼女は笑った。<br>
+          急に、隣の彼女を撮りたくなった。
+        </div>
+        <div class="text-divider"></div>
+        <div class="text-cn">
+          从浦东到人民广场，地铁要 70 分钟。<br>
+          一路看着线路图，教她每个站怎么念。<br>
+          我说"2 号线就像东京的总武线"，<br>
+          她说"わかりやすい"，笑得很开心。<br>
+          然后我突然就想拍一张她。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────── Scene 05 · 南京路（HERO） ─────── -->
+  <section class="scene hero">
+    <div class="hero-overture">— A Walk Down Nanjing Road —</div>
+
+    <div class="scene-meta-wrap">
+      <div class="scene-meta">
+        <span class="scene-time">19:20</span>
+        <span class="scene-time-line"></span>
+        <span class="scene-title-mini">南京东路 · Nanjing Rd. East</span>
+      </div>
+      <h3 class="scene-title">南京路、人混みの中</h3>
+    </div>
+
+    <div class="photo-mat">
+      <div class="photo-postmark">
+        <div class="pm-top">NJ RD</div>
+        <div class="pm-mid">May 2</div>
+        <div class="pm-bot">2026</div>
+      </div>
+      <div class="photo-wrap">
+        <img src="photos/day1/05_nanjing_road_walking.jpg" alt="Two of us, in the neon" loading="lazy">
+      </div>
+      <div class="photo-stamp">
+        <span class="stamp-num">№ 05</span>
+        <span class="stamp-mid">— In the crowd —</span>
+        <span class="stamp-date">7:20 PM</span>
+      </div>
+    </div>
+
+    <div class="scene-text">
+      <div class="text-jp">
+        19時20分、南京路。<br>
+        ホテルのすぐ外が、もう繁華街だった。<br>
+        人、人、人。ネオン、ネオン、ネオン。<br>
+        その真ん中で、彼女が笑った。
+      </div>
+      <div class="text-divider"></div>
+      <div class="text-cn">
+        19点20分，南京路。<br>
+        一出酒店就是步行街。<br>
+        满街都是人，满街都是灯。<br>
+        但她笑起来的时候，我只看得见她。
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- ============== Act III ==================== -->
+  <!-- ============================================ -->
+  <div class="act-divider act-night">
+    <span class="act-num">— Act III —</span>
+    <span class="act-title">上海、夜の街で</span>
+    <span class="act-line"></span>
+    <span class="act-night-mark">☾</span>
+  </div>
+
+  <!-- ─────── Scene 06 · 玫瑰（拆成两段，中间插照片） ─────── -->
+  <section class="scene scene-night">
+    <div class="scene-meta">
+      <span class="scene-time">20:00</span>
+      <span class="scene-time-line"></span>
+      <span class="scene-title-mini">南京东路 · Nanjing Rd. East</span>
+    </div>
+    <h3 class="scene-title">不意のバラ、不意のプロポーズ</h3>
+
+    <!-- 第一段：街上偶遇 + 第一张照片（左图右文） -->
+    <div class="scene-grid layout-photo-left">
+      <div class="scene-photo">
+        <div class="photo-mat">
+          <div class="photo-postmark">
+            <div class="pm-top">NJ RD</div>
+            <div class="pm-mid">May 2</div>
+            <div class="pm-bot">2026</div>
+          </div>
+          <div class="photo-wrap">
+            <img src="photos/day1/06_rose_received.jpg" alt="A rose, on the street" loading="lazy">
+          </div>
+          <div class="photo-stamp">
+            <span class="stamp-num">№ 06a</span>
+            <span class="stamp-mid">— On the street —</span>
+            <span class="stamp-date">8:00 PM</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="scene-text">
+        <div class="text-jp">
+          この数日、ずっと花屋を探していた。<br>
+          彼女にバラを贈りたかったから。<br>
+          信号待ちのとき、知らないおばさんが寄ってきて、<br>
+          「お嬢さん、綺麗すぎる。この花、あげるよ」<br>
+          って、僕の手にバラを押し付けた。<br>
+          ——ただでもらうわけにはいかない、と言って、お金を渡した。
+        </div>
+        <div class="text-divider"></div>
+        <div class="text-cn">
+          这几天一直在想，上海哪里能买到花。<br>
+          想送她一束玫瑰。<br>
+          等红灯的时候，一位卖花阿姨突然走过来，<br>
+          把花往我手里一塞——<br>
+          "小伙子，你女朋友太好看了，这束花送给你。"<br>
+          ——这不能白要啊，必须付钱。
+        </div>
+      </div>
+    </div>
+
+    <!-- 段间小留白 -->
+    <div style="height: 30px;"></div>
+
+    <!-- 第二段：プロポーズ对话 + 第二张照片（右图左文） -->
+    <div class="scene-grid layout-photo-right">
+      <div class="scene-photo">
+        <div class="photo-mat">
+          <div class="photo-postmark">
+            <div class="pm-top">HOTEL</div>
+            <div class="pm-mid">May 2</div>
+            <div class="pm-bot">2026</div>
+          </div>
+          <div class="photo-wrap">
+            <img src="photos/day1/06b_rose_at_hotel.jpg" alt="Holding the rose, at hotel" loading="lazy">
+          </div>
+          <div class="photo-stamp">
+            <span class="stamp-num">№ 06b</span>
+            <span class="stamp-mid">— Don't let go —</span>
+            <span class="stamp-date">8:30 PM</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="scene-text">
+        <div class="text-jp">
+          彼女に渡したら、すごく嬉しそうに笑った。<br>
+          「これ、まだプロポーズじゃないからね」<br>
+          「えっ、急にプロポーズするの？」<br>
+          ——その夜の彼女は、ずっと嬉しそうだった。<br>
+          ホテルに着いてからも、花を抱えたまま離さなかった。<br>
+          「これ、スーツケースに入れて持って帰りたい」<br>
+          「また贈るから、今は咲いたままここに置いていこう」
+        </div>
+        <div class="text-divider"></div>
+        <div class="text-cn">
+          把花递给她的时候，她笑得藏都藏不住。<br>
+          我说："这还不是プロポーズ哦。"<br>
+          她笑着说："欸，是要プロポーズ了吗？"<br>
+          回到酒店她也一直抱着花不撒手，<br>
+          还说想装进行李箱带回去。<br>
+          我说，还会再送你的，<br>
+          这一束就让它保持盛放的样子，留在这里吧。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────── Scene 07 · 雨伞 ─────── -->
+  <section class="scene scene-night">
+    <div class="scene-meta">
+      <span class="scene-time">20:20</span>
+      <span class="scene-time-line"></span>
+      <span class="scene-title-mini">南京东路 · 雨の夜</span>
+    </div>
+    <h3 class="scene-title">二本目の傘は使わなかった</h3>
+
+    <div class="scene-grid layout-photo-right">
+      <div class="scene-photo">
+        <div class="photo-mat">
+          <div class="photo-postmark">
+            <div class="pm-top">NJ RD</div>
+            <div class="pm-mid">May 2</div>
+            <div class="pm-bot">2026</div>
+          </div>
+          <div class="photo-wrap">
+            <img src="photos/day1/07_raining_suddenly.jpg" alt="Under one umbrella" loading="lazy">
+          </div>
+          <div class="photo-stamp">
+            <span class="stamp-num">№ 07</span>
+            <span class="stamp-mid">— One umbrella, two of us —</span>
+            <span class="stamp-date">8:20 PM</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="scene-text">
+        <div class="text-jp">
+          傘は二本、ちゃんと持って出てきた。<br>
+          でも、結局一本しか開かなかった。<br>
+          二人なら、それで足りた。
+        </div>
+        <div class="text-divider"></div>
+        <div class="text-cn">
+          其实带了两把伞。<br>
+          但最后只撑了一把。<br>
+          两个人嘛，一把就够了。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────── Scene 08-09 · 冷ぴた ─────── -->
+  <section class="scene scene-night">
+    <div class="scene-meta">
+      <span class="scene-time">20:40</span>
+      <span class="scene-time-line"></span>
+      <span class="scene-title-mini">很久以前 · 串焼きの店</span>
+    </div>
+    <h3 class="scene-title">冷えピタ、ようやく</h3>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 36px;">
+      <div class="photo-mat" style="transform: rotate(-1.5deg);">
+        <div class="photo-wrap">
+          <img src="photos/day1/08_cold_patch_1.jpg" alt="りか + 冷えピタ" loading="lazy">
+        </div>
+        <div class="photo-stamp">
+          <span class="stamp-num">№ 08</span>
+          <span class="stamp-mid">— her —</span>
+          <span class="stamp-date">8:40 PM</span>
+        </div>
+      </div>
+
+      <div class="photo-mat" style="transform: rotate(1.5deg);">
+        <div class="photo-wrap">
+          <img src="photos/day1/09_cold_patch_2.jpg" alt="たいらん + 冷えピタ" loading="lazy">
+        </div>
+        <div class="photo-stamp">
+          <span class="stamp-num">№ 09</span>
+          <span class="stamp-mid">— him —</span>
+          <span class="stamp-date">8:40 PM</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="scene-text" style="max-width: 620px; margin: 0 auto;">
+      <div class="text-jp">
+        ネットで番号を取って、4時間待った。<br>
+        ようやく順番が来た時、<br>
+        店員さんが冷えピタを貼ってくれて、<br>
+        彼女は鏡を見て、ずっと笑っていた。<br>
+        ——この店に来たくて、上海まで来た、と言ってもいい。<br>
+        僕にも、一枚。
+      </div>
+      <div class="text-divider"></div>
+      <div class="text-cn">
+        网上排号，整整等了 4 个小时。<br>
+        终于轮到我们的时候，<br>
+        店员把冷ぴた往她额头上一贴——<br>
+        她照着镜子，一直在笑。<br>
+        这家店是她选的、是她一直想来的。<br>
+        她的"梦想成真"，那一刻就在她额头上。<br>
+        <br>
+        然后我也被贴了一片。
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────── Scene 10 · 玉米粒 ─────── -->
+  <section class="scene scene-night">
+    <div class="scene-meta">
+      <span class="scene-time">21:20</span>
+      <span class="scene-time-line"></span>
+      <span class="scene-title-mini">很久以前 · 串焼きの店</span>
+    </div>
+    <h3 class="scene-title">体調があまり良くなかった、それでも</h3>
+
+    <div class="scene-grid layout-photo-left">
+      <div class="scene-photo">
+        <div class="photo-mat">
+          <div class="photo-postmark">
+            <div class="pm-top">黄浦区</div>
+            <div class="pm-mid">May 2</div>
+            <div class="pm-bot">2026</div>
+          </div>
+          <div class="photo-wrap">
+            <img src="photos/day1/10_eating_lamb.jpg" alt="焼きとうもろこし" loading="lazy">
+          </div>
+          <div class="photo-stamp">
+            <span class="stamp-num">№ 10</span>
+            <span class="stamp-mid">— おいしい！ —</span>
+            <span class="stamp-date">9:20 PM</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="scene-text">
+        <div class="text-jp">
+          その日、彼女は少し頭が痛かった。<br>
+          肉はあまり食べられなくて、<br>
+          野菜と、フルーツと、デザートばかり頼んだ。<br>
+          焼きとうもろこしの粒は、彼女にとって初めてで、<br>
+          「おいしい！」って、はっきり声を上げた。<br>
+          串焼きはほとんど残ってしまって、明日の朝の分にした。<br>
+          ——元気な彼女と、もう一回来たい店。
+        </div>
+        <div class="text-divider"></div>
+        <div class="text-cn">
+          那天她有点头疼。<br>
+          肉吃不太下，<br>
+          最后点了一桌的蔬菜、水果、还有甜品。<br>
+          烤玉米粒她是第一次吃，<br>
+          咬下去就大声说了句"好吃！"——这家店本身也真的很好。<br>
+          串吃不完，打包了，第二天的早饭。<br>
+          只是有点可惜——下次状态好的时候，还想再来一次。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────── Scene 11 · 出租车 ─────── -->
+  <section class="scene scene-night">
+    <div class="scene-meta">
+      <span class="scene-time">22:30</span>
+      <span class="scene-time-line"></span>
+      <span class="scene-title-mini">タクシーの中 · 帰り道</span>
+    </div>
+    <h3 class="scene-title">帰り道のタクシー、眠るりか</h3>
+
+    <div class="scene-grid layout-photo-right">
+      <div class="scene-photo">
+        <div class="photo-mat">
+          <div class="photo-postmark">
+            <div class="pm-top">SHANGHAI</div>
+            <div class="pm-mid">May 2</div>
+            <div class="pm-bot">2026</div>
+          </div>
+          <div class="photo-wrap">
+            <img src="photos/day1/11_taxi_sleepy.jpg" alt="Asleep on the way back" loading="lazy">
+          </div>
+          <div class="photo-stamp">
+            <span class="stamp-num">№ 11</span>
+            <span class="stamp-mid">— good night —</span>
+            <span class="stamp-date">10:30 PM</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="scene-text">
+        <div class="text-jp">
+          食べ終わったのが、もう22時半。<br>
+          タクシーの中で、彼女はいつの間にか寝ていた。<br>
+          信号の赤が、彼女の頬に映って——<br>
+          起こさないように、そっとシャッターを切った。
+        </div>
+        <div class="text-divider"></div>
+        <div class="text-cn">
+          吃完已经是22:30了。<br>
+          出租车里，她靠着座椅就睡着了。<br>
+          红绿灯的光打在她脸上。<br>
+          我没敢出声，只是悄悄按下了快门。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- ============== Day 2 (框架) ================ -->
+  <!-- ============================================ -->
+  <section class="day-header">
+    <div class="day-label">— Day Two —</div>
+    <h2 class="day-title-script">Of Costumes &amp; Music</h2>
+    <div class="day-title-jp">漢服とミュージカル</div>
+    <div class="day-title-cn">汉服与音乐剧</div>
+    <div class="day-date">May 3rd · Sunday</div>
+    <div class="day-divider"></div>
+  </section>
+
+  <div style="margin: 60px; padding: 40px; border: 1px dashed #e6dccf; border-radius: 4px; text-align: center; color: #a8a298; font-family: 'Cormorant Garamond', serif; font-style: italic;">
+    — Scenes for Day 2 will go here —<br>
+    <span style="font-family: 'Shippori Mincho', serif; font-size: 13px;">武康路、漢服、ミュージカル……</span>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- ============== Day 3 (框架) ================ -->
+  <!-- ============================================ -->
+  <section class="day-header">
+    <div class="day-label">— Day Three —</div>
+    <h2 class="day-title-script">A Tower &amp; Friends</h2>
+    <div class="day-title-jp">塔と、友と</div>
+    <div class="day-title-cn">高塔与朋友</div>
+    <div class="day-date">May 4th · Monday</div>
+    <div class="day-divider"></div>
+  </section>
+
+  <div style="margin: 60px; padding: 40px; border: 1px dashed #e6dccf; border-radius: 4px; text-align: center; color: #a8a298; font-family: 'Cormorant Garamond', serif; font-style: italic;">
+    — Scenes for Day 3 will go here —<br>
+    <span style="font-family: 'Shippori Mincho', serif; font-size: 13px;">東方明珠、二次元、4人ディナー、外灘……</span>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- ============== Day 4 (框架) ================ -->
+  <!-- ============================================ -->
+  <section class="day-header">
+    <div class="day-label">— Day Four —</div>
+    <h2 class="day-title-script">See You Again</h2>
+    <div class="day-title-jp">また会う日まで</div>
+    <div class="day-title-cn">再见之日</div>
+    <div class="day-date">May 5th · Tuesday</div>
+    <div class="day-divider"></div>
+  </section>
+
+  <div style="margin: 60px; padding: 40px; border: 1px dashed #e6dccf; border-radius: 4px; text-align: center; color: #a8a298; font-family: 'Cormorant Garamond', serif; font-style: italic;">
+    — Scenes for Day 4 will go here —<br>
+    <span style="font-family: 'Shippori Mincho', serif; font-size: 13px;">朝の生煎、空港へ、別れ……</span>
+  </div>
+
+
+  <!-- ============================================ -->
+  <!-- ============== 後記 ======================= -->
+  <!-- ============================================ -->
+  <div class="epilogue-placeholder">
+    <div class="ep-label">— TO BE ADDED —</div>
+    <div class="ep-title">A Word from Her</div>
+    <div class="ep-title-jp">りかから一言</div>
+    <div class="ep-desc">
+      （旅行記が完成したあと、彼女に一段書いてもらう場所）
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- ============== フッター =================== -->
+  <!-- ============================================ -->
+  <footer>
+    <div class="footer-script">to be continued</div>
+    <div class="footer-jp">二 人 の 記 憶</div>
+    <div class="footer-meta">Shanghai · Spring 2026</div>
+  </footer>
+
+</div>
+</body>
+</html>
