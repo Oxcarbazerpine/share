@@ -223,9 +223,215 @@
   }
   .cover-meta span { display: block; }
 
+  /* 封面右下角的浅浅花 */
+  .cover-flower {
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    width: 140px;
+    height: 140px;
+    opacity: 0.35;
+    pointer-events: none;
+    transform: rotate(-15deg);
+  }
+
   /* ======================================== */
-  /* ============== 序文 ===================== */
+  /* ============== カバー装饰 =============== */
   /* ======================================== */
+
+  /* 四角的小装饰：L 形角标，和两侧竖线衔接 */
+  .corner-ornament {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    pointer-events: none;
+  }
+  .corner-ornament::before,
+  .corner-ornament::after {
+    content: '';
+    position: absolute;
+    background: var(--primary);
+    opacity: 0.55;
+  }
+  /* 内侧短横线（垂直于竖线，向内延伸） */
+  .corner-ornament::before {
+    width: 24px;
+    height: 1px;
+  }
+  /* 装饰圆点 */
+  .corner-ornament::after {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--blue);
+    opacity: 0.6;
+  }
+
+  /* 四个角位置：贴到竖线上 */
+  /* 左上：横线从竖线（left:30px）向右延伸 */
+  .corner-ornament.tl { top: 30px; left: 30px; }
+  .corner-ornament.tl::before { top: 0; left: 0; }
+  .corner-ornament.tl::after { top: -1.5px; left: -1.5px; }
+
+  /* 右上 */
+  .corner-ornament.tr { top: 30px; right: 30px; }
+  .corner-ornament.tr::before { top: 0; right: 0; }
+  .corner-ornament.tr::after { top: -1.5px; right: -1.5px; }
+
+  /* 左下 */
+  .corner-ornament.bl { bottom: 30px; left: 30px; }
+  .corner-ornament.bl::before { bottom: 0; left: 0; }
+  .corner-ornament.bl::after { bottom: -1.5px; left: -1.5px; }
+
+  /* 右下 */
+  .corner-ornament.br { bottom: 30px; right: 30px; }
+  .corner-ornament.br::before { bottom: 0; right: 0; }
+  .corner-ornament.br::after { bottom: -1.5px; right: -1.5px; }
+
+  /* 角落的小符号（位置往内移一些，不和横线打架） */
+  .corner-ornament .corner-mark {
+    position: absolute;
+    color: var(--gold);
+    font-family: var(--en-serif);
+    font-style: italic;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    opacity: 0.6;
+  }
+  .corner-ornament.tl .corner-mark { top: 8px; left: 30px; }
+  .corner-ornament.tr .corner-mark { top: 8px; right: 30px; }
+  .corner-ornament.bl .corner-mark { bottom: 8px; left: 30px; }
+  .corner-ornament.br .corner-mark { bottom: 8px; right: 30px; }
+
+  /* 標題横の邮票边齿装饰 */
+  .stamp-perforation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin: 14px 0;
+    color: var(--gold);
+    opacity: 0.5;
+    font-size: 8px;
+    letter-spacing: 0.5em;
+    font-family: var(--mono);
+  }
+  .stamp-perforation::before,
+  .stamp-perforation::after {
+    content: '';
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  /* 名前下方の小标签 */
+  .cover-postal-tags {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    margin-top: 10px;
+    margin-bottom: 24px;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    color: var(--text-faint);
+    opacity: 0.7;
+  }
+
+  /* 散落的小装饰点 */
+  .scattered-dots {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0.4;
+  }
+  .scattered-dots span {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: var(--primary);
+    border-radius: 50%;
+  }
+  /* 左侧的散点 */
+  .scattered-dots.left {
+    top: 35%;
+    left: 80px;
+    width: 6px;
+    height: 100px;
+  }
+  .scattered-dots.left span:nth-child(1) { top: 0; left: 0; opacity: 0.8; }
+  .scattered-dots.left span:nth-child(2) { top: 30px; left: 12px; width: 2px; height: 2px; opacity: 0.6; }
+  .scattered-dots.left span:nth-child(3) { top: 60px; left: 4px; opacity: 0.7; background: var(--blue); }
+  .scattered-dots.left span:nth-child(4) { top: 90px; left: 16px; width: 2px; height: 2px; opacity: 0.5; }
+
+  /* 右侧的散点 */
+  .scattered-dots.right {
+    top: 50%;
+    right: 80px;
+    width: 6px;
+    height: 100px;
+  }
+  .scattered-dots.right span:nth-child(1) { top: 0; right: 0; opacity: 0.7; background: var(--blue); }
+  .scattered-dots.right span:nth-child(2) { top: 30px; right: 14px; width: 2px; height: 2px; opacity: 0.5; }
+  .scattered-dots.right span:nth-child(3) { top: 60px; right: 6px; opacity: 0.8; }
+  .scattered-dots.right span:nth-child(4) { top: 90px; right: 12px; width: 2px; height: 2px; opacity: 0.6; }
+
+  /* ======================================== */
+  /* ============== 序文装饰 ================= */
+  /* ======================================== */
+
+  /* 序文左右的小竖标签 */
+  .preface-side-tag {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+    transform-origin: center;
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--text-faint);
+    letter-spacing: 0.4em;
+    opacity: 0.5;
+    white-space: nowrap;
+  }
+  .preface-side-tag.left { left: -10px; }
+  .preface-side-tag.right { right: -10px; }
+
+  /* 序文文字外的细虚线框 */
+  .preface-frame {
+    max-width: 540px;
+    margin: 0 auto;
+    padding: 40px 50px;
+    position: relative;
+  }
+  .preface-frame::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 30px; height: 1px;
+    background: var(--primary);
+    opacity: 0.5;
+  }
+  .preface-frame::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 30px; height: 1px;
+    background: var(--primary);
+    opacity: 0.5;
+  }
+
+  /* 序文下方花体小尾签 */
+  .preface-signature {
+    margin-top: 36px;
+    text-align: center;
+    font-family: var(--script);
+    font-size: 22px;
+    color: var(--blue-deep);
+    opacity: 0.7;
+    letter-spacing: 0.02em;
+  }
   .preface {
     padding: 90px 60px 80px;
     text-align: center;
@@ -921,7 +1127,24 @@
     <span class="cover-frame-side left"></span>
     <span class="cover-frame-side right"></span>
 
+    <!-- 四角的小装饰 -->
+    <div class="corner-ornament tl"><span class="corner-mark">◊</span></div>
+    <div class="corner-ornament tr"><span class="corner-mark">◊</span></div>
+    <div class="corner-ornament bl"><span class="corner-mark">◊</span></div>
+    <div class="corner-ornament br"><span class="corner-mark">◊</span></div>
+
+    <!-- 散落的小点 -->
+    <div class="scattered-dots left">
+      <span></span><span></span><span></span><span></span>
+    </div>
+    <div class="scattered-dots right">
+      <span></span><span></span><span></span><span></span>
+    </div>
+
     <div class="cover-ornament-top">— FROM SHANGHAI, WITH LOVE —</div>
+
+    <!-- 邮票边齿 -->
+    <div class="stamp-perforation">· · · · · · · · ·</div>
 
     <div class="cover-title-script">Postcards from Shanghai</div>
 
@@ -934,16 +1157,60 @@
     <div class="cover-title-jp">上 海 か ら の 手 紙</div>
     <div class="cover-title-cn">来 自 上 海 的 明 信 片</div>
 
+    <!-- 邮票边齿 -->
+    <div class="stamp-perforation">· · · · · · · · ·</div>
+
     <div class="cover-names">
       <span class="name-her">りか</span>
       <span class="amp-to">と</span>
       <span class="name-him">たいらん</span>
     </div>
 
+    <!-- 邮政小标签 -->
+    <div class="cover-postal-tags">
+      <span>FROM · TOKYO</span>
+      <span>TO · 上海</span>
+    </div>
+
     <div class="cover-meta">
       <span>5 月 2 日 — 5 月 5 日</span>
       <span>Spring · 2026</span>
     </div>
+
+    <!-- 右下角浅浅的花 -->
+    <svg class="cover-flower" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <!-- 五瓣樱花 -->
+      <g transform="translate(50, 50)">
+        <!-- 5 片花瓣，每片用椭圆+旋转 -->
+        <ellipse cx="0" cy="-22" rx="11" ry="20" fill="#d68aa0" opacity="0.5" transform="rotate(0)"/>
+        <ellipse cx="0" cy="-22" rx="11" ry="20" fill="#d68aa0" opacity="0.5" transform="rotate(72)"/>
+        <ellipse cx="0" cy="-22" rx="11" ry="20" fill="#d68aa0" opacity="0.5" transform="rotate(144)"/>
+        <ellipse cx="0" cy="-22" rx="11" ry="20" fill="#d68aa0" opacity="0.5" transform="rotate(216)"/>
+        <ellipse cx="0" cy="-22" rx="11" ry="20" fill="#d68aa0" opacity="0.5" transform="rotate(288)"/>
+
+        <!-- 内层小花瓣 -->
+        <ellipse cx="0" cy="-12" rx="6" ry="11" fill="#e8b4bc" opacity="0.6" transform="rotate(36)"/>
+        <ellipse cx="0" cy="-12" rx="6" ry="11" fill="#e8b4bc" opacity="0.6" transform="rotate(108)"/>
+        <ellipse cx="0" cy="-12" rx="6" ry="11" fill="#e8b4bc" opacity="0.6" transform="rotate(180)"/>
+        <ellipse cx="0" cy="-12" rx="6" ry="11" fill="#e8b4bc" opacity="0.6" transform="rotate(252)"/>
+        <ellipse cx="0" cy="-12" rx="6" ry="11" fill="#e8b4bc" opacity="0.6" transform="rotate(324)"/>
+
+        <!-- 中心 -->
+        <circle cx="0" cy="0" r="4" fill="#b89460" opacity="0.7"/>
+        <circle cx="0" cy="0" r="2" fill="#b56a82" opacity="0.8"/>
+
+        <!-- 花蕊小点 -->
+        <circle cx="-3" cy="-6" r="0.8" fill="#b89460" opacity="0.6"/>
+        <circle cx="3" cy="-6" r="0.8" fill="#b89460" opacity="0.6"/>
+        <circle cx="-5" cy="-2" r="0.8" fill="#b89460" opacity="0.6"/>
+        <circle cx="5" cy="-2" r="0.8" fill="#b89460" opacity="0.6"/>
+        <circle cx="0" cy="-7" r="0.8" fill="#b89460" opacity="0.6"/>
+      </g>
+
+      <!-- 旁边一片飘落的小花瓣 -->
+      <ellipse cx="78" cy="78" rx="5" ry="9" fill="#e8b4bc" opacity="0.45" transform="rotate(45 78 78)"/>
+      <ellipse cx="20" cy="82" rx="4" ry="7" fill="#d68aa0" opacity="0.4" transform="rotate(-30 20 82)"/>
+    </svg>
   </header>
 
   <!-- ============================================ -->
@@ -967,18 +1234,25 @@
     等四天文案都写完后切换到这版。
   -->
   <section class="preface">
-    <div class="preface-jp">
-      春の終わり、初夏のはじまり。<br>
-      街灯と、ネオンと、突然の雨と、<br>
-      手のひらに咲いた一輪のバラと。<br>
-      ——四日間、二人きりの上海。
+    <span class="preface-side-tag left">— PREFACE · 序 —</span>
+    <span class="preface-side-tag right">— PREFACE · 序 —</span>
+
+    <div class="preface-frame">
+      <div class="preface-jp">
+        春の終わり、初夏のはじまり。<br>
+        街灯と、ネオンと、突然の雨と、<br>
+        手のひらに咲いた一輪のバラと。<br>
+        ——四日間、二人きりの上海。
+      </div>
+      <div class="preface-cn">
+        春末，初夏。<br>
+        街灯，霓虹，骤雨，<br>
+        还有掌心里那一支盛开的玫瑰。<br>
+        ——四天，只属于我们的上海。
+      </div>
     </div>
-    <div class="preface-cn">
-      春末，初夏。<br>
-      街灯，霓虹，骤雨，<br>
-      还有掌心里那一支盛开的玫瑰。<br>
-      ——四天，只属于我们的上海。
-    </div>
+
+    <div class="preface-signature">— our story begins —</div>
   </section>
 
   <!-- ============================================ -->
