@@ -354,27 +354,33 @@
     opacity: 0.4;
   }
 
-  /* === 夜晚主题（Act III 专用） === */
-  .act-divider.act-night .act-num,
-  .act-divider.act-night .act-title {
-    color: #6b7da6;  /* 深邃夜蓝 */
+  /* === 夜晚主题（方案5 · Subtle Blue Wash） === */
+  .act-divider.act-night {
+    margin-top: 60px;
+    padding: 20px 60px 10px;
   }
+  .act-divider.act-night .act-num { color: #5a6a8a; }
+  .act-divider.act-night .act-title { color: #6b7da6; }
   .act-divider.act-night .act-line {
-    background: linear-gradient(90deg, #6b7da6 0%, #8a9bc4 30%, transparent 100%);
-    opacity: 0.5;
+    background: linear-gradient(90deg, #6b7da6 0%, transparent 100%);
+    opacity: 0.6;
   }
   .act-divider.act-night .act-night-mark {
-    font-size: 14px;
-    color: #8a9bc4;
-    opacity: 0.7;
-    margin-left: 4px;
-    text-shadow: 0 0 8px rgba(138, 155, 196, 0.4);
+    font-size: 16px;
+    color: #6b7da6;
+    margin-left: 6px;
+    text-shadow: 0 0 8px rgba(180, 190, 220, 0.6);
   }
 
-  /* Act III 内的 scene 加微妙的夜色感 */
+  /* 夜晚 scene 背景 —— 淡蓝水洗 */
   .scene.scene-night {
+    background: linear-gradient(180deg,
+      rgba(216, 224, 232, 0.35) 0%,
+      rgba(200, 210, 224, 0.4) 100%);
     position: relative;
   }
+
+  /* scene 顶部细线（柔和过渡） */
   .scene.scene-night::before {
     content: '';
     position: absolute;
@@ -384,18 +390,25 @@
     height: 1px;
     background: linear-gradient(90deg,
       transparent 0%,
-      rgba(107, 125, 166, 0.08) 30%,
-      rgba(107, 125, 166, 0.18) 50%,
-      rgba(107, 125, 166, 0.08) 70%,
+      rgba(107, 125, 166, 0.25) 50%,
       transparent 100%);
     pointer-events: none;
   }
-  /* 夜晚 scene 的标题加点深邃蓝 */
-  .scene.scene-night .scene-title {
-    color: #8a4a6a;  /* 比 primary-deep 略偏紫 */
-  }
+
+  /* 夜晚 scene 标题保持原樱花粉，但中文副标改成淡蓝灰 */
   .scene.scene-night .scene-title-mini {
-    color: #6b7da6;  /* 夜蓝 */
+    color: #6b7da6;
+  }
+  .scene.scene-night .scene-time {
+    color: #6b7da6;
+  }
+
+  /* 夜晚的卡片阴影偏蓝 */
+  .scene.scene-night .photo-mat {
+    box-shadow:
+      0 8px 24px rgba(70, 90, 130, 0.18),
+      0 3px 10px rgba(70, 90, 130, 0.1),
+      inset 0 0 0 1px rgba(180, 148, 96, 0.1);
   }
 
   /* ======================================== */
@@ -440,8 +453,25 @@
     font-size: 22px;
     color: var(--primary-deep);
     letter-spacing: 0.08em;
+    margin-bottom: 6px;
+    line-height: 1.5;
+  }
+
+  /* scene 副标题（中文） */
+  .scene-title-cn {
+    font-family: var(--serif-cn);
+    font-weight: 400;
+    font-size: 13px;
+    color: var(--text-soft);
+    letter-spacing: 0.18em;
     margin-bottom: 28px;
     line-height: 1.5;
+  }
+
+  /* 夜晚的 scene-title-cn */
+  .scene.scene-night .scene-title-cn {
+    color: #6b7da6;
+    opacity: 0.85;
   }
 
   /* === 剧场感图文混排：左右版式 === */
@@ -661,15 +691,18 @@
       transparent 100%);
   }
 
-  .scene.hero .scene-meta-wrap,
-  .scene.hero .scene-title {
+  .scene.hero .scene-meta-wrap {
     padding: 0 60px;
+  }
+  .scene.hero .scene-meta-wrap .scene-title,
+  .scene.hero .scene-meta-wrap .scene-title-cn {
+    padding: 0;
   }
 
   /* HERO 写真は装裱を簡素に、より大きく */
   .scene.hero .photo-mat {
     transform: rotate(0deg);
-    margin: 0 30px;
+    margin: 0 80px;  /* 之前 30px，加大到 80px */
     padding: 16px 16px 44px 16px;
     box-shadow:
       0 24px 70px rgba(120, 90, 110, 0.18),
@@ -689,7 +722,22 @@
   }
 
   .scene.hero .photo-placeholder {
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 4 / 3;  /* 之前 16:10，太宽了；改成 4:3 不那么压 */
+  }
+
+  /* hero 图限制最大高度，竖图不裁切而是缩小 */
+  .scene.hero .photo-wrap {
+    max-height: 650px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f5ebe0;
+  }
+  .scene.hero .photo-wrap img {
+    max-height: 650px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
   }
 
   .scene.hero .scene-text {
@@ -821,9 +869,10 @@
 
     .scene.hero { padding: 40px 0; }
     .scene.hero .scene-meta-wrap,
-    .scene.hero .scene-title,
     .scene.hero .scene-text,
     .hero-overture { padding-left: 30px; padding-right: 30px; }
+    .scene.hero .scene-meta-wrap .scene-title,
+    .scene.hero .scene-meta-wrap .scene-title-cn { padding: 0; }
 
     .epilogue-placeholder { margin: 50px 30px; padding: 35px 25px; }
     .epilogue-placeholder .ep-title { font-size: 30px; }
@@ -932,6 +981,7 @@
       <span class="scene-title-mini">日暮里駅 · Nippori Sta.</span>
     </div>
     <h3 class="scene-title">日暮里でりかを待つ</h3>
+    <div class="scene-title-cn">在日暮里等她</div>
 
     <div class="scene-grid layout-photo-left">
       <div class="scene-photo">
@@ -978,6 +1028,7 @@
       <span class="scene-title-mini">成田空港 · Narita Airport</span>
     </div>
     <h3 class="scene-title">比心がズレていた</h3>
+    <div class="scene-title-cn">没对上的比心</div>
 
     <div class="scene-grid layout-photo-right">
       <div class="scene-photo">
@@ -1033,6 +1084,7 @@
       <span class="scene-title-mini">浦东国际机场 · Pudong Intl.</span>
     </div>
     <h3 class="scene-title">包子で小腹つなぎ</h3>
+    <div class="scene-title-cn">机场的包子</div>
 
     <div class="scene-grid layout-photo-left">
       <div class="scene-photo">
@@ -1078,6 +1130,7 @@
       <span class="scene-title-mini">地下鉄2号線 · Metro Line 2</span>
     </div>
     <h3 class="scene-title">地下鉄で、路線図を読みながら</h3>
+    <div class="scene-title-cn">地铁上，看着线路图</div>
 
     <div class="scene-grid layout-photo-right">
       <div class="scene-photo">
@@ -1129,6 +1182,7 @@
         <span class="scene-title-mini">南京东路 · Nanjing Rd. East</span>
       </div>
       <h3 class="scene-title">南京路、人混みの中</h3>
+    <div class="scene-title-cn">南京路，人群之中</div>
     </div>
 
     <div class="photo-mat">
@@ -1182,6 +1236,7 @@
       <span class="scene-title-mini">南京东路 · Nanjing Rd. East</span>
     </div>
     <h3 class="scene-title">不意のバラ、不意のプロポーズ</h3>
+    <div class="scene-title-cn">突如其来的玫瑰</div>
 
     <!-- 第一段：街上偶遇 + 第一张照片（左图右文） -->
     <div class="scene-grid layout-photo-left">
@@ -1279,6 +1334,7 @@
       <span class="scene-title-mini">南京东路 · 雨の夜</span>
     </div>
     <h3 class="scene-title">二本目の傘は使わなかった</h3>
+    <div class="scene-title-cn">没用上的第二把伞</div>
 
     <div class="scene-grid layout-photo-right">
       <div class="scene-photo">
@@ -1323,6 +1379,7 @@
       <span class="scene-title-mini">很久以前 · 串焼きの店</span>
     </div>
     <h3 class="scene-title">冷えピタ、ようやく</h3>
+    <div class="scene-title-cn">终于贴上冷ぴた</div>
 
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 36px;">
       <div class="photo-mat" style="transform: rotate(-1.5deg);">
@@ -1379,6 +1436,7 @@
       <span class="scene-title-mini">很久以前 · 串焼きの店</span>
     </div>
     <h3 class="scene-title">体調があまり良くなかった、それでも</h3>
+    <div class="scene-title-cn">虽然身体没在状态，但是</div>
 
     <div class="scene-grid layout-photo-left">
       <div class="scene-photo">
@@ -1431,6 +1489,7 @@
       <span class="scene-title-mini">タクシーの中 · 帰り道</span>
     </div>
     <h3 class="scene-title">帰り道のタクシー、眠るりか</h3>
+    <div class="scene-title-cn">出租车里睡着的她</div>
 
     <div class="scene-grid layout-photo-right">
       <div class="scene-photo">
