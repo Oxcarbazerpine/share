@@ -354,11 +354,20 @@
     opacity: 0.4;
   }
 
-  /* === 夜晚主题（方案5 · Subtle Blue Wash） === */
+  /* === 夜晚主题（方案5 · Subtle Blue Wash · 淡） === */
+
+  /* Act III 分隔线上方：从米白渐变到夜蓝的过渡区，底部和 scene-night 衔接 */
   .act-divider.act-night {
-    margin-top: 60px;
-    padding: 20px 60px 10px;
+    margin: 80px 0 0;  /* 占满全宽，去掉左右和底部 margin */
+    padding: 60px 60px 30px;
+    position: relative;
+    background: linear-gradient(180deg,
+      transparent 0%,
+      rgba(216, 224, 232, 0.18) 40%,
+      rgba(216, 224, 232, 0.3) 70%,
+      rgba(216, 224, 232, 0.35) 100%);
   }
+
   .act-divider.act-night .act-num { color: #5a6a8a; }
   .act-divider.act-night .act-title { color: #6b7da6; }
   .act-divider.act-night .act-line {
@@ -372,7 +381,7 @@
     text-shadow: 0 0 8px rgba(180, 190, 220, 0.6);
   }
 
-  /* 夜晚 scene 背景 —— 淡蓝水洗 */
+  /* 夜晚 scene 背景 —— 淡蓝水洗（淡） */
   .scene.scene-night {
     background: linear-gradient(180deg,
       rgba(216, 224, 232, 0.35) 0%,
@@ -380,7 +389,7 @@
     position: relative;
   }
 
-  /* scene 顶部细线（柔和过渡） */
+  /* scene 顶部细线 */
   .scene.scene-night::before {
     content: '';
     position: absolute;
@@ -402,6 +411,10 @@
   .scene.scene-night .scene-time {
     color: #6b7da6;
   }
+  .scene.scene-night .scene-title-cn {
+    color: #6b7da6;
+    opacity: 0.85;
+  }
 
   /* 夜晚的卡片阴影偏蓝 */
   .scene.scene-night .photo-mat {
@@ -409,6 +422,28 @@
       0 8px 24px rgba(70, 90, 130, 0.18),
       0 3px 10px rgba(70, 90, 130, 0.1),
       inset 0 0 0 1px rgba(180, 148, 96, 0.1);
+  }
+
+  /* 夜晚 → 黎明 过渡区（夜晚段结束后到下一天） */
+  .dawn-transition {
+    height: 120px;
+    background: linear-gradient(180deg,
+      rgba(216, 224, 232, 0.35) 0%,
+      rgba(216, 224, 232, 0.2) 40%,
+      transparent 100%);
+    position: relative;
+  }
+  .dawn-transition::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(107, 125, 166, 0.2) 50%,
+      transparent 100%);
   }
 
   /* ======================================== */
@@ -466,12 +501,6 @@
     letter-spacing: 0.18em;
     margin-bottom: 28px;
     line-height: 1.5;
-  }
-
-  /* 夜晚的 scene-title-cn */
-  .scene.scene-night .scene-title-cn {
-    color: #6b7da6;
-    opacity: 0.85;
   }
 
   /* === 剧场感图文混排：左右版式 === */
@@ -1527,6 +1556,9 @@
       </div>
     </div>
   </section>
+
+  <!-- ─────── 夜晚→黎明 过渡区 ─────── -->
+  <div class="dawn-transition"></div>
 
   <!-- ============================================ -->
   <!-- ============== Day 2 (框架) ================ -->
