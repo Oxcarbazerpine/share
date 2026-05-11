@@ -754,15 +754,15 @@
   /* 附带感小图：和主图同属一个 wrapper，整体占满 grid 栏 */
   .photo-with-attached {
     position: relative;
-    padding-right: 60px;  /* 给右侧小图留位置 */
-    padding-bottom: 50px;  /* 给底部留空间 */
+    margin-bottom: 60px;  /* 给 scene 之间额外留空（因为小图会溢出底部）*/
   }
   .photo-with-attached .photo-mat {
     margin: 0;
+    width: 78%;  /* 主图缩小到 78%，给右侧腾出空间 */
   }
   .photo-with-attached .attached-mini {
     position: absolute;
-    width: 42%;
+    width: 38%;
     z-index: 5;
     padding: 6px 6px 18px;
     background: rgba(252, 249, 244, 0.96);
@@ -771,14 +771,16 @@
       0 2px 6px rgba(120, 90, 110, 0.1),
       inset 0 0 0 1px rgba(180, 148, 96, 0.15);
   }
+  /* 右下：贴 wrapper 右下、稍微往外溢出 */
   .photo-with-attached .attached-mini.bottom-right {
-    bottom: 0;
-    right: 0;
+    bottom: -40px;
+    right: -10px;
     transform: rotate(5deg);
   }
+  /* 右上：贴 wrapper 右上、稍微往外溢出 */
   .photo-with-attached .attached-mini.top-right {
-    top: 0;
-    right: 0;
+    top: -30px;
+    right: -10px;
     transform: rotate(6deg);
   }
   .photo-with-attached .attached-mini img {
@@ -795,8 +797,11 @@
   }
 
   @media (max-width: 720px) {
-    .photo-with-attached { padding-right: 40px; padding-bottom: 30px; }
-    .photo-with-attached .attached-mini { width: 40%; }
+    .photo-with-attached { margin-bottom: 40px; }
+    .photo-with-attached .photo-mat { width: 80%; }
+    .photo-with-attached .attached-mini { width: 42%; }
+    .photo-with-attached .attached-mini.bottom-right { bottom: -25px; right: 0; }
+    .photo-with-attached .attached-mini.top-right { top: -20px; right: 0; }
   }
 
   /* 中央型主 scene（给 19 用：居中、无 grid） */
@@ -2944,7 +2949,7 @@
 
       <div class="photo-mat" style="transform: rotate(1.2deg);">
         <div class="photo-wrap" style="aspect-ratio: 3/4; overflow: hidden;">
-          <img src="photos/day2/25_attending_musical.jpg" alt="程小時" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+          <img src="photos/day2/25_attending_musical.jpg" alt="陆光" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
         <div class="photo-stamp">
           <span class="stamp-num">№ 30</span>
