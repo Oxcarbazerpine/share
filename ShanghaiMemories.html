@@ -709,6 +709,110 @@
     line-height: 1.5;
   }
 
+  /* === 片段式小图（极简版） === */
+  .mini-scene {
+    margin: 30px auto;
+    max-width: 360px;
+    text-align: center;
+    padding: 0 60px;
+  }
+  .mini-scene .photo-mat {
+    transform: rotate(-1.5deg);
+    margin: 0 auto;
+    padding: 10px 10px 30px 10px;
+    max-width: 320px;
+  }
+  .mini-scene.tilt-right .photo-mat {
+    transform: rotate(1.8deg);
+  }
+  .mini-scene .photo-wrap {
+    min-height: 100px;
+  }
+  .mini-scene .mini-caption {
+    margin-top: 14px;
+    font-family: var(--serif-jp);
+    font-size: 13px;
+    color: var(--text-soft);
+    line-height: 1.7;
+    letter-spacing: 0.05em;
+  }
+  .mini-scene .mini-caption-cn {
+    margin-top: 4px;
+    font-family: var(--serif-cn);
+    font-size: 12px;
+    color: var(--text-faint);
+    letter-spacing: 0.1em;
+  }
+  .mini-scene .mini-time {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--gold);
+    letter-spacing: 0.25em;
+    margin-bottom: 12px;
+  }
+
+  /* 附带感小图：贴在主 scene photo-mat 角上的小卡 */
+  .photo-mat .attached-mini {
+    position: absolute;
+    width: 140px;
+    z-index: 5;
+    transform: rotate(6deg);
+    padding: 6px 6px 18px;
+    background: rgba(252, 249, 244, 0.96);
+    box-shadow:
+      0 6px 18px rgba(120, 90, 110, 0.18),
+      0 2px 6px rgba(120, 90, 110, 0.1),
+      inset 0 0 0 1px rgba(180, 148, 96, 0.15);
+  }
+  .photo-mat .attached-mini.bottom-right {
+    bottom: -50px;
+    right: -50px;
+  }
+  .photo-mat .attached-mini.top-right {
+    top: -40px;
+    right: -50px;
+    transform: rotate(8deg);
+  }
+  .photo-mat .attached-mini img {
+    width: 100%;
+    display: block;
+  }
+  .photo-mat .attached-mini .mini-tag {
+    margin-top: 6px;
+    font-family: var(--mono);
+    font-size: 8px;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    text-align: center;
+  }
+
+  /* 让带有 attached-mini 的 photo-mat 不裁掉子元素 */
+  .photo-mat.has-attached {
+    overflow: visible;
+  }
+
+  /* 中央型主 scene（给 19 用：居中、无 grid） */
+  .scene.scene-centered {
+    text-align: center;
+  }
+  .scene.scene-centered .photo-mat {
+    max-width: 560px;
+    margin: 0 auto;
+    transform: rotate(0deg);
+  }
+  .scene.scene-centered .scene-text {
+    max-width: 540px;
+    margin: 40px auto 0;
+  }
+
+  @media (max-width: 720px) {
+    .mini-scene { padding: 0 30px; max-width: none; }
+    .mini-scene .photo-mat { max-width: 260px; }
+    .photo-mat .attached-mini { width: 100px; }
+    .photo-mat .attached-mini.bottom-right { bottom: -30px; right: -20px; }
+    .photo-mat .attached-mini.top-right { top: -25px; right: -20px; }
+  }
+
   /* === 剧场感图文混排：左右版式 === */
   .scene-grid {
     display: grid;
@@ -1283,7 +1387,7 @@
       <span class="scene-time-line"></span>
       <span class="scene-title-mini">日暮里駅 · Nippori Sta.</span>
     </div>
-    <h3 class="scene-title">日暮里でりかを待つ</h3>
+    <h3 class="scene-title">日暮里で、彼女を待つ</h3>
     <div class="scene-title-cn">在日暮里等她</div>
 
     <div class="scene-grid layout-photo-left">
@@ -1484,7 +1588,7 @@
         <span class="scene-time-line"></span>
         <span class="scene-title-mini">南京东路 · Nanjing Rd. East</span>
       </div>
-      <h3 class="scene-title">南京路、人混みの中</h3>
+      <h3 class="scene-title">南京路、ネオンの中</h3>
     <div class="scene-title-cn">南京路，人群之中</div>
     </div>
 
@@ -1791,7 +1895,7 @@
       <span class="scene-time-line"></span>
       <span class="scene-title-mini">タクシーの中 · 帰り道</span>
     </div>
-    <h3 class="scene-title">帰り道のタクシー、眠るりか</h3>
+    <h3 class="scene-title">帰り道のタクシー、眠る彼女</h3>
     <div class="scene-title-cn">出租车里睡着的她</div>
 
     <div class="scene-grid layout-photo-right">
@@ -1894,6 +1998,23 @@
     </div>
   </section>
 
+  <!-- ─── mini · 02 ready_to_go ─── -->
+  <div class="mini-scene">
+    <div class="mini-time">09:53</div>
+    <div class="photo-mat">
+      <div class="photo-wrap">
+        <img src="photos/day2/02_ready_to_go.jpg" alt="出発" loading="lazy">
+      </div>
+      <div class="photo-stamp">
+        <span class="stamp-num">№ 12·</span>
+        <span class="stamp-mid">— Ready —</span>
+        <span class="stamp-date">9:53 AM</span>
+      </div>
+    </div>
+    <div class="mini-caption">出発。</div>
+    <div class="mini-caption-cn">出发。</div>
+  </div>
+
   <!-- ─────── Scene 03 · 路傍の赤い花 ─────── -->
   <section class="scene">
     <div class="scene-meta">
@@ -1946,19 +2067,36 @@
     </div>
   </section>
 
-  <!-- ─────── Scene 05 · 武康路、人山人海 ─────── -->
+  <!-- ─── mini · 04 way_to_wukang ─── -->
+  <div class="mini-scene tilt-right">
+    <div class="mini-time">11:00</div>
+    <div class="photo-mat">
+      <div class="photo-wrap">
+        <img src="photos/day2/04_way_to_wukang.jpg" alt="武康路へ" loading="lazy">
+      </div>
+      <div class="photo-stamp">
+        <span class="stamp-num">№ 13·</span>
+        <span class="stamp-mid">— On the way —</span>
+        <span class="stamp-date">11:00 AM</span>
+      </div>
+    </div>
+    <div class="mini-caption">武康路へ、もうすぐ。</div>
+    <div class="mini-caption-cn">快到武康路了。</div>
+  </div>
+
+  <!-- ─────── Scene 05 · 武康路、人波の中で ─────── -->
   <section class="scene">
     <div class="scene-meta">
       <span class="scene-time">11:10</span>
       <span class="scene-time-line"></span>
       <span class="scene-title-mini">武康路 · Wukang Rd.</span>
     </div>
-    <h3 class="scene-title">武康路、人山人海</h3>
+    <h3 class="scene-title">武康路、人波の中で</h3>
     <div class="scene-title-cn">武康路，人山人海</div>
 
     <div class="scene-grid layout-photo-left">
       <div class="scene-photo">
-        <div class="photo-mat">
+        <div class="photo-mat has-attached">
           <div class="photo-postmark">
             <div class="pm-top">WK RD</div>
             <div class="pm-mid">May 3</div>
@@ -1971,6 +2109,10 @@
             <span class="stamp-num">№ 14</span>
             <span class="stamp-mid">— Crowded street —</span>
             <span class="stamp-date">11:10 AM</span>
+          </div>
+          <div class="attached-mini bottom-right">
+            <img src="photos/day2/06_internet_celebrity.jpg" alt="ネット名所">
+            <div class="mini-tag">— 11:15 · 网红墙 —</div>
           </div>
         </div>
       </div>
@@ -2011,12 +2153,12 @@
       <span class="scene-time-line"></span>
       <span class="scene-title-mini">本帮菜のお店</span>
     </div>
-    <h3 class="scene-title">街角の本帮菜</h3>
+    <h3 class="scene-title">街角の上海家庭料理</h3>
     <div class="scene-title-cn">街角的本帮菜</div>
 
     <div class="scene-grid layout-photo-right">
       <div class="scene-photo">
-        <div class="photo-mat">
+        <div class="photo-mat has-attached">
           <div class="photo-postmark">
             <div class="pm-top">LUNCH</div>
             <div class="pm-mid">May 3</div>
@@ -2029,6 +2171,10 @@
             <span class="stamp-num">№ 15</span>
             <span class="stamp-mid">— Her pick —</span>
             <span class="stamp-date">1:00 PM</span>
+          </div>
+          <div class="attached-mini top-right">
+            <img src="photos/day2/09_delicious_or_not.jpg" alt="微妙な表情">
+            <div class="mini-tag">— ……どうかな？ —</div>
           </div>
         </div>
       </div>
@@ -2053,6 +2199,23 @@
     </div>
   </section>
 
+  <!-- ─── mini · 07 bear_friend ─── -->
+  <div class="mini-scene">
+    <div class="mini-time">13:05</div>
+    <div class="photo-mat">
+      <div class="photo-wrap">
+        <img src="photos/day2/07_bear_friend.jpg" alt="大きいクマと" loading="lazy">
+      </div>
+      <div class="photo-stamp">
+        <span class="stamp-num">№ 15·</span>
+        <span class="stamp-mid">— 大熊と —</span>
+        <span class="stamp-date">1:05 PM</span>
+      </div>
+    </div>
+    <div class="mini-caption">入店前に、まずは大きい子と。</div>
+    <div class="mini-caption-cn">进店前，先跟大的打个招呼。</div>
+  </div>
+
   <!-- ─────── Scene 10 · 小熊咖啡 ─────── -->
   <section class="scene">
     <div class="scene-meta">
@@ -2060,7 +2223,7 @@
       <span class="scene-time-line"></span>
       <span class="scene-title-mini">13DE MARZO CAFE · 安福路</span>
     </div>
-    <h3 class="scene-title">小熊咖啡、名所のクマ</h3>
+    <h3 class="scene-title">名物のクマ、ようやく</h3>
     <div class="scene-title-cn">小熊咖啡，名物的熊</div>
 
     <div class="scene-grid layout-photo-left">
@@ -2112,7 +2275,7 @@
       <span class="scene-time-line"></span>
       <span class="scene-title-mini">街中の自転車道</span>
     </div>
-    <h3 class="scene-title">共享单车で次の場所へ</h3>
+    <h3 class="scene-title">シェア自転車で、次の場所へ</h3>
     <div class="scene-title-cn">骑共享单车去下一站</div>
 
     <div class="scene-grid layout-photo-right">
@@ -2159,7 +2322,7 @@
       <span class="scene-time-line"></span>
       <span class="scene-title-mini">漢服スタジオ・メイクルーム</span>
     </div>
-    <h3 class="scene-title">メイクアップ、惊艳</h3>
+    <h3 class="scene-title">メイクアップ、目を奪われた瞬間</h3>
     <div class="scene-title-cn">妆造完成，惊艳了彼此</div>
 
     <div class="scene-grid layout-photo-left">
@@ -2221,12 +2384,7 @@
             <div class="pm-bot">2026</div>
           </div>
           <div class="photo-wrap">
-            <div class="photo-placeholder tall">
-              <div>
-                <div class="ph-label">Photo · 13</div>
-                <div class="ph-name">換装後、初めての一枚</div>
-              </div>
-            </div>
+            <img src="photos/day2/13_kanfuku_debut.jpg" alt="換装後、初めての一枚" loading="lazy">
           </div>
           <div class="photo-stamp">
             <span class="stamp-num">№ 19</span>
@@ -2239,18 +2397,12 @@
       <div class="scene-text">
         <div class="text-jp">
           撮影開始、最初の一枚。<br>
-          青い裙、黒い衣。<br>
-          写真には映っていないけど、<br>
-          その瞬間、お互いに少し気合が入っていた気がする。<br>
-          ——別の世界に踏み出した、その一歩目。
+          ——別世界の入り口に、二人で。
         </div>
         <div class="text-divider"></div>
         <div class="text-cn">
-          拍摄正式开始，第一张合影。<br>
-          蓝裙、黑衣。<br>
-          看着镜头的我们，<br>
-          大概都有点紧绷紧绷的。<br>
-          ——像踏进另一个世界的第一步。
+          拍摄开始，第一张合影。<br>
+          ——一起踏进了另一个世界。
         </div>
       </div>
     </div>
@@ -2275,12 +2427,7 @@
             <div class="pm-bot">2026</div>
           </div>
           <div class="photo-wrap">
-            <div class="photo-placeholder tall">
-              <div>
-                <div class="ph-label">Photo · 14</div>
-                <div class="ph-name">画面を覗き込む</div>
-              </div>
-            </div>
+            <img src="photos/day2/14_confirming.jpg" alt="画面を覗き込む" loading="lazy">
           </div>
           <div class="photo-stamp">
             <span class="stamp-num">№ 20</span>
@@ -2292,16 +2439,11 @@
 
       <div class="scene-text">
         <div class="text-jp">
-          カメラマンの画面を覗き込む彼女、<br>
-          その横顔をふと、撮った。<br>
-          何気ない一瞬。
+          撮影の合間、彼女の横顔を。
         </div>
         <div class="text-divider"></div>
         <div class="text-cn">
-          她在低头看摄影师刚拍的照片。<br>
-          我顺手按了一下快门。<br>
-          没什么深意，<br>
-          只是觉得那个画面挺好看的。
+          拍摄间隙的一张侧脸。
         </div>
       </div>
     </div>
@@ -2338,19 +2480,13 @@
 
       <div class="scene-text">
         <div class="text-jp">
-          撮影が一区切りして、外へ。<br>
-          木陰で、彼女が一枚自撮りした。<br>
-          派手な装飾も、難しい構図もない。<br>
-          ——ただ、彼女がそこにいる。<br>
-          それだけで、もう絵になっていた。
+          木陰で、一枚。<br>
+          ——それだけで、十分だった。
         </div>
         <div class="text-divider"></div>
         <div class="text-cn">
-          拍完一组，到外面歇一会。<br>
-          树荫下，她随手自拍了一张。<br>
-          没什么花哨的构图，<br>
-          ——就只是她的一张脸。<br>
-          但光是这样，已经成了一张画。
+          树荫下，一张自拍。<br>
+          ——这一张就够了。
         </div>
       </div>
     </div>
@@ -2387,16 +2523,12 @@
 
       <div class="scene-text">
         <div class="text-jp">
-          カメラマンに「もうちょっとカッコつけて」って言われ、<br>
-          扇子を渡された。<br>
-          広げて、目線を遠くに。<br>
+          「もうちょっとカッコつけて」って、扇子を渡された。<br>
           ——ちょっとだけ、頑張った。
         </div>
         <div class="text-divider"></div>
         <div class="text-cn">
-          摄影小哥让我"再拽一点"，<br>
-          顺手塞过来一把扇子。<br>
-          我展开扇子，目光看向远方。<br>
+          "再拽一点"——他递来一把扇子。<br>
           ——尽力了。
         </div>
       </div>
@@ -2498,6 +2630,62 @@
     </div>
   </section>
 
+<!-- ─────── Scene 19 · 振り返り ─────── -->
+  <section class="scene scene-centered">
+    <div class="scene-meta" style="justify-content: center;">
+      <span class="scene-time">16:28</span>
+      <span class="scene-time-line"></span>
+      <span class="scene-title-mini">竹林を歩いて</span>
+    </div>
+    <h3 class="scene-title">振り返り</h3>
+    <div class="scene-title-cn">回眸</div>
+
+    <div class="photo-mat">
+      <div class="photo-postmark">
+        <div class="pm-top">BAMBOO</div>
+        <div class="pm-mid">May 3</div>
+        <div class="pm-bot">2026</div>
+      </div>
+      <div class="photo-wrap">
+        <img src="photos/day2/19_look_here.jpg" alt="振り返る僕" loading="lazy">
+      </div>
+      <div class="photo-stamp">
+        <span class="stamp-num">№ 25</span>
+        <span class="stamp-mid">— Look back —</span>
+        <span class="stamp-date">4:28 PM</span>
+      </div>
+    </div>
+
+    <div class="scene-text">
+      <div class="text-jp">
+        振り返ると、彼女がそこにいた。<br>
+        ——彼女のレンズ越しに、僕。
+      </div>
+      <div class="text-divider"></div>
+      <div class="text-cn">
+        回过头，她在我身后。<br>
+        ——透过她的镜头，看见的我。
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── mini · 20 us_moving_selfie ─── -->
+  <div class="mini-scene tilt-right">
+    <div class="mini-time">16:55</div>
+    <div class="photo-mat">
+      <div class="photo-wrap">
+        <img src="photos/day2/20_us_moving_selfie.jpg" alt="移動中の自撮り" loading="lazy">
+      </div>
+      <div class="photo-stamp">
+        <span class="stamp-num">№ 25·</span>
+        <span class="stamp-mid">— Moving on —</span>
+        <span class="stamp-date">4:55 PM</span>
+      </div>
+    </div>
+    <div class="mini-caption">次の場所へ。</div>
+    <div class="mini-caption-cn">转场途中。</div>
+  </div>
+
   <!-- ─────── Scene 21 · 廟会、夜のような昼 ─────── -->
   <section class="scene">
     <div class="scene-meta">
@@ -2505,7 +2693,7 @@
       <span class="scene-time-line"></span>
       <span class="scene-title-mini">豫园・庙会</span>
     </div>
-    <h3 class="scene-title">廟会、夜のような昼</h3>
+    <h3 class="scene-title">廟会、絵巻物の中へ</h3>
     <div class="scene-title-cn">庙会，白昼如夜</div>
 
     <div class="scene-grid layout-photo-left">
@@ -2610,7 +2798,7 @@
       <span class="scene-time-line"></span>
       <span class="scene-title-mini">食事処</span>
     </div>
-    <h3 class="scene-title">蟹黄面、お弁当タイム</h3>
+    <h3 class="scene-title">蟹黄麺、お弁当タイム</h3>
     <div class="scene-title-cn">蟹黄面，盒饭时间</div>
 
     <div class="scene-grid layout-photo-left">
@@ -2622,12 +2810,7 @@
             <div class="pm-bot">2026</div>
           </div>
           <div class="photo-wrap">
-            <div class="photo-placeholder landscape">
-              <div>
-                <div class="ph-label">Photo · 23</div>
-                <div class="ph-name">蟹黄麺</div>
-              </div>
-            </div>
+            <img src="photos/day2/23_noodles_dinner.jpg" alt="蟹黄麺" loading="lazy">
           </div>
           <div class="photo-stamp">
             <span class="stamp-num">№ 27</span>
@@ -2639,17 +2822,13 @@
 
       <div class="scene-text">
         <div class="text-jp">
-          漢服を脱いで、メイクはそのままで、<br>
-          蟹黄麺を一杯。<br>
-          ——撮影終わりの役者みたいな、不思議な時間。
+          衣装を脱いで、メイクはそのまま。<br>
+          ——撮影終わりの役者みたいに、一杯。
         </div>
         <div class="text-divider"></div>
         <div class="text-cn">
-          戏服换下了，妆还在脸上。<br>
-          一桌蟹黄面，热气腾腾。<br>
-          ——像收工后的演员，<br>
-          还带着戏里的脸，<br>
-          走进了寻常的食堂。
+          戏服换了，妆还在。<br>
+          ——像收工后的演员，吃一碗面。
         </div>
       </div>
     </div>
@@ -2696,19 +2875,13 @@
 
       <div class="scene-text">
         <div class="text-jp">
-          次の場所へ、急ぎ足。<br>
           信号待ちの間に、ちょっと一枚。<br>
-          彼女が手を上げて、何かをそっと見せながらポーズ。<br>
-          ——夜の街の途中の、ささやかな寄り道。
+          ——夜行途中の、ささやかな寄り道。
         </div>
         <div class="text-divider"></div>
         <div class="text-cn">
-          赶往下一场的路上。<br>
-          等红灯的间隙，<br>
-          她抬起手摆了个 pose，<br>
-          腕上的什么，也一并入了镜。<br>
-          ——夜行途中，<br>
-          顺手拐进来的一帧光景。
+          等红灯的间隙，一张。<br>
+          ——夜行途中，偷来的一帧。
         </div>
       </div>
     </div>
@@ -2721,7 +2894,7 @@
       <span class="scene-time-line"></span>
       <span class="scene-title-mini">大世界 · 時光劇場</span>
     </div>
-    <h3 class="scene-title">大世界、《时光代理人》</h3>
+    <h3 class="scene-title">大世界、彼女のミュージカル</h3>
     <div class="scene-title-cn">大世界，《时光代理人》音乐剧</div>
 
     <div class="scene-text" style="max-width: 620px; margin: 0 auto 36px;">
@@ -2744,12 +2917,7 @@
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
       <div class="photo-mat" style="transform: rotate(-1.2deg);">
         <div class="photo-wrap">
-          <div class="photo-placeholder square">
-            <div>
-              <div class="ph-label">Photo · 26</div>
-              <div class="ph-name">程小時</div>
-            </div>
-          </div>
+          <img src="photos/day2/26_three_cuties.jpg" alt="程小時" loading="lazy">
         </div>
         <div class="photo-stamp">
           <span class="stamp-num">№ 29</span>
@@ -2760,12 +2928,7 @@
 
       <div class="photo-mat" style="transform: rotate(1.2deg);">
         <div class="photo-wrap">
-          <div class="photo-placeholder square">
-            <div>
-              <div class="ph-label">Photo · 25</div>
-              <div class="ph-name">一家三口</div>
-            </div>
-          </div>
+          <img src="photos/day2/25_attending_musical.jpg" alt="一家三口" loading="lazy">
         </div>
         <div class="photo-stamp">
           <span class="stamp-num">№ 30</span>
@@ -2807,19 +2970,15 @@
 
       <div class="scene-text">
         <div class="text-jp">
-          劇場の外、夜風がゆるく吹いていた。<br>
           「她来了、她来了！」<br>
-          ——レッドカーペットも揃った、<br>
-          スターも揃った。<br>
-          開幕だね。
+          ——レッドカーペットも、スターも、揃った。<br>
+          開幕。
         </div>
         <div class="text-divider"></div>
         <div class="text-cn">
-          剧场外，夜风轻轻地。<br>
           "她来了，她来了——"<br>
-          红毯有了，<br>
-          明星也有了，<br>
-          开场吧——
+          ——红毯有了，明星也有了。<br>
+          开场吧。
         </div>
       </div>
     </div>
@@ -2832,7 +2991,7 @@
       <span class="scene-time-line"></span>
       <span class="scene-title-mini">大世界・赤い絨毯の階段</span>
     </div>
-    <h3 class="scene-title">红い階段の上で</h3>
+    <h3 class="scene-title">赤い階段の上で</h3>
     <div class="scene-title-cn">红楼梯上</div>
 
     <div class="scene-grid layout-photo-right">
@@ -2893,12 +3052,7 @@
 
       <div class="photo-mat" style="transform: rotate(1.5deg);">
         <div class="photo-wrap">
-          <div class="photo-placeholder square">
-            <div>
-              <div class="ph-label">Photo · 30</div>
-              <div class="ph-name">頬張る僕</div>
-            </div>
-          </div>
+          <img src="photos/day2/30_seriously_now.jpg" alt="頬張る僕" loading="lazy">
         </div>
         <div class="photo-stamp">
           <span class="stamp-num">№ 34</span>
@@ -2941,7 +3095,7 @@
       <span class="scene-time-line"></span>
       <span class="scene-title-mini">全季・陸家嘴 · ホテルの部屋</span>
     </div>
-    <h3 class="scene-title">妆容に、おやすみ</h3>
+    <h3 class="scene-title">化粧に、おやすみ</h3>
     <div class="scene-title-cn">向妆容道一声晚安</div>
 
     <div class="scene-grid layout-photo-left">
@@ -2965,19 +3119,15 @@
 
       <div class="scene-text">
         <div class="text-jp">
-          ホテルに戻ったのは、もう深夜。<br>
-          鏡の前で、彼女が言った。<br>
-          「今日のメイク、本当に綺麗だったね」<br>
+          鏡の前で、ぽつり。<br>
           「落とすの、ちょっと惜しいな」<br>
           ——華やかな今日に、おやすみ。
         </div>
         <div class="text-divider"></div>
         <div class="text-cn">
-          回到酒店已经是凌晨。<br>
-          镜子前，她说，<br>
-          "今天这个妆，真的好漂亮。"<br>
+          镜子前，她轻轻说，<br>
           "卸掉……还有点舍不得呢。"<br>
-          ——给这华丽的一天，道一声晚安。
+          ——华丽的一天，晚安。
         </div>
       </div>
     </div>
