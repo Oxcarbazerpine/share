@@ -765,12 +765,12 @@
       inset 0 0 0 1px rgba(180, 148, 96, 0.15);
   }
   .photo-mat .attached-mini.bottom-right {
-    bottom: -50px;
-    right: -50px;
+    bottom: 60px;
+    right: 12px;
   }
   .photo-mat .attached-mini.top-right {
-    top: -40px;
-    right: -50px;
+    top: 12px;
+    right: -28px;
     transform: rotate(8deg);
   }
   .photo-mat .attached-mini img {
@@ -1041,8 +1041,10 @@
   /* HERO 写真は装裱を簡素に、より大きく */
   .scene.hero .photo-mat {
     transform: rotate(0deg);
-    margin: 0 80px;  /* 之前 30px，加大到 80px */
+    margin: 0 auto;
     padding: 16px 16px 44px 16px;
+    width: fit-content;
+    max-width: calc(100% - 160px);
     box-shadow:
       0 24px 70px rgba(120, 90, 110, 0.18),
       0 6px 18px rgba(120, 90, 110, 0.08),
@@ -1071,12 +1073,16 @@
     justify-content: center;
     align-items: center;
     background: #f5ebe0;
+    width: fit-content;
+    margin: 0 auto;
+    max-width: 100%;
   }
   .scene.hero .photo-wrap img {
     max-height: 650px;
     width: auto;
     max-width: 100%;
     object-fit: contain;
+    display: block;
   }
 
   .scene.hero .scene-text {
@@ -2011,8 +2017,8 @@
         <span class="stamp-date">9:53 AM</span>
       </div>
     </div>
-    <div class="mini-caption">出発。</div>
-    <div class="mini-caption-cn">出发。</div>
+    <div class="mini-caption">出発！</div>
+    <div class="mini-caption-cn">出发！</div>
   </div>
 
   <!-- ─────── Scene 03 · 路傍の赤い花 ─────── -->
@@ -2172,7 +2178,7 @@
             <span class="stamp-mid">— Her pick —</span>
             <span class="stamp-date">1:00 PM</span>
           </div>
-          <div class="attached-mini top-right">
+          <div class="attached-mini bottom-right">
             <img src="photos/day2/09_delicious_or_not.jpg" alt="微妙な表情">
             <div class="mini-tag">— ……どうかな？ —</div>
           </div>
@@ -2439,11 +2445,13 @@
 
       <div class="scene-text">
         <div class="text-jp">
-          撮影の合間、彼女の横顔を。
+          撮影の合間、扇を持つ姿のまま、<br>
+          画面を覗き込む彼女。
         </div>
         <div class="text-divider"></div>
         <div class="text-cn">
-          拍摄间隙的一张侧脸。
+          拍摄间隙，<br>
+          她还拿着扇子，低头看屏幕。
         </div>
       </div>
     </div>
@@ -2480,13 +2488,14 @@
 
       <div class="scene-text">
         <div class="text-jp">
-          木陰で、一枚。<br>
-          ——それだけで、十分だった。
+          木陰の下、彼女が一枚自撮りした。<br>
+          ——その一枚に、目を止めた時間が、<br>
+          ちょっとだけ、長くなった。
         </div>
         <div class="text-divider"></div>
         <div class="text-cn">
-          树荫下，一张自拍。<br>
-          ——这一张就够了。
+          树荫下，她随手自拍了一张。<br>
+          ——这一张，让我多看了好几眼。
         </div>
       </div>
     </div>
@@ -2524,12 +2533,12 @@
       <div class="scene-text">
         <div class="text-jp">
           「もうちょっとカッコつけて」って、扇子を渡された。<br>
-          ——ちょっとだけ、頑張った。
+          ——演技するって、案外難しい。
         </div>
         <div class="text-divider"></div>
         <div class="text-cn">
           "再拽一点"——他递来一把扇子。<br>
-          ——尽力了。
+          ——演戏这种事，真的没那么容易。
         </div>
       </div>
     </div>
@@ -2566,17 +2575,15 @@
 
       <div class="scene-text">
         <div class="text-jp">
-          カメラマンが、自ら手本を見せていた。<br>
-          ——男の人が妖艶にやり始めると、女性の出番はもうない。<br>
-          さすがプロ。二人して、しばらく見惚れていた。
+          カメラマンのお兄さんが、自らポーズを実演してくれた。<br>
+          ——男の人が妖艶にやり始めると、もう女性の出番はない。<br>
+          さすが、プロ。
         </div>
         <div class="text-divider"></div>
         <div class="text-cn">
-          摄影师亲自上阵示范。<br>
-          ——男生一认真妖娆起来，<br>
-          真就没女生什么事了。<br>
-          不愧是专业的。<br>
-          我俩看呆了一会儿。
+          摄影师小哥示范姿势。<br>
+          ——果然男生妖娆起来，就没女生什么事了。<br>
+          不愧是专业的。
         </div>
       </div>
     </div>
@@ -2593,7 +2600,7 @@
         <span class="scene-title-mini">竹林の前</span>
       </div>
       <h3 class="scene-title">寄り添う二人</h3>
-      <div class="scene-title-cn">依偎</div>
+      <div class="scene-title-cn">竹林前的两个人</div>
     </div>
 
     <div class="photo-mat">
@@ -2625,7 +2632,7 @@
         竹林前，她轻轻靠在我肩上。<br>
         ——果然，<br>
         男人都吃这一套小鸟依人。<br>
-        这一刻又确认了一次。
+        我心里暗想。
       </div>
     </div>
   </section>
@@ -2916,23 +2923,23 @@
     <!-- 程小时 + 一家三口 caption 双图 -->
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
       <div class="photo-mat" style="transform: rotate(-1.2deg);">
-        <div class="photo-wrap">
-          <img src="photos/day2/26_three_cuties.jpg" alt="程小時" loading="lazy">
+        <div class="photo-wrap" style="aspect-ratio: 3/4; overflow: hidden;">
+          <img src="photos/day2/26_three_cuties.jpg" alt="一家三口" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
         <div class="photo-stamp">
           <span class="stamp-num">№ 29</span>
-          <span class="stamp-mid">— 程小時 —</span>
+          <span class="stamp-mid">— 一家三口 —</span>
           <span class="stamp-date">10:00 PM</span>
         </div>
       </div>
 
       <div class="photo-mat" style="transform: rotate(1.2deg);">
-        <div class="photo-wrap">
-          <img src="photos/day2/25_attending_musical.jpg" alt="一家三口" loading="lazy">
+        <div class="photo-wrap" style="aspect-ratio: 3/4; overflow: hidden;">
+          <img src="photos/day2/25_attending_musical.jpg" alt="程小時" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
         <div class="photo-stamp">
           <span class="stamp-num">№ 30</span>
-          <span class="stamp-mid">— 一家三口 —</span>
+          <span class="stamp-mid">— 程小時 —</span>
           <span class="stamp-date">10:04 PM</span>
         </div>
       </div>
@@ -3040,8 +3047,8 @@
 
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 36px;">
       <div class="photo-mat" style="transform: rotate(-1.5deg);">
-        <div class="photo-wrap">
-          <img src="photos/day2/29_looking_into_your_eyes.jpg" alt="彼女の眼差し" loading="lazy">
+        <div class="photo-wrap" style="aspect-ratio: 3/4; overflow: hidden;">
+          <img src="photos/day2/29_looking_into_your_eyes.jpg" alt="彼女の眼差し" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
         <div class="photo-stamp">
           <span class="stamp-num">№ 33</span>
@@ -3051,8 +3058,8 @@
       </div>
 
       <div class="photo-mat" style="transform: rotate(1.5deg);">
-        <div class="photo-wrap">
-          <img src="photos/day2/30_seriously_now.jpg" alt="頬張る僕" loading="lazy">
+        <div class="photo-wrap" style="aspect-ratio: 3/4; overflow: hidden;">
+          <img src="photos/day2/30_seriously_now.jpg" alt="頬張る僕" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
         <div class="photo-stamp">
           <span class="stamp-num">№ 34</span>
