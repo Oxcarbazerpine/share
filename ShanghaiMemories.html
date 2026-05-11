@@ -751,12 +751,19 @@
     margin-bottom: 12px;
   }
 
-  /* 附带感小图：贴在主 scene photo-mat 角上的小卡 */
-  .photo-mat .attached-mini {
+  /* 附带感小图：和主图同属一个 wrapper，整体占满 grid 栏 */
+  .photo-with-attached {
+    position: relative;
+    padding-right: 60px;  /* 给右侧小图留位置 */
+    padding-bottom: 50px;  /* 给底部留空间 */
+  }
+  .photo-with-attached .photo-mat {
+    margin: 0;
+  }
+  .photo-with-attached .attached-mini {
     position: absolute;
-    width: 140px;
+    width: 42%;
     z-index: 5;
-    transform: rotate(6deg);
     padding: 6px 6px 18px;
     background: rgba(252, 249, 244, 0.96);
     box-shadow:
@@ -764,20 +771,21 @@
       0 2px 6px rgba(120, 90, 110, 0.1),
       inset 0 0 0 1px rgba(180, 148, 96, 0.15);
   }
-  .photo-mat .attached-mini.bottom-right {
-    bottom: 60px;
-    right: 12px;
+  .photo-with-attached .attached-mini.bottom-right {
+    bottom: 0;
+    right: 0;
+    transform: rotate(5deg);
   }
-  .photo-mat .attached-mini.top-right {
-    top: 12px;
-    right: -28px;
-    transform: rotate(8deg);
+  .photo-with-attached .attached-mini.top-right {
+    top: 0;
+    right: 0;
+    transform: rotate(6deg);
   }
-  .photo-mat .attached-mini img {
+  .photo-with-attached .attached-mini img {
     width: 100%;
     display: block;
   }
-  .photo-mat .attached-mini .mini-tag {
+  .photo-with-attached .attached-mini .mini-tag {
     margin-top: 6px;
     font-family: var(--mono);
     font-size: 8px;
@@ -786,9 +794,9 @@
     text-align: center;
   }
 
-  /* 让带有 attached-mini 的 photo-mat 不裁掉子元素 */
-  .photo-mat.has-attached {
-    overflow: visible;
+  @media (max-width: 720px) {
+    .photo-with-attached { padding-right: 40px; padding-bottom: 30px; }
+    .photo-with-attached .attached-mini { width: 40%; }
   }
 
   /* 中央型主 scene（给 19 用：居中、无 grid） */
@@ -808,9 +816,6 @@
   @media (max-width: 720px) {
     .mini-scene { padding: 0 30px; max-width: none; }
     .mini-scene .photo-mat { max-width: 260px; }
-    .photo-mat .attached-mini { width: 100px; }
-    .photo-mat .attached-mini.bottom-right { bottom: -30px; right: -20px; }
-    .photo-mat .attached-mini.top-right { top: -25px; right: -20px; }
   }
 
   /* === 剧场感图文混排：左右版式 === */
@@ -2102,19 +2107,21 @@
 
     <div class="scene-grid layout-photo-left">
       <div class="scene-photo">
-        <div class="photo-mat has-attached">
-          <div class="photo-postmark">
-            <div class="pm-top">WK RD</div>
-            <div class="pm-mid">May 3</div>
-            <div class="pm-bot">2026</div>
-          </div>
-          <div class="photo-wrap">
-            <img src="photos/day2/05_wukang_checkpoint.jpg" alt="武康路で" loading="lazy">
-          </div>
-          <div class="photo-stamp">
-            <span class="stamp-num">№ 14</span>
-            <span class="stamp-mid">— Crowded street —</span>
-            <span class="stamp-date">11:10 AM</span>
+        <div class="photo-with-attached">
+          <div class="photo-mat">
+            <div class="photo-postmark">
+              <div class="pm-top">WK RD</div>
+              <div class="pm-mid">May 3</div>
+              <div class="pm-bot">2026</div>
+            </div>
+            <div class="photo-wrap">
+              <img src="photos/day2/05_wukang_checkpoint.jpg" alt="武康路で" loading="lazy">
+            </div>
+            <div class="photo-stamp">
+              <span class="stamp-num">№ 14</span>
+              <span class="stamp-mid">— Crowded street —</span>
+              <span class="stamp-date">11:10 AM</span>
+            </div>
           </div>
           <div class="attached-mini bottom-right">
             <img src="photos/day2/06_internet_celebrity.jpg" alt="ネット名所">
@@ -2164,19 +2171,21 @@
 
     <div class="scene-grid layout-photo-right">
       <div class="scene-photo">
-        <div class="photo-mat has-attached">
-          <div class="photo-postmark">
-            <div class="pm-top">LUNCH</div>
-            <div class="pm-mid">May 3</div>
-            <div class="pm-bot">2026</div>
-          </div>
-          <div class="photo-wrap">
-            <img src="photos/day2/08_local_meal.jpg" alt="本帮菜のランチ" loading="lazy">
-          </div>
-          <div class="photo-stamp">
-            <span class="stamp-num">№ 15</span>
-            <span class="stamp-mid">— Her pick —</span>
-            <span class="stamp-date">1:00 PM</span>
+        <div class="photo-with-attached">
+          <div class="photo-mat">
+            <div class="photo-postmark">
+              <div class="pm-top">LUNCH</div>
+              <div class="pm-mid">May 3</div>
+              <div class="pm-bot">2026</div>
+            </div>
+            <div class="photo-wrap">
+              <img src="photos/day2/08_local_meal.jpg" alt="本帮菜のランチ" loading="lazy">
+            </div>
+            <div class="photo-stamp">
+              <span class="stamp-num">№ 15</span>
+              <span class="stamp-mid">— Her pick —</span>
+              <span class="stamp-date">1:00 PM</span>
+            </div>
           </div>
           <div class="attached-mini bottom-right">
             <img src="photos/day2/09_delicious_or_not.jpg" alt="微妙な表情">
@@ -2920,7 +2929,7 @@
       </div>
     </div>
 
-    <!-- 程小时 + 一家三口 caption 双图 -->
+    <!-- 陆光 + 一家三口 caption 双图 -->
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
       <div class="photo-mat" style="transform: rotate(-1.2deg);">
         <div class="photo-wrap" style="aspect-ratio: 3/4; overflow: hidden;">
@@ -2935,7 +2944,7 @@
 
       <div class="photo-mat" style="transform: rotate(1.2deg);">
         <div class="photo-wrap" style="aspect-ratio: 3/4; overflow: hidden;">
-          <img src="photos/day2/25_attending_musical.jpg" alt="陆光" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+          <img src="photos/day2/25_attending_musical.jpg" alt="程小時" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
         <div class="photo-stamp">
           <span class="stamp-num">№ 30</span>
