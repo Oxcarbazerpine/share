@@ -46,7 +46,9 @@
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
+  body { overflow-x: hidden; }
+  html, body { overflow-x: hidden; }
 
   body {
     font-family: var(--serif-jp);
@@ -91,6 +93,8 @@
     -webkit-backdrop-filter: blur(20px);
     box-shadow: 0 0 80px rgba(150, 130, 110, 0.1);
     min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
   }
 
   /* ======================================== */
@@ -797,11 +801,23 @@
   }
 
   @media (max-width: 720px) {
-    .photo-with-attached { margin-bottom: 40px; }
-    .photo-with-attached .photo-mat { width: 80%; }
-    .photo-with-attached .attached-mini { width: 42%; }
-    .photo-with-attached .attached-mini.bottom-right { bottom: -25px; right: 0; }
-    .photo-with-attached .attached-mini.top-right { top: -20px; right: 0; }
+    .photo-with-attached { margin-bottom: 130px; }
+    .photo-with-attached .photo-mat { width: 100%; }
+    .photo-with-attached .attached-mini {
+      width: 45%;
+    }
+    .photo-with-attached .attached-mini.bottom-right {
+      bottom: -120px;
+      right: 5%;
+      top: auto;
+      transform: rotate(4deg);
+    }
+    .photo-with-attached .attached-mini.top-right {
+      top: auto;
+      bottom: -120px;
+      right: 5%;
+      transform: rotate(5deg);
+    }
   }
 
   /* 中央型主 scene（给 19 用：居中、无 grid） */
@@ -1196,12 +1212,14 @@
 
     .cover { padding: 70px 30px 60px; }
     .cover-frame-side { display: none; }
-    /* 移动端：Postcards from Shanghai 强制三行展示 */
+    /* 移动端：Postcards from Shanghai 三个词各占一行 */
     .cover-title-script {
       font-size: 56px;
       line-height: 1.05;
       white-space: normal;
-      word-spacing: 100vw;  /* 让每个词独占一行 */
+      word-spacing: normal;
+      max-width: 100%;
+      overflow-wrap: break-word;
     }
     .cover-title-jp { font-size: 22px; letter-spacing: 0.3em; }
     .cover-title-cn { font-size: 13px; }
@@ -1228,6 +1246,7 @@
     .hero-overture { padding-left: 30px; padding-right: 30px; }
     .scene.hero .scene-meta-wrap .scene-title,
     .scene.hero .scene-meta-wrap .scene-title-cn { padding: 0; }
+    .scene.hero .photo-mat { max-width: calc(100% - 40px); }
 
     .epilogue-placeholder { margin: 50px 30px; padding: 35px 25px; }
     .epilogue-placeholder .ep-title { font-size: 30px; }
@@ -1531,7 +1550,7 @@
       <div class="scene-text">
         <div class="text-jp">
           浦東に着いて、まずお腹が空いた。<br>
-          空港の煎饼。<br>
+          空港の水煎包。<br>
           「中国に来たね」って、ようやく実感した。
         </div>
         <div class="text-divider"></div>
@@ -1823,22 +1842,23 @@
     <div class="scene-text" style="max-width: 620px; margin: 0 auto;">
       <div class="text-jp">
         ネットで番号を取って、4時間待った。<br>
-        ようやく順番が来た時、<br>
-        店員さんが冷えピタを貼ってくれて、<br>
-        彼女は鏡を見て、ずっと笑っていた。<br>
-        ——この店に来たくて、上海まで来た、と言ってもいい。<br>
-        僕にも、一枚。
+          ようやく順番が来た時、<br>
+          店員さんが冷えピタを貼ってくれて、<br>
+          彼女は嬉しそうに、子供みたいに笑っていた。<br>
+          ——彼女がずっと来たかったお店。<br>
+          店名「很久以前」より、「冷えピタの店」の方が覚えやすい。<br>
+          僕にも、一枚。
       </div>
       <div class="text-divider"></div>
       <div class="text-cn">
         网上排号，整整等了 4 个小时。<br>
-        终于轮到我们的时候，<br>
-        店员把冷贴往她额头上一贴——<br>
-        她开心地像个孩子<br>
-        这家店是她选的、非常想来。<br>
-        比起店名很久以前，代号冷贴更好记啊<br>
-        <br>
-        然后我也被贴了一片。
+          终于轮到我们的时候，<br>
+          店员把冷贴往她额头上一贴——<br>
+          她开心地像个孩子<br>
+          这家店是她选的、非常想来。<br>
+          比起店名很久以前，代号冷贴更好记啊<br>
+          <br>
+          然后我也被贴了一片。
       </div>
     </div>
   </section>
@@ -1989,9 +2009,9 @@
 
       <div class="scene-text">
         <div class="text-jp">
-          翌朝、目が覚めて。<br>
-          彼女は、まだあのバラを抱えたままだった。<br>
-          「これ、スーツケースに入れて持って帰りたい」<br>
+          翌朝、出かける支度を済ませてから、<br>
+          彼女はあのバラの前に戻ってきた。<br>
+          「これ、スーツケースに入れて持って帰れないかな」<br>
           「また贈るから、今は咲いたままここに置いていこう」
         </div>
         <div class="text-divider"></div>
@@ -2224,7 +2244,7 @@
         <span class="stamp-date">1:05 PM</span>
       </div>
     </div>
-    <div class="mini-caption">入店前に、まずは大きい子と。</div>
+    <div class="mini-caption">クマちゃんを迎えに行く前に、まずは大きい子に挨拶。</div>
     <div class="mini-caption-cn">去接小熊之前，先跟大的打个招呼。</div>
   </div>
 
@@ -2311,8 +2331,8 @@
 
       <div class="scene-text">
         <div class="text-jp">
-          「次の場所まで、自転車で行こう」<br>
-          上海の共享単車、QRコードを読み込んで出発。<br>
+          「ローカル体験、ちょっとしてみる？自転車、乗れるよね？」<br>
+          「誰に向かって言ってるの」<br>
           並木道、緑の影、街の風。<br>
           ——観光どころか、もう街の中に溶け込んでる。
         </div>
@@ -2451,14 +2471,15 @@
 
       <div class="scene-text">
         <div class="text-jp">
-          撮影の合間、扇を持つ姿のまま、<br>
-          画面を覗き込む彼女。
+          「こう、肩をもう少し下げて、<br>
+          袖を流すように。」<br>
+          「OK~」
         </div>
         <div class="text-divider"></div>
         <div class="text-cn">
-          “像这样，肩再低一些，<br>
-          然后让袖子飘逸一点”
-          “OK~”
+          "像这样，肩再低一些，<br>
+          然后让袖子飘逸一点"
+          "OK~"
         </div>
       </div>
     </div>
@@ -2495,9 +2516,9 @@
 
       <div class="scene-text">
         <div class="text-jp">
-          木陰の下、彼女が一枚自撮りした。<br>
-          ——その一枚に、目を止めた時間が、<br>
-          ちょっとだけ、長くなった。
+          ありふれた、ただの自撮り一枚。<br>
+          なのに、目を逸らすのが、<br>
+          ちょっとだけ、難しかった。
         </div>
         <div class="text-divider"></div>
         <div class="text-cn">
@@ -2539,8 +2560,8 @@
 
       <div class="scene-text">
         <div class="text-jp">
-          「もうちょっとカッコつけて」って、扇子を渡された。<br>
-          ——演技するって、案外難しい。
+          「もっと鋭い目で、借金取り立てるみたいに」って、カメラマンに言われた。<br>
+          ——演技って、想像以上に難しい。
         </div>
         <div class="text-divider"></div>
         <div class="text-cn">
@@ -2787,10 +2808,9 @@
       <div class="scene-text">
         <div class="text-jp">
           老廟商場の前。<br>
-          彼女が振り返って笑った。<br>
-          僕は手に刀を握ったまま——<br>
-          「お姫様を護らなきゃ」って、思った。<br>
-          漢服の今日だけじゃなくて、これからもずっと。
+          片手に刀を、もう片方の手で彼女の手を握って——<br>
+          このお姫様、ちゃんと護らなきゃ。<br>
+          今日だけじゃなくて、これからもずっと。
         </div>
         <div class="text-divider"></div>
         <div class="text-cn">
@@ -3028,8 +3048,8 @@
 
       <div class="scene-text">
         <div class="text-jp">
-          階段の上、彼女が腰を下ろした。<br>
-          足を組んで、ふと、こちらを見た。
+          舞台の外の人が、<br>
+          いつの間にか、舞台の中の人に。
         </div>
         <div class="text-divider"></div>
         <div class="text-cn">
@@ -3088,12 +3108,14 @@
       <div class="text-divider"></div>
       <div class="text-cn">
         餐厅的光线很暗。<br>
-        ——她的眼神停住，<br>
+        她的目光，停在我这边。<br>
+        ——那眼神，<br>
         像夜里一汪安静的水。<br>
         <br>
-        下一刻，她的镜头转向我——<br>
-        正在毫无形象地啃着鸡翅<br>
-        嗯，还挺搭的嘛。
+        同一刻，她的镜头转向我——<br>
+        拍下了我大口啃东西的样子，<br>
+        吃相不太美。<br>
+        一张静、一张动，刚好凑成一对。
       </div>
     </div>
   </section>
