@@ -768,6 +768,12 @@
     text-align: center;
     padding: 0 60px;
   }
+  /* 横版/全景照片用 .wide,容器更大 */
+  .mini-scene.wide { max-width: 760px; padding: 0 40px; }
+  .mini-scene.wide .photo-mat { max-width: 680px; }
+  /* 中等大小变体 —— 比 .wide 略小 */
+  .mini-scene.wide-medium { max-width: 560px; padding: 0 30px; }
+  .mini-scene.wide-medium .photo-mat { max-width: 500px; }
   .mini-scene .photo-mat {
     transform: rotate(-1.5deg);
     margin: 0 auto;
@@ -1375,6 +1381,41 @@
     background: var(--primary);
   }
 
+  /* ===== 双图 grid 移动端响应式行为 ===== */
+  @media (max-width: 720px) {
+    /* .dg-stack-on-mobile : 横版双图,移动端竖排成两行 */
+    .dg-stack-on-mobile {
+      grid-template-columns: 1fr !important;
+      gap: 14px !important;
+      margin-bottom: 24px !important;
+    }
+    /* .dg-tight-on-mobile : 竖版双图,移动端保持并排但缩小间距(可轻微重叠) */
+    .dg-tight-on-mobile {
+      gap: 2px !important;
+    }
+    .dg-tight-on-mobile .photo-mat {
+      padding: 4px 4px 26px 4px !important;
+    }
+  }
+
+  /* ===== Hero 双图: 突破 container 宽度 ===== */
+  .hero-double-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin: 18px -80px 0;
+  }
+  .hero-double-grid > div { min-width: 0; }
+  @media (max-width: 880px) {
+    .hero-double-grid {
+      grid-template-columns: 1fr;
+      margin: 18px 12px 0;
+      gap: 16px;
+    }
+  }
+  /* 注: photo-mat / photo-wrap / img 的样式直接在 HTML inline 写,
+     用以 override .scene.hero 的更高 specificity 规则 */
+
   /* ===== Scene Ornament (场景间装饰) ===== */
   .scene-ornament {
     display: flex;
@@ -1475,6 +1516,294 @@
   }
   @media (max-width: 760px) {
     .thanks-svg { margin-right: 12%; max-width: 240px; }
+  }
+
+  /* ===== Scroll Fade-in (#1) ===== */
+  .js .scene,
+  .js .mini-scene,
+  .js .scene-ornament,
+  .js .dawn-transition {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.9s cubic-bezier(.2,.7,.3,1), transform 0.9s cubic-bezier(.2,.7,.3,1);
+    will-change: opacity, transform;
+  }
+  .js .scene.in-view,
+  .js .mini-scene.in-view,
+  .js .scene-ornament.in-view,
+  .js .dawn-transition.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .js .scene,
+    .js .mini-scene,
+    .js .scene-ornament,
+    .js .dawn-transition {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+
+  /* ===== Pull Quote / 金句放大 (#2) ===== */
+  .scene-callout {
+    text-align: center;
+    margin: 28px auto 14px;
+    padding: 18px 36px 22px;
+    max-width: 600px;
+    position: relative;
+  }
+  .scene-callout::before {
+    content: '“';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-58px);
+    font-family: var(--script);
+    font-size: 64px;
+    color: var(--primary);
+    opacity: 0.42;
+    line-height: 1;
+  }
+  .scene-callout::after {
+    content: '”';
+    position: absolute;
+    bottom: -28px;
+    left: 50%;
+    transform: translateX(28px);
+    font-family: var(--script);
+    font-size: 64px;
+    color: var(--primary);
+    opacity: 0.42;
+    line-height: 1;
+  }
+  .scene-callout .callout-jp {
+    font-family: var(--serif-jp);
+    font-weight: 500;
+    font-size: 22px;
+    color: var(--primary-deep);
+    letter-spacing: 0.1em;
+    line-height: 1.7;
+    margin-bottom: 6px;
+  }
+  .scene-callout .callout-cn {
+    font-family: var(--serif-cn);
+    font-size: 13px;
+    color: var(--text-soft);
+    letter-spacing: 0.22em;
+    line-height: 1.6;
+  }
+  .scene-night .scene-callout::before,
+  .scene-night .scene-callout::after { color: #6589a8; }
+  .scene-night .scene-callout .callout-jp { color: #6589a8; }
+  .scene-night .scene-callout .callout-cn { color: #6b7da6; }
+
+  /* ===== Her Note · margin annotation (#4 prep) ===== */
+  .her-note {
+    position: relative;
+    margin: 22px auto 32px;
+    max-width: 320px;
+    padding: 16px 18px 16px 20px;
+    background: rgba(245, 216, 224, 0.18);
+    border-left: 2px solid var(--primary);
+    border-radius: 1px;
+    transform: rotate(-0.6deg);
+    font-family: var(--serif-jp);
+    font-size: 13px;
+    color: var(--text-soft);
+    line-height: 1.8;
+    letter-spacing: 0.04em;
+  }
+  .her-note::before {
+    content: 'りかから';
+    position: absolute;
+    top: -10px;
+    left: 14px;
+    background: var(--bg-paper);
+    padding: 0 8px;
+    font-family: var(--script);
+    font-size: 15px;
+    color: var(--primary-deep);
+    letter-spacing: 0.04em;
+  }
+  .her-note .note-cn {
+    font-family: var(--serif-cn);
+    font-size: 12px;
+    color: var(--text-faint);
+    margin-top: 10px;
+    padding-top: 9px;
+    border-top: 1px dashed rgba(214, 138, 160, 0.32);
+    letter-spacing: 0.05em;
+  }
+  .her-note.her-note-right { margin-left: auto; margin-right: 8%; transform: rotate(0.6deg); }
+  .her-note.her-note-left { margin-left: 8%; margin-right: auto; }
+
+  /* ===== Photo Overlay scene layout (#6)
+     原则:保留照片原比例,不裁切。
+     图片按容器宽度 100% 自然高度展示。 */
+  .scene.photo-overlay { padding: 0; position: relative; overflow: hidden; }
+  .scene.photo-overlay .overlay-photo {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;             /* 防 inline img 底部 gap */
+  }
+  .scene.photo-overlay .overlay-photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .scene.photo-overlay .overlay-shade {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg,
+      rgba(0,0,0,0.05) 0%,
+      rgba(0,0,0,0.45) 70%,
+      rgba(0,0,0,0.65) 100%);
+    pointer-events: none;
+  }
+  .scene.photo-overlay .overlay-text {
+    position: absolute;
+    bottom: clamp(18px, 4vw, 48px);
+    left: 50%; transform: translateX(-50%);
+    max-width: 88%;
+    text-align: center;
+    color: rgba(255,255,255,0.96);
+    text-shadow: 0 1px 14px rgba(0,0,0,0.55);
+    z-index: 2;
+  }
+  /* 顶部锚位变体 —— 当照片上方有大片空白(天空/留白)时使用 */
+  .scene.photo-overlay .overlay-text.top {
+    top: clamp(18px, 4vw, 48px);
+    bottom: auto;
+  }
+  /* 字号随视口流式缩放,移动端不会盖住照片 */
+  .scene.photo-overlay .overlay-text .ot-jp {
+    font-family: var(--serif-jp);
+    font-weight: 500;
+    font-size: clamp(14px, 1.4vw + 8px, 22px);
+    letter-spacing: clamp(0.06em, 0.5vw, 0.12em);
+    line-height: 1.7;
+    margin-bottom: clamp(6px, 1vw + 2px, 14px);
+  }
+  .scene.photo-overlay .overlay-text .ot-cn {
+    font-family: var(--serif-cn);
+    font-size: clamp(10px, 0.6vw + 6px, 13px);
+    letter-spacing: clamp(0.12em, 0.6vw, 0.24em);
+    line-height: 1.7;
+    opacity: 0.9;
+  }
+  /* 顶部锚位时,渐变蒙版方向反过来 */
+  .scene.photo-overlay .overlay-shade {
+    background: linear-gradient(180deg,
+      rgba(0,0,0,0.05) 0%,
+      rgba(0,0,0,0.45) 70%,
+      rgba(0,0,0,0.65) 100%);
+  }
+  .scene.photo-overlay.shade-top .overlay-shade {
+    background: linear-gradient(180deg,
+      rgba(0,0,0,0.65) 0%,
+      rgba(0,0,0,0.45) 30%,
+      rgba(0,0,0,0.05) 100%);
+  }
+
+  /* ===== Ending / 完結 (#5) ===== */
+  footer.ending {
+    padding: 80px 60px 70px;
+    text-align: center;
+    border-top: 1px solid var(--line-soft);
+    background:
+      radial-gradient(ellipse at 50% 30%, rgba(245, 216, 224, 0.18), transparent 60%),
+      radial-gradient(ellipse at 50% 90%, rgba(200, 216, 232, 0.15), transparent 60%);
+    position: relative;
+  }
+  footer.ending .ending-postmark {
+    position: absolute;
+    bottom: 40px;
+    left: 50px;
+    width: 140px;
+    height: 140px;
+    opacity: 0.4;
+    pointer-events: none;
+    transform: rotate(-18deg);
+    margin: 0;
+  }
+  footer.ending .ending-divider {
+    width: 60px;
+    height: 1px;
+    background: var(--line);
+    margin: 0 auto 22px;
+  }
+  footer.ending .ending-script {
+    font-family: var(--script);
+    font-size: 44px;
+    color: var(--primary-deep);
+    line-height: 1;
+    margin-bottom: 18px;
+    letter-spacing: 0.02em;
+  }
+  footer.ending .ending-names {
+    font-family: var(--serif-jp);
+    font-size: 19px;
+    letter-spacing: 0.3em;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  footer.ending .ending-names .name-her { color: var(--primary-deep); }
+  footer.ending .ending-names .name-him { color: var(--blue-deep); }
+  footer.ending .ending-names .ending-amp {
+    font-family: var(--script);
+    color: var(--gold);
+    margin: 0 14px;
+    font-size: 24px;
+    font-style: italic;
+    letter-spacing: 0;
+  }
+  footer.ending .ending-jp {
+    font-family: var(--serif-jp);
+    font-size: 12.5px;
+    color: var(--text-soft);
+    letter-spacing: 0.32em;
+    margin-bottom: 6px;
+  }
+  footer.ending .ending-dates {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-faint);
+    letter-spacing: 0.3em;
+    margin-top: 16px;
+  }
+  footer.ending .ending-location {
+    font-family: var(--en-serif);
+    font-style: italic;
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0.32em;
+    margin-top: 6px;
+    text-transform: uppercase;
+  }
+  @media (max-width: 760px) {
+    footer.ending { padding: 60px 30px 50px; }
+    footer.ending .ending-script { font-size: 34px; }
+    footer.ending .ending-postmark { width: 90px; height: 90px; }
+  }
+
+  /* ===== Italianno extended (#7) ===== */
+  /* photo-stamp 邮戳中段加 italic 韵味 (英文部分) */
+  .photo-stamp .stamp-mid {
+    font-family: var(--en-serif);
+    font-style: italic;
+    letter-spacing: 0.08em;
+  }
+  /* scene-meta 加一个 script 装饰 dot —— 在 scene-time 后 */
+  .scene-meta .scene-time::after {
+    content: '·';
+    font-family: var(--script);
+    font-size: 16px;
+    color: var(--primary);
+    margin-left: 8px;
+    opacity: 0.55;
+    vertical-align: -2px;
   }
 
   /* ===== Print ===== */
@@ -1901,49 +2230,40 @@
     </div>
   </section>
 
-  <!-- ─────── Scene 05 · 南京路(HERO) ─────── -->
-  <section class="scene hero">
-    <div class="hero-overture">— A Walk Down Nanjing Road —</div>
+  <!-- ─────── Scene 05 · 南京路 (HERO · photo-overlay) ─────── -->
+  <section class="scene hero photo-overlay">
+    <div class="hero-overture" style="padding: 0 60px 18px;">— A Walk Down Nanjing Road —</div>
 
-    <div class="scene-meta-wrap">
+    <div class="overlay-photo">
+      <img src="photos/day1/05_nanjing_road_walking.jpg" alt="Two of us, in the neon" loading="lazy">
+      <div class="overlay-shade"></div>
+      <div class="overlay-text">
+        <div class="ot-jp">その真ん中で、<br>彼女が、笑った</div>
+        <div class="ot-cn">满 街 灯 火 中, 她 笑 了</div>
+      </div>
+    </div>
+
+    <div class="scene-meta-wrap" style="padding-top: 28px;">
       <div class="scene-meta">
         <span class="scene-time">19:20</span>
         <span class="scene-time-line"></span>
-        <span class="scene-title-mini">南京东路 · Nanjing Rd. East</span>
+        <span class="scene-title-mini">南京东路 · Nanjing Rd. East · No 05</span>
       </div>
       <h3 class="scene-title">南京路、ネオンの中</h3>
-    <div class="scene-title-cn">南京路,人群之中</div>
-    </div>
-
-    <div class="photo-mat">
-      <div class="photo-postmark">
-        <div class="pm-top">NJ RD</div>
-        <div class="pm-mid">May 2</div>
-        <div class="pm-bot">2026</div>
-      </div>
-      <div class="photo-wrap">
-        <img src="photos/day1/05_nanjing_road_walking.jpg" alt="Two of us, in the neon" loading="lazy">
-      </div>
-      <div class="photo-stamp">
-        <span class="stamp-num">No 05</span>
-        <span class="stamp-mid">— In the crowd —</span>
-        <span class="stamp-date">7:20 PM</span>
-      </div>
+      <div class="scene-title-cn">南京路,人群之中</div>
     </div>
 
     <div class="scene-text">
       <div class="text-jp">
         19時20分、南京路。<br>
         ホテルのすぐ外が、もう繁華街だった。<br>
-        人、人、人。ネオン、ネオン、ネオン。<br>
-        その真ん中で、彼女が笑った。
+        人、人、人。ネオン、ネオン、ネオン。
       </div>
       <div class="text-divider"></div>
       <div class="text-cn">
         19点20分,南京路。<br>
         一出酒店就是步行街。<br>
-        满街都是人,满街都是灯。<br>
-        但她笑起来的时候,我只看得见她。
+        满街都是人,满街都是灯。
       </div>
     </div>
   </section>
@@ -2266,56 +2586,45 @@
     <div class="day-divider"></div>
   </section>
 
-<!-- ─────── Scene 01 · ホテルの鏡の前で ─────── -->
-  <section class="scene">
-    <div class="scene-meta">
+<!-- ─────── Scene 01 · 朝のバラ (photo-overlay) ─────── -->
+  <section class="scene photo-overlay">
+    <div class="overlay-photo">
+      <img src="photos/day2/01_hotel_rose_selfie.jpg" alt="鏡の前のバラ" loading="lazy">
+      <div class="overlay-shade"></div>
+      <div class="overlay-text">
+        <div class="ot-jp">また贈るから、<br>今は咲いたまま、ここに</div>
+        <div class="ot-cn">还 会 再 送 你 的</div>
+      </div>
+    </div>
+
+    <div class="scene-meta" style="padding: 28px 60px 0;">
       <span class="scene-time">09:50</span>
       <span class="scene-time-line"></span>
-      <span class="scene-title-mini">子鱼居・ホテルの部屋</span>
+      <span class="scene-title-mini">子鱼居・ホテルの部屋 · No 12</span>
     </div>
-    <h3 class="scene-title">朝、まだそばにあったバラ</h3>
-    <div class="scene-title-cn">早晨,那束玫瑰还在</div>
+    <h3 class="scene-title" style="padding: 0 60px;">朝、まだそばにあったバラ</h3>
+    <div class="scene-title-cn" style="padding: 0 60px;">早晨,那束玫瑰还在</div>
 
-    <div class="scene-grid layout-photo-left">
-      <div class="scene-photo">
-        <div class="photo-mat">
-          <div class="photo-postmark">
-            <div class="pm-top">HOTEL</div>
-            <div class="pm-mid">May 3</div>
-            <div class="pm-bot">2026</div>
-          </div>
-          <div class="photo-wrap">
-            <img src="photos/day2/01_hotel_rose_selfie.jpg" alt="鏡の前のバラ" loading="lazy">
-          </div>
-          <div class="photo-stamp">
-            <span class="stamp-num">No 12</span>
-            <span class="stamp-mid">— 翌朝のバラ —</span>
-            <span class="stamp-date">9:50 AM</span>
-          </div>
-        </div>
+    <div class="scene-text" style="max-width: 620px; margin: 0 auto; padding: 0 30px 20px;">
+      <div class="text-jp">
+        翌朝、出かける支度を済ませてから、<br>
+        彼女はあのバラの前に戻ってきた。<br>
+        「これ、スーツケースに入れて持って帰れないかな」<br>
+        「また贈るから、今は咲いたまま、ここに置いていこう」
       </div>
-
-      <div class="scene-text">
-        <div class="text-jp">
-          翌朝、出かける支度を済ませてから、<br>
-          彼女はあのバラの前に戻ってきた。<br>
-          「これ、スーツケースに入れて持って帰れないかな」<br>
-          「また贈るから、今は咲いたままここに置いていこう」
-        </div>
-        <div class="text-divider"></div>
-        <div class="text-cn">
-          第二天早上收拾好东西,<br>
-          她舍不得那束玫瑰,<br>
-          站在镜子前拍了一张。<br>
-          "这个能装进行李箱带回去吗"<br>
-          "还会再送你的,这一束就让它保持盛放的样子,留在这里吧。"
-        </div>
+      <div class="text-divider"></div>
+      <div class="text-cn">
+        第二天早上收拾好东西,<br>
+        她舍不得那束玫瑰,<br>
+        站在镜子前拍了一张。<br>
+        "这个能装进行李箱带回去吗。"<br>
+        "还会再送你的,这一束就让它保持盛放的样子,留在这里吧。"
       </div>
     </div>
   </section>
 
   <!-- ─── mini · 02 ready_to_go ─── -->
-  <div class="mini-scene">
+  <div class="mini-scene wide">
     <div class="mini-time">09:53</div>
     <div class="photo-mat">
       <div class="photo-wrap">
@@ -2905,47 +3214,36 @@
     </div>
   </section>
 
-  <!-- ─────── Scene 18 · HERO 寄り添う二人 ─────── -->
-  <section class="scene hero">
-    <div class="hero-overture">— Two of Us, in Hanfu —</div>
+  <!-- ─────── Scene 18 · 寄り添う二人 (HERO · photo-overlay) ─────── -->
+  <section class="scene hero photo-overlay">
+    <div class="hero-overture" style="padding: 0 60px 18px;">— Two of Us, in Hanfu —</div>
 
-    <div class="scene-meta-wrap">
+    <div class="overlay-photo">
+      <img src="photos/day2/18_leaning_on_him.jpg" alt="二人、漢服を着て" loading="lazy">
+      <div class="overlay-shade"></div>
+      <div class="overlay-text">
+        <div class="ot-jp">青い裙、黒い衣。<br>肩に、寄りかかって</div>
+        <div class="ot-cn">蓝 裙 黑 衣, 她 轻 轻 靠 过 来</div>
+      </div>
+    </div>
+
+    <div class="scene-meta-wrap" style="padding-top: 28px;">
       <div class="scene-meta">
         <span class="scene-time">16:17</span>
         <span class="scene-time-line"></span>
-        <span class="scene-title-mini">竹林の前</span>
+        <span class="scene-title-mini">竹林の前 · No 24</span>
       </div>
       <h3 class="scene-title">寄り添う二人</h3>
       <div class="scene-title-cn">竹林前的两个人</div>
     </div>
 
-    <div class="photo-mat">
-      <div class="photo-postmark">
-        <div class="pm-top">BAMBOO</div>
-        <div class="pm-mid">May 3</div>
-        <div class="pm-bot">2026</div>
-      </div>
-      <div class="photo-wrap">
-        <img src="photos/day2/18_leaning_on_him.jpg" alt="二人、漢服を着て" loading="lazy">
-      </div>
-      <div class="photo-stamp">
-        <span class="stamp-num">No 24</span>
-        <span class="stamp-mid">— Leaning in —</span>
-        <span class="stamp-date">4:17 PM</span>
-      </div>
-    </div>
-
     <div class="scene-text">
       <div class="text-jp">
-        青い裙、黒い衣。<br>
-        竹林の前で、彼女が肩に寄りかかってきた。<br>
         ——男っていうのは結局、こういうのに弱い。<br>
         あらためて、そう思った。
       </div>
       <div class="text-divider"></div>
       <div class="text-cn">
-        蓝裙、黑衣。<br>
-        竹林前,她轻轻靠在我肩上。<br>
         ——果然,<br>
         男人都吃这一套小鸟依人。<br>
         我心里暗想。
@@ -3315,35 +3613,31 @@
     <h3 class="scene-title">赤い階段の上で</h3>
     <div class="scene-title-cn">红楼梯上</div>
 
-    <div class="scene-grid layout-photo-right">
-      <div class="scene-photo">
-        <div class="photo-mat">
-          <div class="photo-postmark">
-            <div class="pm-top">大世界</div>
-            <div class="pm-mid">May 3</div>
-            <div class="pm-bot">2026</div>
-          </div>
-          <div class="photo-wrap">
-            <img src="photos/day2/28_conquer_red_stairs.jpg" alt="赤い階段" loading="lazy">
-          </div>
-          <div class="photo-stamp">
-            <span class="stamp-num">No 32</span>
-            <span class="stamp-mid">— Red stairs —</span>
-            <span class="stamp-date">10:32 PM</span>
-          </div>
-        </div>
+    <div class="photo-mat">
+      <div class="photo-postmark">
+        <div class="pm-top">大世界</div>
+        <div class="pm-mid">May 3</div>
+        <div class="pm-bot">2026</div>
       </div>
+      <div class="photo-wrap">
+        <img src="photos/day2/28_conquer_red_stairs.jpg" alt="赤い階段" loading="lazy">
+      </div>
+      <div class="photo-stamp">
+        <span class="stamp-num">No 32</span>
+        <span class="stamp-mid">— Red stairs —</span>
+        <span class="stamp-date">10:32 PM</span>
+      </div>
+    </div>
 
-      <div class="scene-text">
-        <div class="text-jp">
-          舞台の外の人が、<br>
-          いつの間にか、舞台の中の人に。
-        </div>
-        <div class="text-divider"></div>
-        <div class="text-cn">
-          戏外人,<br>
-          不觉已成戏中人。
-        </div>
+    <div class="scene-text" style="max-width: 540px; margin: 36px auto 0; text-align: center;">
+      <div class="text-jp">
+        舞台の外の人が、<br>
+        いつの間にか、舞台の中の人に。
+      </div>
+      <div class="text-divider"></div>
+      <div class="text-cn">
+        戏外人,<br>
+        不觉已成戏中人。
       </div>
     </div>
   </section>
@@ -3675,21 +3969,19 @@
     </div>
   </section>
 
-  <!-- ─────── Scene 05 · 届きたて、東方明珠 (hero双图) ─────── -->
-  <section class="scene hero">
-    <div class="scene-meta-wrap">
-      <div class="scene-meta">
-        <span class="scene-time">11:51</span>
-        <span class="scene-time-line"></span>
-        <span class="scene-title-mini">東方明珠 · ふたり</span>
-      </div>
-      <h3 class="scene-title">届きたて、東方明珠</h3>
-      <div class="scene-title-cn">新到的东方明珠</div>
+  <!-- ─────── Scene 05 · 届きたて、東方明珠 (双图,同二つの眼差し版式) ─────── -->
+  <section class="scene">
+    <div class="scene-meta">
+      <span class="scene-time">11:51</span>
+      <span class="scene-time-line"></span>
+      <span class="scene-title-mini">東方明珠 · ふたり</span>
     </div>
+    <h3 class="scene-title">届きたて、東方明珠</h3>
+    <div class="scene-title-cn">新到的东方明珠</div>
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin: 12px auto 0; max-width: 880px; padding: 0 60px;">
+    <div class="dg-tight-on-mobile" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 36px;">
       <div>
-        <div class="photo-mat" style="transform: rotate(-1.2deg);">
+        <div class="photo-mat" style="transform: rotate(-1.5deg);">
           <div class="photo-wrap" style="aspect-ratio: 3/4; overflow: hidden;">
             <img src="photos/day3/05a_his_tower.jpg" alt="僕の世界だ" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
           </div>
@@ -3708,7 +4000,7 @@
       </div>
 
       <div>
-        <div class="photo-mat" style="transform: rotate(1.2deg);">
+        <div class="photo-mat" style="transform: rotate(1.5deg);">
           <div class="photo-wrap" style="aspect-ratio: 3/4; overflow: hidden;">
             <img src="photos/day3/05b_her_tower.jpg" alt="受領済" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
           </div>
@@ -3746,7 +4038,7 @@
     <h3 class="scene-title">やっと、CHAGEE</h3>
     <div class="scene-title-cn">终于,霸王茶姬</div>
 
-    <div class="scene-grid layout-photo-left">
+    <div class="scene-grid layout-photo-left" style="grid-template-columns: 5fr 2fr;">
       <div class="scene-photo">
         <div class="photo-mat">
           <div class="photo-wrap">
@@ -3777,7 +4069,7 @@
   </section>
 
   <!-- ─── mini · 07 oversize_welcome ─── -->
-  <div class="mini-scene tilt-right">
+  <div class="mini-scene tilt-right wide-medium">
     <div class="mini-time">12:00</div>
     <div class="photo-mat">
       <div class="photo-wrap">
@@ -3911,6 +4203,11 @@
         ——午饭,还没想好。
       </div>
     </div>
+
+    <div class="scene-callout">
+      <div class="callout-jp">上海、いいなあ</div>
+      <div class="callout-cn">上 海, 真 好</div>
+    </div>
   </section>
 
   <div class="scene-ornament">
@@ -3966,12 +4263,13 @@
         </div>
       </div>
     </div>
+
   </section>
 
   <!-- ─── mini · 12 three_times_nanjing ─── -->
-  <div class="mini-scene tilt-left">
+  <div class="mini-scene tilt-left" style="max-width: 480px;">
     <div class="mini-time">15:06</div>
-    <div class="photo-mat">
+    <div class="photo-mat" style="max-width: 420px;">
       <div class="photo-wrap">
         <img src="photos/day3/13_nanjing_rd_walk.jpg" alt="三度目の南京路" loading="lazy">
       </div>
@@ -3995,7 +4293,7 @@
     <h3 class="scene-title">バカップル、いいじゃん</h3>
     <div class="scene-title-cn">傻情侣,不挺好</div>
 
-    <div class="scene-grid layout-photo-right">
+    <div class="scene-grid layout-photo-right" style="grid-template-columns: 1.4fr 1fr;">
       <div class="scene-photo">
         <div class="photo-mat">
           <div class="photo-wrap">
@@ -4022,6 +4320,11 @@
           ——"哈哈,也挺好的呀。"
         </div>
       </div>
+    </div>
+
+    <div class="scene-callout">
+      <div class="callout-jp">バカップル、いいじゃん</div>
+      <div class="callout-cn">傻 情 侣, 也 挺 好</div>
     </div>
   </section>
 
@@ -4124,6 +4427,11 @@
         我会陪你一起去。
       </div>
     </div>
+
+    <div class="scene-callout">
+      <div class="callout-jp">僕が、ついていくよ</div>
+      <div class="callout-cn">我 会 陪 你 一 起 去</div>
+    </div>
   </section>
 
   <div class="scene-ornament">
@@ -4151,22 +4459,23 @@
     <div class="mini-caption-cn">抓到一只落单的大明星,赶紧拍照,<br>"Stop,Stop——"</div>
   </div>
 
-  <!-- ─── mini · 17 the_moment_with_her ─── -->
-  <div class="mini-scene tilt-left">
-    <div class="mini-time">16:11</div>
-    <div class="photo-mat">
-      <div class="photo-wrap">
-        <img src="photos/day3/18_the_moment_with_her.jpg" alt="彼女と、ある瞬間" loading="lazy">
-      </div>
-      <div class="photo-stamp">
-        <span class="stamp-num">No 52</span>
-        <span class="stamp-mid">— A moment with her —</span>
-        <span class="stamp-date">4:11 PM</span>
+  <!-- ─────── Scene 17 · 彼女と、ある瞬間 (photo-overlay · top text) ─────── -->
+  <section class="scene photo-overlay shade-top">
+    <div class="overlay-photo">
+      <img src="photos/day3/18_the_moment_with_her.jpg" alt="彼女と、ある瞬間" loading="lazy">
+      <div class="overlay-shade"></div>
+      <div class="overlay-text top">
+        <div class="ot-jp">——彼女と、ある瞬間。</div>
+        <div class="ot-cn">—— 和 她 一 起 的 某 个 瞬 间</div>
       </div>
     </div>
-    <div class="mini-caption">——彼女と、ある瞬間。</div>
-    <div class="mini-caption-cn">——和她一起的某个瞬间。</div>
-  </div>
+
+    <div class="scene-meta" style="padding: 24px 60px 0; justify-content: center;">
+      <span class="scene-time">16:11</span>
+      <span class="scene-time-line"></span>
+      <span class="scene-title-mini">外滩 · No 52</span>
+    </div>
+  </section>
 
   <!-- ============================================ -->
   <!-- ============== Act IV (Day 3) ============== -->
@@ -4369,22 +4678,29 @@
     <div class="day-divider"></div>
   </section>
 
-  <!-- ─── mini · 01 · 清爽的早晨 ─── -->
-  <div class="mini-scene" style="max-width: 720px;">
-    <div class="mini-time">10:00</div>
-    <div class="photo-mat">
-      <div class="photo-wrap">
-        <img src="photos/day4/01_shanghai_in_the_morning.jpg" alt="清々しい上海の朝" loading="lazy">
-      </div>
-      <div class="photo-stamp">
-        <span class="stamp-num">No 57</span>
-        <span class="stamp-mid">— A clear last morning —</span>
-        <span class="stamp-date">10:00 AM</span>
+  <!-- ─────── Scene 01 · 上海、最後の朝 (photo-overlay · top text) ─────── -->
+  <section class="scene photo-overlay shade-top">
+    <div class="overlay-photo">
+      <img src="photos/day4/01_shanghai_in_the_morning.jpg" alt="清々しい上海の朝" loading="lazy">
+      <div class="overlay-shade"></div>
+      <div class="overlay-text top">
+        <div class="ot-jp">上海、最後の朝。</div>
+        <div class="ot-cn">上 海, 最 后 一 天 的 早 晨</div>
       </div>
     </div>
-    <div class="mini-caption">上海、最後の朝。清々しい空気で、一日が始まる。</div>
-    <div class="mini-caption-cn">上海旅行的最后一天,以清爽的早晨开始。</div>
-  </div>
+
+    <div class="scene-meta" style="padding: 28px 60px 0;">
+      <span class="scene-time">10:00</span>
+      <span class="scene-time-line"></span>
+      <span class="scene-title-mini">ホテルの窓から · No 57</span>
+    </div>
+
+    <div class="scene-text" style="max-width: 620px; margin: 0 auto; padding: 14px 30px 20px;">
+      <div class="text-jp">清々しい空気で、一日が始まる。</div>
+      <div class="text-divider"></div>
+      <div class="text-cn">以清爽的早晨,开始这一天。</div>
+    </div>
+  </section>
 
   <!-- ─────── Scene 02 · お箸、もう一膳 (双图) ─────── -->
   <section class="scene">
@@ -4396,7 +4712,7 @@
     <h3 class="scene-title">フルーツ天国と、お箸一膳</h3>
     <div class="scene-title-cn">水果自由,与一双筷子</div>
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 36px;">
+    <div class="dg-stack-on-mobile" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 36px;">
       <div class="photo-mat" style="transform: rotate(-1deg);">
         <div class="photo-wrap" style="aspect-ratio: 4/3; overflow: hidden;">
           <img src="photos/day4/02_no_fork_in_hotel.jpg" alt="お箸、もう一膳" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
@@ -4564,6 +4880,31 @@
   </div>
 
 
+  <!--
+  ╔══════════════════════════════════════════════════════════════════╗
+  ║  ✿ .her-note · りかから的注释 (待她加内容) ✿                     ║
+  ║                                                                  ║
+  ║  在任何 scene 内 / 旁边 / 之间 都可以插入下面这个模板:             ║
+  ║                                                                  ║
+  ║    <div class="her-note">                                        ║
+  ║      何かひとこと、日本語で。<br>                                ║
+  ║      もう一行、自由に書く。                                       ║
+  ║      <div class="note-cn">中文翻译/补充,可选</div>                ║
+  ║    </div>                                                        ║
+  ║                                                                  ║
+  ║  位置变体:                                                       ║
+  ║    .her-note.her-note-left   —— 偏左,微正向旋转                  ║
+  ║    .her-note.her-note-right  —— 偏右,微负向旋转                  ║
+  ║                                                                  ║
+  ║  建议位置示例:                                                   ║
+  ║    Scene 03 (新水果) — "○○、初めてだった、確かに美味しかった"   ║
+  ║    Scene 06 (CHAGEE) — "やっと飲めて嬉しかった"                  ║
+  ║    Scene 14 (聖地)   — "ここは念願の場所だった"                 ║
+  ║    Scene 19 (円卓)   — "あの夜、楽しすぎた"                     ║
+  ║    Scene 20 (睡颜)   — "ごめん、本当に眠かった"                 ║
+  ╚══════════════════════════════════════════════════════════════════╝
+  -->
+
   <!-- ============================================ -->
   <!-- ============== 後記 ======================= -->
   <!-- ============================================ -->
@@ -4584,14 +4925,62 @@
   <!-- ============================================ -->
   <!-- ============== フッター =================== -->
   <!-- ============================================ -->
-  <footer>
-    <div class="footer-script">to be continued</div>
-    <div class="footer-jp">二 人 の 記 憶</div>
-    <div class="footer-meta">Shanghai · Spring 2026</div>
+  <footer class="ending">
+    <!-- 邮戳印章 -->
+    <svg class="ending-postmark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="50" r="45" fill="none" stroke="#b56a82" stroke-width="1.4" stroke-dasharray="2 2.6" opacity="0.85"/>
+      <circle cx="50" cy="50" r="39" fill="none" stroke="#b56a82" stroke-width="0.6" opacity="0.7"/>
+      <text x="50" y="40" text-anchor="middle"
+            font-family="Cormorant Garamond" font-size="9.5"
+            letter-spacing="2.2" fill="#b56a82" opacity="0.95">SHANGHAI</text>
+      <line x1="22" y1="48" x2="78" y2="48" stroke="#b56a82" stroke-width="0.5" opacity="0.5"/>
+      <text x="50" y="60" text-anchor="middle"
+            font-family="DM Mono" font-size="8.5"
+            letter-spacing="1.8" fill="#b56a82" opacity="0.95">MAY 2—5</text>
+      <text x="50" y="74" text-anchor="middle"
+            font-family="Cormorant Garamond" font-size="6.5"
+            letter-spacing="3" fill="#b56a82" opacity="0.85">2026</text>
+    </svg>
+
+    <div class="ending-divider"></div>
+
+    <div class="ending-script">— sealed with love —</div>
+
+    <div class="ending-names">
+      <span class="name-her">り か</span>
+      <span class="ending-amp">&amp;</span>
+      <span class="name-him">た い ら ん</span>
+    </div>
+
+    <div class="ending-jp">二 人 の 記 憶</div>
+
+    <div class="ending-dates">MAY 2 — MAY 5 · SPRING 2026</div>
+    <div class="ending-location">Shanghai · 上 海</div>
   </footer>
 
 </div>
 <script>
+  // Scroll fade-in for scenes / mini-scenes / ornaments
+  (function () {
+    document.body.classList.add('js');
+    const targets = document.querySelectorAll(
+      '.scene, .mini-scene, .scene-ornament, .dawn-transition'
+    );
+    if (!targets.length || typeof IntersectionObserver === 'undefined') {
+      targets.forEach(el => el.classList.add('in-view'));
+      return;
+    }
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) {
+          e.target.classList.add('in-view');
+          io.unobserve(e.target);
+        }
+      }
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+    targets.forEach(el => io.observe(el));
+  })();
+
   // Active day highlight in postal nav
   (function () {
     const map = { day1: 0, day2: 1, day3: 2, day4: 3 };
