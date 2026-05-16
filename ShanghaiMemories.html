@@ -1333,10 +1333,15 @@
     transition: color 0.25s;
   }
   .pn-brand-mark {
-    font-size: 12px;
     color: var(--primary);
+    display: inline-flex;
+    align-items: center;
     transform: translateY(1px);
-    display: inline-block;
+  }
+  .pn-brand-mark svg {
+    width: 26px;
+    height: 14px;
+    display: block;
   }
   .pn-brand:hover { color: var(--text); }
 
@@ -1914,11 +1919,13 @@
   .pn-top:hover { color: var(--primary-deep); }
 
   @media (max-width: 760px) {
-    .pn-inner { padding: 8px 16px; gap: 8px; }
+    .pn-inner { padding: 8px 14px; gap: 10px; }
     .pn-brand-text { display: none; }
-    .pn-stop { padding: 4px 8px; gap: 5px; }
+    .pn-route { gap: 4px; }
+    .pn-stop { padding: 10px 14px; gap: 6px; min-height: 44px; box-sizing: border-box; }
+    .pn-date { font-size: 13px; }
     .pn-label { display: none; }
-    .pn-link { width: 10px; }
+    .pn-link { width: 8px; }
   }
 </style>
 </head>
@@ -2022,7 +2029,18 @@
   <nav class="postal-nav">
     <div class="pn-inner">
       <a class="pn-brand" href="#top">
-        <span class="pn-brand-mark">✉</span>
+        <span class="pn-brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 28 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round">
+            <path d="M1 6 Q2.5 5, 4 6 T7 6 T10 6"/>
+            <path d="M1 8 Q2.5 7, 4 8 T7 8 T10 8"/>
+            <path d="M1 10 Q2.5 9, 4 10 T7 10 T10 10"/>
+            <circle cx="14" cy="8" r="5.4"/>
+            <circle cx="14" cy="8" r="3"/>
+            <path d="M18 6 Q19.5 5, 21 6 T24 6 T27 6"/>
+            <path d="M18 8 Q19.5 7, 21 8 T24 8 T27 8"/>
+            <path d="M18 10 Q19.5 9, 21 10 T24 10 T27 10"/>
+          </svg>
+        </span>
         <span class="pn-brand-text">Postcards · Shanghai</span>
       </a>
       <div class="pn-route">
