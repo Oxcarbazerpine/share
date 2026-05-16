@@ -1719,7 +1719,7 @@
   }
   footer.ending .ending-postmark {
     position: absolute;
-    bottom: 40px;
+    top: 40px;
     left: 50px;
     width: 140px;
     height: 140px;
@@ -1727,6 +1727,14 @@
     pointer-events: none;
     transform: rotate(-18deg);
     margin: 0;
+  }
+  @media (max-width: 720px) {
+    footer.ending .ending-postmark {
+      width: 90px;
+      height: 90px;
+      top: 22px;
+      left: 16px;
+    }
   }
   footer.ending .ending-divider {
     width: 60px;
@@ -1804,6 +1812,74 @@
     margin-left: 8px;
     opacity: 0.55;
     vertical-align: -2px;
+  }
+
+  /* ===== Mobile UX Optimization (≤720px) ===== */
+  @media (max-width: 720px) {
+    /* 1. Nav tap target */
+    .pn-stop {
+      padding: 10px 12px;
+      min-height: 44px;
+      box-sizing: border-box;
+    }
+    .pn-top { padding: 8px; }
+
+    /* 2. Pull-quote callout 流式字号 */
+    .scene-callout .callout-jp {
+      font-size: clamp(15px, 4.2vw, 22px);
+      letter-spacing: 0.06em;
+    }
+    .scene-callout .callout-cn {
+      font-size: clamp(11px, 3vw, 13px);
+      letter-spacing: 0.16em;
+    }
+    .scene-callout::before, .scene-callout::after { font-size: 42px; }
+    .scene-callout { padding: 16px 16px 20px; }
+
+    /* 3. Day-title-script (大花体标题)流式缩 */
+    .day-title-script { font-size: clamp(34px, 10vw, 60px); }
+
+    /* 5. photo-mat 内边距 mobile */
+    .photo-mat { padding: 8px 8px 32px 8px; }
+
+    /* 6 + 10. hero-overture */
+    .hero-overture {
+      font-size: clamp(11px, 3vw, 14px);
+      letter-spacing: clamp(0.1em, 0.5vw, 0.18em);
+    }
+
+    /* 9. mini-scene 取消旋转 */
+    .mini-scene .photo-mat,
+    .mini-scene.tilt-right .photo-mat,
+    .mini-scene.tilt-left .photo-mat {
+      transform: none;
+    }
+
+    /* 11. photo-postmark 圆形邮戳缩小 */
+    .photo-postmark {
+      width: 38px;
+      height: 38px;
+      top: -10px;
+      right: -10px;
+    }
+    .photo-postmark .pm-top { font-size: 6.5px; margin-bottom: 1px; }
+    .photo-postmark .pm-mid { font-size: 11px; }
+    .photo-postmark .pm-bot { font-size: 6px; }
+
+    /* 12. scene-meta 略放大可读 */
+    .scene-time { font-size: 11px; letter-spacing: 0.18em; }
+    .scene-title-mini { font-size: 12.5px; letter-spacing: 0.1em; }
+
+    /* 15. cover-names 字距 clamp 防换行 */
+    .cover-names { letter-spacing: clamp(0.12em, 1.5vw, 0.3em); }
+  }
+
+  /* 13. 触屏 hover fallback —— 没有真 hover 的设备不残留 hover 态 */
+  @media (hover: none) {
+    .pn-stop:hover .pn-date { color: var(--text); }
+    .pn-stop:hover .pn-label { color: var(--text-faint); letter-spacing: 0.22em; }
+    .pn-top:hover { color: var(--text-faint); }
+    .photo-mat:hover { transform: none; }
   }
 
   /* ===== Print ===== */
@@ -2423,7 +2499,7 @@
     <h3 class="scene-title">冷えピタ、ようやく</h3>
     <div class="scene-title-cn">终于贴上冷ぴた</div>
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 36px;">
+    <div class="dg-tight-on-mobile" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 36px;">
       <div class="photo-mat" style="transform: rotate(-1.5deg);">
         <div class="photo-wrap">
           <img src="photos/day1/08_cold_patch_1.jpg" alt="りか + 冷えピタ" loading="lazy">
@@ -3533,7 +3609,7 @@
     </div>
 
     <!-- 陆光 + 一家三口 caption 双图 -->
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+    <div class="dg-tight-on-mobile" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
       <div class="photo-mat" style="transform: rotate(-1.2deg);">
         <div class="photo-wrap" style="aspect-ratio: 3/4; overflow: hidden;">
           <img src="photos/day2/26_three_cuties.jpg" alt="一家三口" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
@@ -3652,7 +3728,7 @@
     <h3 class="scene-title">二つの眼差し</h3>
     <div class="scene-title-cn">两道目光</div>
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 36px;">
+    <div class="dg-tight-on-mobile" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 36px;">
       <div class="photo-mat" style="transform: rotate(-1.5deg);">
         <div class="photo-wrap" style="aspect-ratio: 3/4; overflow: hidden;">
           <img src="photos/day2/29_looking_into_your_eyes.jpg" alt="彼女の眼差し" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
@@ -4164,7 +4240,7 @@
     <h3 class="scene-title">お昼へ、ぶらぶらと</h3>
     <div class="scene-title-cn">朝着饭店,慢慢晃过去</div>
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 36px;">
+    <div class="dg-stack-on-mobile" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 36px;">
       <div class="photo-mat" style="transform: rotate(-1deg);">
         <div class="photo-wrap" style="aspect-ratio: 4/3; overflow: hidden;">
           <img src="photos/day3/10_skyscraper_back.jpg" alt="塔を背に、街へ" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
@@ -4392,7 +4468,7 @@
     <h3 class="scene-title">名場面、再演</h3>
     <div class="scene-title-cn">名场面再现</div>
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 36px;">
+    <div class="dg-tight-on-mobile" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 36px;">
       <div class="photo-mat" style="transform: rotate(-1.5deg);">
         <div class="photo-wrap" style="aspect-ratio: 3/4; overflow: hidden;">
           <img src="photos/day3/16_anime_scene_reproduce.jpg" alt="名場面、再演" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
@@ -4497,7 +4573,7 @@
     <h3 class="scene-title">戦利品、両手いっぱい</h3>
     <div class="scene-title-cn">战利品,满满两手</div>
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 36px;">
+    <div class="dg-tight-on-mobile" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 36px;">
       <div class="photo-mat" style="transform: rotate(-1deg);">
         <div class="photo-wrap" style="aspect-ratio: 3/4; overflow: hidden;">
           <img src="photos/day3/19a_otaku_stock_time.jpg" alt="採購タイム" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
@@ -4552,7 +4628,7 @@
     <h3 class="scene-title">友と、円卓を囲んで</h3>
     <div class="scene-title-cn">和朋友,围着同一张桌</div>
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 36px;">
+    <div class="dg-stack-on-mobile" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 36px;">
       <div class="photo-mat" style="transform: rotate(-1deg);">
         <div class="photo-wrap" style="aspect-ratio: 4/3; overflow: hidden;">
           <img src="photos/day3/20a_feast.jpg" alt="円卓、皿が回る" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
